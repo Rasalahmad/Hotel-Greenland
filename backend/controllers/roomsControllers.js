@@ -27,7 +27,7 @@ export const addRoom = async (req, res) => {
   }
 };
 
-export const getRooms = async (req, res) => {
+export const getAllRooms = async (req, res) => {
   const rooms = await Room.find({});
   try {
     res.status(200).json({

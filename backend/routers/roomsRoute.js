@@ -1,9 +1,9 @@
 import express from "express";
-import { addRoom, getRooms } from "../controllers/roomsControllers.js";
+import { addRoom, getAllRooms } from "../controllers/roomsControllers.js";
 
 const router = express.Router();
 
 router.post("/room", addRoom);
-router.get("/rooms", getRooms);
+router.get("/getAllRoom", getAllRooms);
 
 export default router;
