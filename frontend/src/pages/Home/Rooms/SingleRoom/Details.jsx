@@ -154,7 +154,6 @@ const Item = styled.div`
   flex-direction: ${({ service }) => (service ? "row" : "column")};
   align-items: center;
   gap: 20px;
-  width: 120px;
 `;
 
 const Main = styled.div`
