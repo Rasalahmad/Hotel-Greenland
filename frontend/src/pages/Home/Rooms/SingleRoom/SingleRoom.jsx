@@ -59,7 +59,7 @@ const SingleRoom = () => {
 
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8800/api/getAllRoom").then((response) => {
+    axios.get("http://localhost:8800/api/singleRooms").then((response) => {
       setData(response.data.data);
     });
   }, []);
