@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "./static/css/main.4d39bdfd.css",
+    "main.js": "./static/js/main.0b0b0d06.js",
+    "static/js/787.cda612ba.chunk.js": "./static/js/787.cda612ba.chunk.js",
+    "static/media/banner.jpg": "./static/media/banner.d68ad241cb358aa3db93.jpg",
+    "static/media/spa.jpg": "./static/media/spa.8ad716a4c0884c7ac7df.jpg",
+    "static/media/rest1.jpg": "./static/media/rest1.eded3a22efeb04154ad1.jpg",
+    "static/media/bar.jpg": "./static/media/bar.6043aa20907bacea1385.jpg",
+    "static/media/about.png": "./static/media/about.0f5672ae8f9c470b6ae6.png",
+    "static/media/swim.jpg": "./static/media/swim.f2d7d7156427718cae34.jpg",
+    "static/media/roombanner.webp": "./static/media/roombanner.87f0470e45ea7afd58cc.webp",
+    "static/media/room.jpg": "./static/media/room.568446c5775e069ffa63.jpg",
+    "static/media/gym.png": "./static/media/gym.fd4e9b14428e010d5197.png",
+    "static/media/spa.png": "./static/media/spa.f52c55aca20fdcf03176.png",
+    "static/media/pool.png": "./static/media/pool.15874345443c85f41218.png",
+    "static/media/wifi.png": "./static/media/wifi.a6ca10fd7dc5c9948792.png",
+    "static/media/brf.png": "./static/media/brf.56ed984b54d0e8ed669c.png",
+    "static/media/award.png": "./static/media/award.d67eec478ff9a1ddfe93.png",
+    "static/media/workspace.png": "./static/media/workspace.1359013ba01122dcc2d2.png",
+    "static/media/safe.png": "./static/media/safe.8cbb8e9080ff26828d23.png",
+    "index.html": "./index.html",
+    "main.4d39bdfd.css.map": "./static/css/main.4d39bdfd.css.map",
+    "main.0b0b0d06.js.map": "./static/js/main.0b0b0d06.js.map",
+    "787.cda612ba.chunk.js.map": "./static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4d39bdfd.css",
+    "static/js/main.0b0b0d06.js"
+  ]
+}
