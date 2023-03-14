@@ -9,7 +9,7 @@ const FamusFacilities = () => {
   const famusFacilities = [
     {
       id: 1,
-      title: "3 Michelin Stars Restaurant, Vézère",
+      title: "The Hotel Greenland Resturant",
       desc: "A brasserie inspired by French cuisine, a fresh and modern place to visit and enjoy dishes always handmade of the best ingredients of the season.",
       img: resturant,
     },
