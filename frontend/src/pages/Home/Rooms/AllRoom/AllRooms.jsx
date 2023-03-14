@@ -1209,6 +1209,7 @@ const Title = styled.h3`
 `;
 const Image = styled.img`
   width: 100%;
+  height: 250px;
 `;
 const FContainer = styled.div`
   display: flex;

@@ -48,7 +48,9 @@ const Navbar = () => {
               <a className="active:bg-transparent">CONTACT</a>
             </li>
             <li>
-              <a className="active:bg-transparent">BOOK NOW</a>
+              <Link to="allRoom" className="active:bg-transparent">
+                BOOK NOW
+              </Link>
             </li>
           </ul>
         </div>
@@ -80,7 +82,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end invisible lg:visible">
-        <a className="btn btn-outline btn-wide text-white">Book Now</a>
+        <Link to="allRoom" className="btn btn-outline btn-wide text-white">
+          Book Now
+        </Link>
       </div>
     </div>
   );
