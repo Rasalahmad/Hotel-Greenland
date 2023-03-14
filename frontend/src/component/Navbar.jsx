@@ -34,7 +34,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a className="active:bg-transparent">ROOMS</a>
+              <Link to="/allRoom" className="active:bg-transparent">
+                ROOMS
+              </Link>
             </li>
             <li>
               <a className="active:bg-transparent">RESERBATION</a>
@@ -62,7 +64,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a className="active:bg-transparent">ROOMS</a>
+            <Link to="/allRoom" className="active:bg-transparent">
+              ROOMS
+            </Link>
           </li>
           <li>
             <a className="active:bg-transparent">RESERBATION</a>
