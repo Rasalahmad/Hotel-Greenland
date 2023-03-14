@@ -46,7 +46,7 @@ const RoomCard = () => {
             <p className="mb-4">
               <span className="bg-black text-white p-2">
                 <span className="text-xl font-bold">
-                  From <span className="text-3xl">৳ 1600</span>
+                  From <span className="text-3xl">৳ 1800</span>
                 </span>
                 / night
               </span>
@@ -79,7 +79,7 @@ const RoomCard = () => {
             <p className="mb-4">
               <span className="bg-black text-white p-2">
                 <span className="text-xl font-bold">
-                  From <span className="text-3xl">৳ 1800</span>
+                  From <span className="text-3xl">৳ 1600</span>
                 </span>
                 / night
               </span>
