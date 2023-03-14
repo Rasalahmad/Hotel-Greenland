@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Logo from "../assets/images/glLogo.png";
 
 const Navbar = () => {
   return (
@@ -49,12 +51,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="normal-case text-xl p-2 cursor-pointer">
-          <img
-            className="w-44"
-            src="/lg_logo.png"
-            alt=""
-            style={{ filter: "brightness(1) invert(1)" }}
-          />
+          <Image src={Logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -86,3 +83,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const Image = styled.img`
+  width: 200px;
+  height: 60px;
+  object-fit: cover;
+`;
