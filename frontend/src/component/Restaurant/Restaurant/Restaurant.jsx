@@ -9,17 +9,20 @@ const Restaurant = () => {
     {
       id: 1,
       title: 'Special Menu',
-      Description: 'in this theme we are included many more restaurant font icons.'
+      Description: 'in this theme we are included many more restaurant font icons.',
+      img: 'https://creazilla-store.fra1.digitaloceanspaces.com/icons/3263791/restaurant-menu-icon-sm.png'
     },
     {
       id: 2,
       title: 'Elegant interior',
-      Description: 'in this theme we are included many more restaurant font icons.'
+      Description: 'in this theme we are included many more restaurant font icons.',
+      img: 'https://cdn-icons-png.flaticon.com/512/72/72662.png'
     },
     {
       id: 3,
       title: 'Fresh & Hot Food',
-      Description: 'in this theme we are included many more restaurant font icons.'
+      Description: 'in this theme we are included many more restaurant font icons.',
+      img: 'https://static.thenounproject.com/png/3342582-200.png'
     }
   ]
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -31,14 +34,16 @@ const Restaurant = () => {
           <h1 className='h1'>OUR SERVICES</h1>
         </div>
         <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</Description>
-        <div className=" grid lg:grid-cols-3 gap-5 mx-5 mt-9">
+        <div className=" grid lg:grid-cols-3 md:grid-cols-2 gap-5 mx-5 mt-9">
           {
             restaurant.map(item => (
               <div key={item?.id} className='mt-5'>
                 <div className="serv-main-sec ">
                   <div className="service-sec-top-bg"></div>
                   <div className="service-sec">
-                    <i className="icon-restaurant14"></i>
+                    <i class=" rounded-full card-bordered">
+                      <img src={item?.img} alt='' />
+                    </i>
                     <h6 className='text-3xl font-medium'>{item?.title}</h6>
                     <p className='text-xl font-normal mt-2'>{item?.Description}</p>
                     <a href="menu3.html">read more</a>
@@ -157,6 +162,12 @@ const Header = styled.div`
   padding: 0 0 70px 0;
   margin: 40px 0 0 0;
   font-size:50px;
+  @media (max-width: 640px){ 
+     background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png) no-repeat center 80px;
+    font-size: 35px;
+    letter-spacing: 0;
+    margin-bottom:50px;
+}
 `
 const Bottombordar = styled.div`
 border-bottom: solid 1px #CCCCCC;
