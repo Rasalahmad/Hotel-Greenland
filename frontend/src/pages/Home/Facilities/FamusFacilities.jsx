@@ -4,6 +4,7 @@ import styled from "styled-components";
 import resturant from "../../../assets/images/rest1.jpg";
 import bar from "../../../assets/images/bar.jpg";
 import spa from "../../../assets/images/spa.jpg";
+import { Link } from "react-router-dom";
 
 const FamusFacilities = () => {
   const famusFacilities = [
@@ -12,18 +13,21 @@ const FamusFacilities = () => {
       title: "3 Michelin Stars Restaurant, Vézère",
       desc: "A brasserie inspired by French cuisine, a fresh and modern place to visit and enjoy dishes always handmade of the best ingredients of the season.",
       img: resturant,
+      link: '/restaurant'
     },
     {
       id: 2,
       title: "The Penthouse Bar, An iconic american bar",
       desc: "The cozy bar area accompanying the Penthouse is a classic cocktail bar at it’s finest. Our experienced bartenders are here to offer you both the classic bewerages and the newest global trends.",
       img: bar,
+      link: '/'
     },
     {
       id: 3,
       title: "The Spa. Refresh Yourself",
       desc: "Whether you are in search of a well-appointed gym or a pampering moment on the massage table and inside the warm saunas, you can always find a place for yourself at our spa.",
       img: spa,
+      link: '/'
     },
   ];
 
@@ -47,12 +51,12 @@ const FamusFacilities = () => {
                 <p className="mt-6 lg:mt-14 text-xl text-gray-400">
                   {item?.desc}
                 </p>
-                <a href="somewhere" className="hover:underline">
+                <Link to={item?.link} className="hover:underline">
                   <Button className="flex items-center text-xl mt-10 cursor-pointer font-bold">
                     LEARN MORE
                     <IoIosArrowForward size={16} className="ml-2" />
                   </Button>
-                </a>
+                </Link>
               </Description>
               <ImageContainer>
                 <img className="image" src={item?.img} alt="" />
@@ -68,12 +72,12 @@ const FamusFacilities = () => {
                 <p className="mt-6 lg:mt-14 text-xl text-gray-400">
                   {item?.desc}
                 </p>
-                <a href="somewhere" className="hover:underline">
+                <Link to={item?.link} className="hover:underline">
                   <Button className="flex items-center text-xl mt-10 cursor-pointer font-bold">
                     LEARN MORE
                     <IoIosArrowForward size={16} className="ml-2" />
                   </Button>
-                </a>
+                </Link>
               </Description>
             </>
           )}
@@ -112,7 +116,7 @@ const ImageContainer = styled.div`
   width: 100%;
   .image {
     border-radius: ${({ isMobile }) =>
-      isMobile ? "0px 40px 0 40px" : "40px 0 40px 0"};
+    isMobile ? "0px 40px 0 40px" : "40px 0 40px 0"};
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
