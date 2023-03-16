@@ -92,6 +92,7 @@ const Content = styled.div`
   padding: 35px;
   @media (max-width: 768px) {
     margin: 10px;
+    padding: 35px 0;
   }
 `;
 const Title = styled.div`
@@ -107,6 +108,9 @@ const Description = styled.div`
   font-size: 20px;
   line-height: 40px;
   color: gray;
+  @media (max-width: 768px) {
+    margin: 25px 0;
+  }
 `;
 
 const FacilitiesDiv = styled.div`
@@ -117,9 +121,12 @@ const FacilitiesDiv = styled.div`
   gap: 20px;
   text-align: center;
   padding: 50px;
+  @media (max-width: 768px) {
+    padding: 0px;
+    gap: 0;
+  }
 `;
 const Image = styled.img`
-  width: 100px;
   height: 80px;
 `;
 const SingleFac = styled.div`
@@ -128,6 +135,9 @@ const SingleFac = styled.div`
   align-items: center;
   gap: 10px;
   padding: 40px;
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
 `;
 
 const Video = styled.iframe`

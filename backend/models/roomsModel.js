@@ -2,35 +2,56 @@ import mongoose from "mongoose";
 
 const roomsSchema = mongoose.Schema(
   {
+    roomType: {
+      type: String,
+      required: [true, "Room type is required"],
+    },
+    thumbnail: {
+      type: String,
+      required: [true, "Thumbnail is requuied"],
+    },
+    images: [
+      {
+        original: {
+          type: String,
+          required: true,
+        },
+        thumbnail: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     name: {
       type: String,
       required: [true, "Room name is required"],
       trim: true,
     },
-    description: String,
+    gests: Number,
+    weekPrice: Number,
+    desc: String,
     price: {
       type: Number,
       required: [true, "Price is required"],
     },
-    images: [{ type: String, required: [true, "Images is required"] }],
-    bed: {
-      type: Number,
-      required: [true, "Please enter the numbe of bed"],
-      minLength: [0, "Number of bed can't be negative"],
-    },
-    max: {
-      type: Number,
-      required: [true, "Please give capatify of guest"],
-      minLength: [0, "Guest capacity can't be negative"],
-    },
-    space: Number,
-    roomView: String,
-    amenities: [{ type: String }],
-    hasAirCondition: {
-      type: String,
-      enum: ["Yes", "No"],
-      default: "Yes",
-    },
+    services: [
+      {
+        title: String,
+        icon: String,
+      },
+    ],
+    around: [
+      {
+        image: String,
+        title: String,
+      },
+    ],
+    facilities: [
+      {
+        title: String,
+        icon: String,
+      },
+    ],
   },
   {
     timestamps: true,

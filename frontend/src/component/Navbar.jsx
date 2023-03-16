@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Logo from "../assets/images/glLogo.png";
 
 const Navbar = () => {
   return (
@@ -32,7 +34,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a className="active:bg-transparent">ROOMS</a>
+              <Link to="/allRoom" className="active:bg-transparent">
+                ROOMS
+              </Link>
             </li>
             <li>
               <a className="active:bg-transparent">RESERBATION</a>
@@ -44,17 +48,14 @@ const Navbar = () => {
               <a className="active:bg-transparent">CONTACT</a>
             </li>
             <li>
-              <a className="active:bg-transparent">BOOK NOW</a>
+              <Link to="allRoom" className="active:bg-transparent">
+                BOOK NOW
+              </Link>
             </li>
           </ul>
         </div>
         <Link to="/" className="normal-case text-xl p-2 cursor-pointer">
-          <img
-            className="w-44"
-            src="/lg_logo.png"
-            alt=""
-            style={{ filter: "brightness(1) invert(1)" }}
-          />
+          <Image src={Logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -65,7 +66,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a className="active:bg-transparent">ROOMS</a>
+            <Link to="/allRoom" className="active:bg-transparent">
+              ROOMS
+            </Link>
           </li>
           <li>
             <a className="active:bg-transparent">RESERBATION</a>
@@ -79,10 +82,18 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end invisible lg:visible">
-        <a className="btn btn-outline btn-wide text-white">Book Now</a>
+        <Link to="allRoom" className="btn btn-outline btn-wide text-white">
+          Book Now
+        </Link>
       </div>
     </div>
   );
 };
 
 export default Navbar;
+
+const Image = styled.img`
+  width: 200px;
+  height: 60px;
+  object-fit: cover;
+`;

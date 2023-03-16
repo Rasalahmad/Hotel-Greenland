@@ -3,6 +3,7 @@ import Restaurant from "../../component/Restaurant/Restaurant/Restaurant";
 import Main from "../../LayOut/Main";
 import Booking from "../../pages/Booking/Booking";
 import Home from "../../pages/Home/Home/Home";
+import AllRooms from "../../pages/Home/Rooms/AllRoom/AllRooms";
 import DoubleRoom from "../../pages/Home/Rooms/DoubleRoom/DoubleRoom";
 import Details from "../../pages/Home/Rooms/SingleRoom/Details";
 import SingleRoom from "../../pages/Home/Rooms/SingleRoom/SingleRoom";
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/familySpecialRoom",
         element: <FamilyRoom />,
+      },
+      {
+        path: "/allRoom",
+        element: <AllRooms />,
       },
       {
         path: "/booking",
