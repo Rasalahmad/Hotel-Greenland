@@ -58,6 +58,53 @@ const Restaurant = () => {
         <Left>
           {isMobile ? (
             <>
+
+              <ImageContainer>
+                <img className="image" src='http://wahabali.com/work/pearl-demo/images/today-special.jpg' alt="" />
+              </ImageContainer>
+              <Description className="lg:p-5">
+                <Title>Discover</Title>
+                <Header>OUR STORY</Header>
+                <div className='flex justify-between'>
+                  <div>
+                    <p className='text-sm md:text-xl  lg:text-xl' >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+                  </div>
+
+                </div>
+                <Link to='/resturant'>VIEW FULL STORY</Link>
+
+              </Description>
+            </>
+          ) : (
+            <>
+              <Description className="lg:p-5">
+                <Title>Discover</Title>
+                <Header>OUR STORY</Header>
+                <div className='flex justify-between mb-6'>
+                  <div>
+                    <p className='text-sm md:text-xl lg:w-[480px] lg:text-xl' >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+                  </div>
+
+                </div>
+                <Link to='/' className="underline text-lg text-gray-600 cursor-pointer">
+                  LEARN MORE
+                </Link>
+              </Description>
+              <ImageContainer>
+                <img className="image" src='http://wahabali.com/work/pearl-demo/images/our-story.jpg' alt="" />
+              </ImageContainer>
+            </>
+          )}
+        </Left>
+
+
+
+
+
+
+        <Left>
+          {isMobile ? (
+            <>
               <Description className="lg:p-5">
                 <Title>Today’s</Title>
                 <Header>SPECIALS FOOD</Header>
