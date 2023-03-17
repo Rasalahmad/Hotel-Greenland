@@ -7,7 +7,7 @@ export const apiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getSingleRoom: builder.query({
-      query: (params) => `/${params}`,
+      query: () => "singleRooms",
     }),
   }),
 });

@@ -30,7 +30,7 @@ const RoomCard = () => {
               <UnavailableLi>Laundry Facilities</UnavailableLi>
               <UnavailableLi>Linen and Towels Provided</UnavailableLi>
             </Ul>
-            <Link to="/singlaRoom">
+            <Link to="/singleRooms">
               <button className="text-center rounded-tr-md rounded-bl-md text-xl hover:bg-slate-800 mt-10 cursor-pointer font-bold bg-black py-2 px-4 text-white">
                 See Details
               </button>
