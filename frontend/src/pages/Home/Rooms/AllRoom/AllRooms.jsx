@@ -1149,7 +1149,7 @@ const AllRooms = () => {
                   {item.service.map((s) => (
                     <Icons title={s.title}>{s.icon}</Icons>
                   ))}
-                  <Link to={`/details/${item.id}`}>
+                  <Link to={`/room/${item.id}`}>
                     <Button info>Full Info</Button>
                   </Link>
                 </FullInfo>

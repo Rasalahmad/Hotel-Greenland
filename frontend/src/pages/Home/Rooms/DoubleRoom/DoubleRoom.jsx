@@ -384,7 +384,7 @@ const DoubleRoom = () => {
             min="500"
             max="2000"
           />
-          <label for="volume" className="m-6">
+          <label htmlFor="volume" className="m-6">
             {range}
           </label>
           <div>
@@ -437,7 +437,7 @@ const DoubleRoom = () => {
                   {item.service.map((s) => (
                     <Icons title={s.title}>{s.icon}</Icons>
                   ))}
-                  <Link to={`/details/${item.id}`}>
+                  <Link to={`/room/${item.id}`}>
                     <Button info>Full Info</Button>
                   </Link>
                 </FullInfo>
