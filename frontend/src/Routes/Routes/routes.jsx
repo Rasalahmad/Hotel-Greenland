@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         element: <DoubleRoom />,
       },
       {
-        path: "/familySpecialRooms",
+        path: "/familySpecialRoom",
         element: <FamilyRoom />,
       },
       {

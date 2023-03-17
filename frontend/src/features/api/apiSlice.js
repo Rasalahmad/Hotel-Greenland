@@ -9,7 +9,21 @@ export const apiSlice = createApi({
     getSingleRoom: builder.query({
       query: () => "singleRooms",
     }),
+    getDoubleRoom: builder.query({
+      query: () => "doubleRooms",
+    }),
+    getSpecialRoom: builder.query({
+      query: () => "specialRooms",
+    }),
+    getAllRoom: builder.query({
+      query: () => "getAllRoom",
+    }),
   }),
 });
 
-export const { useGetSingleRoomQuery } = apiSlice;
+export const {
+  useGetSingleRoomQuery,
+  useGetDoubleRoomQuery,
+  useGetSpecialRoomQuery,
+  useGetAllRoomQuery,
+} = apiSlice;
