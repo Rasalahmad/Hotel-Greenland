@@ -2,7 +2,9 @@ import React from 'react';
 import './Restaurant.css'
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { IoIosArrowForward } from 'react-icons/io';
+import { FaMailBulk, FaPhoneAlt, FaRegClock } from 'react-icons/fa';
+import Customers from '../../Customers/Customers';
+import Blog from '../../Blog/Blog';
 const Restaurant = () => {
 
   const restaurant = [
@@ -27,6 +29,11 @@ const Restaurant = () => {
   ]
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const banner = 'http://wahabali.com/work/pearl-demo/images/book-table.jpg'
+
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <Container>
@@ -149,7 +156,7 @@ const Restaurant = () => {
 
 
       </Container >
-
+      {/* RESERVATION .....................*/}
       <div
         className="  bg-fixed md:bg-auto bg-cover bg-center py-20 "
         style={{ backgroundImage: `url(${banner})` }}
@@ -157,8 +164,8 @@ const Restaurant = () => {
         <div className='text-center lg:ml-24 lg:grid grid-cols-2'>
           <div>
             <Title>Book a Table</Title>
-            <Header>RESERVATION</Header>
-            <form onSubmit="/" >
+            <Header1>RESERVATION</Header1>
+            <form onSubmit={handlerSubmit} >
               <div className='lg:grid grid-cols-2 gap-2 mx-3'>
                 <div class=" col-span-2 mb-2 lg:mb-1">
                   <div class="field"><input className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-5 "
@@ -209,16 +216,85 @@ const Restaurant = () => {
               </div>
 
               <div className=" mt-10">
-                <Link to="/" className="btn btn-outline btn-wide hover:text-white">
+                <button type='submit' className="btn btn-outline btn-wide hover:text-white">
                   Book Now
-                </Link>
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
 
+      <Container>
+        <Blog />
+        <Customers />
+        <div className='text-center'> <Title>Short Info</Title>
+          <Header1>GET IN TOUCH</Header1></div>
+        <div className=" py-10 mx-auto px-10  ">
 
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
+            <div className="space-y-3">
+              <h3 className="tracking-wide uppercase font-semibold text-3xl mb-7">Let's Get Together</h3>
+              <ul className="space-y-1">
+                <li className='flex text-xl'>
+                  <FaRegClock className='mt-1 mr-2'></FaRegClock> 24/7
+                </li>
+                <li className='flex text-xl py-3'>
+                  <FaPhoneAlt className='mt-1 mr-2'></FaPhoneAlt>  +8801810-058005
+                </li>
+                <li className='flex text-xl'>
+                  <FaMailBulk className='mt-1 mr-2'></FaMailBulk> hotelgreenlandrestaurant@gmail.com
+
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <h3 className="tracking-wide uppercase font-semibold text-3xl ">Opening Hour</h3>
+              <ul className="">
+                <li className='flex justify-between'>
+                  <span className='day'> Monday</span>
+                  <span className='time'> 09 am - 10 pm</span>
+                </li>
+                <li className='flex justify-between'>
+                  <span className='day'> Tuesday</span>
+                  <span className='time'> 09 am - 10 pm</span>
+                </li>
+                <li className='flex justify-between'>
+                  <span className='day'> Wednesday</span>
+                  <span className='time'> 09 am - 10 pm</span>
+                </li>
+                <li className='flex justify-between'>
+                  <span className='day'> Thursday</span>
+                  <span className='time'> 09 am - 10 pm</span>
+                </li>
+                <li className='flex justify-between'>
+                  <span className='day'> Friday</span>
+                  <span className='time'> 11 am - 08 pm</span>
+                </li>
+                <li className='flex justify-between'>
+                  <span className='day'> Saturday</span>
+                  <span className='time'> 10 am - 11 pm</span>
+                </li>
+                <li className='flex justify-between'>
+                  <span className='day'> Sunday</span>
+                  <span className='time'> Closed </span>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-3 lg:space-x-6">
+              <div className="uppercase font-semibold text-3xl lg:ml-6 mb-9">Instagram</div>
+              <div className=' grid grid-cols-2 lg:grid-cols-3 gap-2'>
+                <img src='http://wahabali.com/work/pearl-demo/images/instagram-img1.jpg' alt="food" />
+                <img src='http://wahabali.com/work/pearl-demo/images/instagram-img3.jpg' alt="food" />
+                <img src='http://wahabali.com/work/pearl-demo/images/instagram-img6.jpg' alt="food" />
+                <img src='http://wahabali.com/work/pearl-demo/images/instagram-img5.jpg' alt="food" />
+                <img src='http://wahabali.com/work/pearl-demo/images/instagram-img4.jpg' alt="food" />
+                <img src='http://wahabali.com/work/pearl-demo/images/instagram-img2.jpg' alt="food" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
 
     </div >
   );
@@ -239,6 +315,7 @@ const Title = styled.div`
   text-align:center;
   margin-top:60px;
 `;
+
 
 const Description = styled.div`
   font-size: 23px;
@@ -276,6 +353,18 @@ const Header = styled.div`
   letter-spacing: 4px;
   padding: 0 0 70px 0;
   margin: 40px 0 0 0;
+  font-size:50px;
+  @media (max-width: 640px){ 
+     background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png) no-repeat center 80px;
+    font-size: 35px;
+    letter-spacing: 0;
+    margin-bottom:50px;
+}
+`
+const Header1 = styled.div`
+  background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png) no-repeat center 80px;
+  letter-spacing: 4px;
+  padding: 0 0 70px 0;
   font-size:50px;
   @media (max-width: 640px){ 
      background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png) no-repeat center 80px;

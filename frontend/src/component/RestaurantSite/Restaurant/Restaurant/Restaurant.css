@@ -51,13 +51,13 @@
 }
 
 .service-sec-top-bg {
-    background: url(../../../assets/images/service-top.png) no-repeat;
+    background: url(../../../../assets/images/service-top.png) no-repeat;
     height: 32px;
     background-size: 100%;
 }
 
 .service-sec-bottom-bg {
-    background: url(../../../assets/images/service-bottom.png) no-repeat;
+    background: url(../../../../assets/images/service-bottom.png) no-repeat;
     height: 42px;
     background-size: 100%;
 }
@@ -149,4 +149,19 @@ h6 {
 .serv-main-sec:hover .service-sec {
 
     background-color: #e9b947;
+}
+
+li span.day {
+    font-weight: 800;
+    font-size: 20px;
+    float: left;
+    margin-top: 15px;
+
+}
+
+li span.time {
+    float: right;
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 15px;
 }
