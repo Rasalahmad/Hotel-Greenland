@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Restaurant from "../../component/Restaurant/Restaurant/Restaurant";
+import Restaurant from "../../component/RestaurantSite/Restaurant/Restaurant/Restaurant";
 import Main from "../../LayOut/Main";
 import Booking from "../../pages/Booking/Booking";
 import Home from "../../pages/Home/Home/Home";
