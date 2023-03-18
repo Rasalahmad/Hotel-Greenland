@@ -33,10 +33,44 @@ const Navbar = () => {
                 HOME
               </Link>
             </li>
-            <li>
-              <Link to="/allRoom" className="active:bg-transparent">
-                ROOMS
-              </Link>
+            <li style={{ zIndex: "1000" }}>
+              <p>
+                Rooms
+                <svg
+                  className="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
+              </p>
+              <ul className="p-2 bg-gray-500">
+                <li>
+                  <Link to="/singleRooms" className="active:bg-transparent">
+                    Single Rooms
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/doubleRooms" className="active:bg-transparent">
+                    Double Rooms
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/familySpecialRoom"
+                    className="active:bg-transparent"
+                  >
+                    Special Rooms
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/allRoom" className="active:bg-transparent">
+                    All Room
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link to="/restaurant" className="active:bg-transparent">
@@ -67,10 +101,41 @@ const Navbar = () => {
               HOME
             </Link>
           </li>
-          <li>
-            <Link to="/allRoom" className="active:bg-transparent">
+          <li style={{ zIndex: "1000" }}>
+            <a>
               ROOMS
-            </Link>
+              <svg
+                className="fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+              </svg>
+            </a>
+            <ul className="p-2 bg-gray-500">
+              <li>
+                <Link to="/singleRooms" className="active:bg-transparent">
+                  Single Rooms
+                </Link>
+              </li>
+              <li>
+                <Link to="/doubleRooms" className="active:bg-transparent">
+                  Double Rooms
+                </Link>
+              </li>
+              <li>
+                <Link to="/familySpecialRoom" className="active:bg-transparent">
+                  Special Rooms
+                </Link>
+              </li>
+              <li>
+                <Link to="/allRoom" className="active:bg-transparent">
+                  All Room
+                </Link>
+              </li>
+            </ul>
           </li>
           <li>
             <Link to="/restaurant" className="active:bg-transparent">
