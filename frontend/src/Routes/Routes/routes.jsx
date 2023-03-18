@@ -19,15 +19,15 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/singlaRoom",
+        path: "/singleRooms",
         element: <SingleRoom />,
       },
       {
-        path: "/details/:id",
+        path: "/room/:id",
         element: <Details />,
       },
       {
-        path: "/doubleRoom",
+        path: "/doubleRooms",
         element: <DoubleRoom />,
       },
       {
@@ -43,10 +43,9 @@ export const router = createBrowserRouter([
         element: <Booking />,
       },
       {
-        path: '/restaurant',
+        path: "/restaurant",
         element: <Restaurant />,
       },
-
     ],
   },
 ]);

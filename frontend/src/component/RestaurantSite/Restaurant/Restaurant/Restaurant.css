@@ -1,167 +1,177 @@
 .main-title h1 {
-    background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png) no-repeat center 80px;
-    letter-spacing: 4px;
-    padding: 0 0 70px 0;
-    margin: -6px 0 0 0;
+  background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png)
+    no-repeat center 80px;
+  letter-spacing: 4px;
+  padding: 0 0 70px 0;
+  margin: -6px 0 0 0;
 }
 
 @media (max-width: 640px) {
-    .main-title h1 {
-        font-size: 35px;
-        letter-spacing: 0;
-    }
+  .main-title h1 {
+    font-size: 35px;
+    letter-spacing: 0;
+  }
 }
 
 .h1 {
-    font-weight: 700;
-    font-family: 'Raleway', sans-serif;
-    font-size: 48px;
-    text-transform: uppercase;
-    text-align: center;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  font-size: 48px;
+  text-transform: uppercase;
+  text-align: center;
 }
-
-
 
 /*..... SERVICES ......*/
 .services .service-sec i {
-    color: #E9B947;
-    border: solid 1px #E9B947;
+  color: #e9b947;
+  border: solid 1px #e9b947;
 }
 
 .services .service-sec i {
-    font-size: 70px;
-    border-radius: 100%;
-    width: 140px;
-    height: 140px;
-    padding: 37px;
-    display: inline-block;
+  font-size: 70px;
+  border-radius: 100%;
+  width: 140px;
+  height: 140px;
+  padding: 37px;
+  display: inline-block;
 }
 
 [class^="icon-"],
 [class*=" icon-"] {
-    font-family: 'pearl';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "pearl";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .service-sec-top-bg {
-    background: url(../../../../assets/images/service-top.png) no-repeat;
-    height: 32px;
-    background-size: 100%;
+  background: url(../../../../assets/images/service-top.png) no-repeat;
+  height: 32px;
+  background-size: 100%;
+  filter: opacity(0.5) drop-shadow(0 0 0 lightgreen);
 }
 
 .service-sec-bottom-bg {
-    background: url(../../../../assets/images/service-bottom.png) no-repeat;
-    height: 42px;
-    background-size: 100%;
+  background: url(../../../../assets/images/service-bottom.png) no-repeat;
+  height: 42px;
+  background-size: 100%;
+  filter: opacity(0.5) drop-shadow(0 0 0 lightgreen);
 }
 
 .service-sec {
-    border-right: 4px double #e4e4e4;
-    border-left: 4px double #e4e4e4;
-    padding: 58px 20px;
-    text-align: center;
+  border-right: 4px double #e4e4e4;
+  border-left: 4px double #e4e4e4;
+  padding: 58px 20px;
+  text-align: center;
 }
 
 h6 {
-    margin: 36px 0 0 0;
+  margin: 36px 0 0 0;
 }
 
 .service-sec p {
-    margin: 5px 0 0 0;
-    color: gray;
+  margin: 5px 0 0 0;
+  color: gray;
 }
 
 .service-sec:hover p {
-    color: white;
+  color: white;
 }
 
 .service-sec a {
-    margin: 32px 0 0 0;
-    background-color: #fff;
-    border: solid 1px #dbdbdb;
-    color: #5d5d5d;
-    text-transform: uppercase;
-    font-size: 14px;
-    padding: 10px 20px;
-    display: inline-block;
+  margin: 32px 0 0 0;
+  background-color: #fff;
+  border: solid 1px #dbdbdb;
+  color: #5d5d5d;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 20px;
+  display: inline-block;
 }
 
 .service-sec a:hover {
-    background: #000;
-    color: #fff;
-    border: solid 1px #000;
+  background: #000;
+  color: #fff;
+  border: solid 1px #000;
 }
 
 .service-sec i {
-    font-size: 70px;
-    border-radius: 100%;
-    width: 140px;
-    height: 140px;
-    padding: 37px;
-    display: inline-block;
+  font-size: 70px;
+  border-radius: 100%;
+  width: 140px;
+  height: 140px;
+  padding: 37px;
+  display: inline-block;
 }
 
-
 .serv-main-sec:hover .service-sec {
-    border-right: 4px double #fff;
-    border-left: 4px double #fff;
-    padding: 58px 20px;
-    color: #fff;
+  border-right: 4px double #fff;
+  border-left: 4px double #fff;
+  padding: 58px 20px;
+  color: #fff;
 }
 
 .serv-main-sec:hover .service-sec i {
-    font-size: 70px;
-    background: #fff;
-    border-radius: 100%;
-    width: 140px;
-    height: 140px;
-    padding: 37px;
-    display: inline-block;
+  font-size: 70px;
+  background: #fff;
+  border-radius: 100%;
+  width: 140px;
+  height: 140px;
+  padding: 37px;
+  display: inline-block;
 }
 
 .serv-main-sec:hover .service-sec-top-bg {
-    background: url(http://wahabali.com/work/pearl-demo/images/service-top-hover.png) no-repeat;
-    height: 32px;
-    background-size: 100%;
+  background: url(http://wahabali.com/work/pearl-demo/images/service-top-hover.png)
+    no-repeat;
+  height: 32px;
+  background-size: 100%;
 }
 
 .serv-main-sec:hover .service-sec-bottom-bg {
-    background: url(http://wahabali.com/work/pearl-demo/images/service-bottom-hover.png) no-repeat;
-    height: 42px;
-    background-size: 100%;
+  background: url(http://wahabali.com/work/pearl-demo/images/service-bottom-hover.png)
+    no-repeat;
+  height: 42px;
+  background-size: 100%;
 }
 
 .serv-main-sec:hover .service-sec-top-bg .service-sec {
-    border-right: 4px double #e9b947;
-    border-left: 4px double #e9b947;
-    padding: 58px 20px;
-    color: #fff;
-    text-align: center;
+  border-right: 4px double #e9b947;
+  border-left: 4px double #e9b947;
+  padding: 58px 20px;
+  color: #fff;
+  text-align: center;
+}
+.serv-main-sec .service-sec-top-bg .service-sec {
+  border-right: 4px double #e3fae3;
+  border-left: 4px double #e3fae3;
+  padding: 58px 20px;
+  color: #fff;
+  text-align: center;
 }
 
+.serv-main-sec .service-sec {
+  background-color: #e3fae3;
+}
 .serv-main-sec:hover .service-sec {
-
-    background-color: #e9b947;
+  background-color: #e9b947;
 }
 
 li span.day {
-    font-weight: 800;
-    font-size: 20px;
-    float: left;
-    margin-top: 15px;
-
+  font-weight: 800;
+  font-size: 20px;
+  float: left;
+  margin-top: 15px;
 }
 
 li span.time {
-    float: right;
-    font-size: 18px;
-    font-weight: 300;
-    margin-top: 15px;
+  float: right;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 15px;
 }
