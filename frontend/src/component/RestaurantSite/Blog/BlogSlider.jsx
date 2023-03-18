@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaClock, FaComment } from 'react-icons/fa';
 
-// Import Swiper React components
-import styled from "styled-components";
+
+
 const BlogSlider = ({ data }) => {
     return (
-        <div className='lg:flex justify-around gap-8 px-4'>
+        <div className='lg:flex justify-around gap-8 px-4 '>
             {
                 data.map((item) => (
-                    <div key={item?.id} >
+                    <div key={item?.id} className='mt-3'>
                         <div className=''>
                             <img className=' rounded-lg' src={item?.image} alt="" />
 
