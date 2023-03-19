@@ -18,6 +18,11 @@ export const apiSlice = createApi({
     getAllRoom: builder.query({
       query: () => "getAllRoom",
     }),
+    getRoom: builder.query({
+      query: (roomId) => ({
+        url: `getRoom/${roomId}`,
+      }),
+    }),
   }),
 });
 
@@ -26,4 +31,5 @@ export const {
   useGetDoubleRoomQuery,
   useGetSpecialRoomQuery,
   useGetAllRoomQuery,
+  useGetRoomQuery,
 } = apiSlice;
