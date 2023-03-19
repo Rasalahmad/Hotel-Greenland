@@ -3,6 +3,7 @@ import {
   addRoom,
   getAllRooms,
   getDoubleRooms,
+  getRoom,
   getSingleRooms,
   getSpecialRooms,
 } from "../controllers/roomsControllers.js";
@@ -14,5 +15,6 @@ router.get("/singleRooms", getSingleRooms);
 router.get("/doubleRooms", getDoubleRooms);
 router.get("/specialRooms", getSpecialRooms);
 router.get("/getAllRoom", getAllRooms);
+router.get("/getRoom/:id", getRoom);
 
 export default router;
