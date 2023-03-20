@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Restaurant from "../../component/RestaurantSite/Restaurant/Restaurant/Restaurant";
+import Menu from "../../component/RestaurantSite/Services/Menu/Menu";
+import OurStory from "../../component/RestaurantSite/Services/OurStory/OurStory";
+import SpecialMenu from "../../component/RestaurantSite/Services/SpecialMenu/SpecialMenu";
 import Main from "../../LayOut/Main";
 import Booking from "../../pages/Booking/Booking";
 import Home from "../../pages/Home/Home/Home";
@@ -45,6 +48,18 @@ export const router = createBrowserRouter([
       {
         path: "/restaurant",
         element: <Restaurant />,
+      },
+      {
+        path: "/specialMenu",
+        element: <SpecialMenu />,
+      },
+      {
+        path: "/ourStory",
+        element: <OurStory />,
+      },
+      {
+        path: "/menu",
+        element: <Menu />,
       },
     ],
   },

@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import banner from "../../../assets/images/banner.jpg";
-import room from "../../../assets/images/room.jpg";
+import resturantbanner from "../../../assets/images/resturantbanner.jpg";
 import Filter from "../../../component/Filter";
 import Navbar from "../../../component/Navbar";
 
@@ -19,12 +19,12 @@ const Banner = () => {
             {path === "singlaRoom"
               ? "Single Rooms"
               : path === "doubleRoom"
-              ? "Double Rooms"
-              : path === "familySpecialRoom"
-              ? "Family Special Rooms"
-              : path === "restaurant"
-              ? "Greenland Resturant"
-              : "Book Your Vacation"}
+                ? "Double Rooms"
+                : path === "familySpecialRoom"
+                  ? "Family Special Rooms"
+                  : path === "restaurant" || "specialMenu" || "ourStory" || "menu"
+                    ? "Greenland Resturant"
+                    : "Book Your Vacation"}
           </Title>
           <SubTitle>
             Explore new experience with{" "}
@@ -51,8 +51,7 @@ const Container = styled.div`
 
 const TopBackground = styled.div`
   background-image: ${({ path }) =>
-    `linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%,rgba(0, 0, 0, 0.5) 100%),url(${
-      path ? room : banner
+    `linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%,rgba(0, 0, 0, 0.5) 100%),url(${path ? resturantbanner : banner
     })`};
   width: 100%;
   height: ${({ path }) => (!path ? "100vh" : "60vh")};

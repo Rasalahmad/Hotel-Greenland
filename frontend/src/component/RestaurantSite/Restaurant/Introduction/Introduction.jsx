@@ -13,6 +13,7 @@ const Introduction = () => {
             Description:
                 "in this theme we are included many more restaurant font icons.",
             img: "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3263791/restaurant-menu-icon-sm.png",
+            link: "/specialMenu"
         },
         {
             id: 2,
@@ -20,6 +21,7 @@ const Introduction = () => {
             Description:
                 "in this theme we are included many more restaurant font icons.",
             img: "https://cdn-icons-png.flaticon.com/512/72/72662.png",
+            link: "/ourStory"
         },
         {
             id: 3,
@@ -27,6 +29,7 @@ const Introduction = () => {
             Description:
                 "in this theme we are included many more restaurant font icons.",
             img: "https://static.thenounproject.com/png/3342582-200.png",
+            link: "/Menu"
         },
     ];
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -55,7 +58,7 @@ const Introduction = () => {
                                     <p className="text-xl font-normal mt-2">
                                         {item?.Description}
                                     </p>
-                                    <a href="menu3.html">read more</a>
+                                    <Link to={item?.link}>read more</Link>
                                 </div>
                                 <div className="service-sec-bottom-bg"></div>
                             </div>
