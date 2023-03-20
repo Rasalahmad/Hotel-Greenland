@@ -16,8 +16,8 @@ const Banner = () => {
       <TopBackground path={path}>
         <Content path={path}>
           <Title>
-            {path === "singlaRoom"
-              ? "Single Rooms"
+            {path === "singlaRooms"
+
               : path === "doubleRoom"
                 ? "Double Rooms"
                 : path === "familySpecialRoom"
@@ -25,6 +25,7 @@ const Banner = () => {
                   : path === "restaurant" || "specialMenu" || "ourStory" || "menu"
                     ? "Greenland Resturant"
                     : "Book Your Vacation"}
+
           </Title>
           <SubTitle>
             Explore new experience with{" "}

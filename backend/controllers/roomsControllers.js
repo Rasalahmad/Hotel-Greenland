@@ -1,4 +1,5 @@
 import Room from "../models/roomsModel.js";
+import { ObjectId } from "mongodb";
 
 export const addRoom = async (req, res) => {
   const room = new Room(req.body);
@@ -79,6 +80,22 @@ export const getAllRooms = async (req, res) => {
     res.status(200).json({
       status: true,
       data: rooms,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
+export const getRoom = async (req, res) => {
+  const room = await Room.findOne({ _id: ObjectId(req.params.id) });
+  try {
+    res.status(200).json({
+      status: true,
+      data: room,
     });
   } catch (error) {
     res.status(400).json({
