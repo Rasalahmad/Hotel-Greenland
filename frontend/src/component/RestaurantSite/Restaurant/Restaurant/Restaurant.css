@@ -158,13 +158,12 @@ h6 {
   background-color: #e3fae3;
 }
 
-  transition: all 0.5s ease-in-out;
-}
-
 .serv-main-sec:hover .service-sec {
   background-color: #e9b947;
   transition: all 0.5s ease-in-out;
 }
+
+
 
 li span.day {
   font-weight: 800;

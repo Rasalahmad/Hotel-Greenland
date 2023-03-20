@@ -17,7 +17,7 @@ const Banner = () => {
         <Content path={path}>
           <Title>
             {path === "singlaRooms"
-
+              ? "Single Rooms"
               : path === "doubleRoom"
                 ? "Double Rooms"
                 : path === "familySpecialRoom"
