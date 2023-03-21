@@ -1,5 +1,6 @@
 .main-title h1 {
-  background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png) no-repeat center 80px;
+  background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png)
+    no-repeat center 80px;
   letter-spacing: 4px;
   padding: 0 0 70px 0;
   margin: -6px 0 0 0;
@@ -124,14 +125,16 @@ h6 {
 }
 
 .serv-main-sec:hover .service-sec-top-bg {
-  background: url(http://wahabali.com/work/pearl-demo/images/service-top-hover.png) no-repeat;
+  background: url(http://wahabali.com/work/pearl-demo/images/service-top-hover.png)
+    no-repeat;
   height: 32px;
   background-size: 100%;
   transition: all 0.5s ease-in-out;
 }
 
 .serv-main-sec:hover .service-sec-bottom-bg {
-  background: url(http://wahabali.com/work/pearl-demo/images/service-bottom-hover.png) no-repeat;
+  background: url(http://wahabali.com/work/pearl-demo/images/service-bottom-hover.png)
+    no-repeat;
   height: 42px;
   background-size: 100%;
   transition: all 0.5s ease-in-out;
@@ -143,7 +146,6 @@ h6 {
   padding: 58px 20px;
   color: #fff;
   text-align: center;
-
 }
 
 .serv-main-sec .service-sec-top-bg .service-sec {
@@ -162,8 +164,6 @@ h6 {
   background-color: #e9b947;
   transition: all 0.5s ease-in-out;
 }
-
-
 
 li span.day {
   font-weight: 800;
