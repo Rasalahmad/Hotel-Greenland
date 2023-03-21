@@ -53,12 +53,16 @@
   background: url(../../../../assets/images/service-top.png) no-repeat;
   height: 32px;
   background-size: 100%;
+  filter: grayscale(100%) brightness(80%) sepia(300%) hue-rotate(50deg)
+    saturate(52%);
 }
 
 .service-sec-bottom-bg {
   background: url(../../../../assets/images/service-bottom.png) no-repeat;
   height: 42px;
   background-size: 100%;
+  filter: grayscale(100%) brightness(80%) sepia(300%) hue-rotate(50deg)
+    saturate(52%);
 }
 
 .service-sec {
@@ -129,7 +133,7 @@ h6 {
     no-repeat;
   height: 32px;
   background-size: 100%;
-  transition: all 0.5s ease-in-out;
+  filter: none;
 }
 
 .serv-main-sec:hover .service-sec-bottom-bg {
@@ -137,7 +141,7 @@ h6 {
     no-repeat;
   height: 42px;
   background-size: 100%;
-  transition: all 0.5s ease-in-out;
+  filter: none;
 }
 
 .serv-main-sec:hover .service-sec-top-bg .service-sec {
@@ -162,7 +166,6 @@ h6 {
 
 .serv-main-sec:hover .service-sec {
   background-color: #e9b947;
-  transition: all 0.5s ease-in-out;
 }
 
 li span.day {

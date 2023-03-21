@@ -50,7 +50,7 @@ const Introduction = () => {
               <div className="serv-main-sec ">
                 <div className="service-sec-top-bg"></div>
                 <div className="service-sec">
-                  <i class=" rounded-full card-bordered">
+                  <i class="rounded-full card-bordered border-white border-4">
                     <img src={item?.img} alt="" />
                   </i>
                   <h6 className="text-3xl font-medium">{item?.title}</h6>
