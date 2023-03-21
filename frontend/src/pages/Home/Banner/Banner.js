@@ -16,13 +16,13 @@ const Banner = () => {
       <TopBackground path={path}>
         <Content path={path}>
           <Title>
-            {path === "singlaRooms"
-              ? "Single Room"
-              : path === "doubleRoom"
+            {path === "singleRooms"
+              ? "Single Rooms"
+              : path === "doubleRooms"
               ? "Double Rooms"
               : path === "familySpecialRoom"
               ? "Family Special Rooms"
-              : path === "restaurant" || "specialMenu" || "ourStory" || "menu"
+              : path === "restaurant"
               ? "Greenland Resturant"
               : "Book Your Vacation"}
           </Title>
@@ -52,7 +52,7 @@ const Container = styled.div`
 const TopBackground = styled.div`
   background-image: ${({ path }) =>
     `linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%,rgba(0, 0, 0, 0.5) 100%),url(${
-      path ? resturantbanner : banner
+      path === "restaurant" ? resturantbanner : banner
     })`};
   width: 100%;
   height: ${({ path }) => (!path ? "100vh" : "60vh")};

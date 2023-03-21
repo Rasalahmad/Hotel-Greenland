@@ -50,15 +50,15 @@ export const router = createBrowserRouter([
         element: <Restaurant />,
       },
       {
-        path: "/specialMenu",
+        path: "/restaurant/specialMenu",
         element: <SpecialMenu />,
       },
       {
-        path: "/ourStory",
+        path: "/restaurant/ourStory",
         element: <OurStory />,
       },
       {
-        path: "/menu",
+        path: "/restaurant/menu",
         element: <Menu />,
       },
     ],
