@@ -10,8 +10,8 @@ import { SlCalender } from "react-icons/sl";
 import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import Checkout from "../../../../component/Checkout/Checkout";
-import { useGetRoomQuery } from "../../../../features/api/apiSlice";
 import { useParams } from "react-router-dom";
+import { useGetRoomQuery } from "../../../../features/rooms/roomApi";
 
 const Details = () => {
   const { roomId } = useParams();

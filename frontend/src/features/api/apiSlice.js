@@ -5,31 +5,5 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8800/api",
   }),
-  endpoints: (builder) => ({
-    getSingleRoom: builder.query({
-      query: () => "singleRooms",
-    }),
-    getDoubleRoom: builder.query({
-      query: () => "doubleRooms",
-    }),
-    getSpecialRoom: builder.query({
-      query: () => "specialRooms",
-    }),
-    getAllRoom: builder.query({
-      query: () => "getAllRoom",
-    }),
-    getRoom: builder.query({
-      query: (roomId) => ({
-        url: `getRoom/${roomId}`,
-      }),
-    }),
-  }),
+  endpoints: (builder) => ({}),
 });
-
-export const {
-  useGetSingleRoomQuery,
-  useGetDoubleRoomQuery,
-  useGetSpecialRoomQuery,
-  useGetAllRoomQuery,
-  useGetRoomQuery,
-} = apiSlice;

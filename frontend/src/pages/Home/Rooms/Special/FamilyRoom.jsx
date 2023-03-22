@@ -8,7 +8,7 @@ import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CheckBox from "../../../../component/Checkbox/CheckBox";
-import { useGetSpecialRoomQuery } from "../../../../features/api/apiSlice";
+import { useGetSpecialRoomQuery } from "../../../../features/rooms/roomApi";
 
 const FamilyRoom = () => {
   const {

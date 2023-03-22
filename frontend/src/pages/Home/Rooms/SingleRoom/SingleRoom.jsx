@@ -8,7 +8,7 @@ import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CheckBox from "../../../../component/Checkbox/CheckBox";
-import { useGetSingleRoomQuery } from "../../../../features/api/apiSlice";
+import { useGetSingleRoomQuery } from "../../../../features/rooms/roomApi";
 
 const SingleRoom = () => {
   const { data: roomData, isLoading, isError, error } = useGetSingleRoomQuery();

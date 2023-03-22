@@ -8,7 +8,7 @@ import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CheckBox from "../../../../component/Checkbox/CheckBox";
-import { useGetDoubleRoomQuery } from "../../../../features/api/apiSlice";
+import { useGetDoubleRoomQuery } from "../../../../features/rooms/roomApi";
 
 const DoubleRoom = () => {
   const { data: roomData, isLoading, isError, error } = useGetDoubleRoomQuery();
