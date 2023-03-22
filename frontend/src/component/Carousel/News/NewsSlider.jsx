@@ -14,6 +14,12 @@ import { Pagination, Autoplay } from "swiper";
 import styled from "styled-components";
 
 export default function NewsSlider({ data }) {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   return (
     <>
       <Swiper
@@ -43,15 +49,20 @@ export default function NewsSlider({ data }) {
         className="mySwiper"
       >
         {data.map((item) => (
-          <SwiperSlide key={item?.id}>
-            <div class="container">
-              <img src={item.image} alt="Avatar" class="image" />
-              <div class="overlay-bottom">
-                <div class="text">
-                  <h2>{item.title.slice(0, 30)}...</h2>
-                  <span>{item.date}</span>
+          <SwiperSlide key={item?._id}>
+            <div className="container">
+              <img src={item.image} alt="Avatar" className="image" />
+              <div className="overlay-bottom">
+                <div className="text">
+                  <h2>{item?.title.slice(0, 25)}...</h2>
+                  <span>
+                    {item?.date
+                      .match(/[a-zA-Z]+|[0-9]+/g)
+                      .slice(0, 3)
+                      .join("-")}
+                  </span>
                   <br />
-                  <a className="btn m-5" target={"_blank"} href={item.link}>
+                  <a className="btn m-5" target={"_blank"} href={item?.link}>
                     Visit Now
                   </a>
                 </div>

@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.post("/room", addRoom);
+router.post("/", addRoom);
 router.get("/singleRooms", getSingleRooms);
 router.get("/doubleRooms", getDoubleRooms);
 router.get("/specialRooms", getSpecialRooms);
