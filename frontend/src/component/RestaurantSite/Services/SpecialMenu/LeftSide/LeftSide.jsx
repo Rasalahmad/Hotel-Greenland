@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FaShoppingBasket } from "react-icons/fa";
 const LeftSide = () => {
   const data1 = [
     {
@@ -98,9 +99,9 @@ const LeftSide = () => {
               </div>
 
               <Description className=" col-span-9">
-                <div className="md:flex lg:flex justify-between lg:w-[480px] ">
+                <div className="flex  justify-between items-center lg:w-[480px] ">
                   <div>
-                    <p className=" md:text-2xl  lg:text-xl font-semibold text-xl">
+                    <p className=" md:text-2xl  lg:text-xl font-semibold text-lg">
                       {item1?.title}
                     </p>
                   </div>
@@ -111,7 +112,11 @@ const LeftSide = () => {
                   </div>
                 </div>
                 <Bottombordar />
-                <Item>{item1?.dish_tag}</Item>
+                <div className="flex justify-between items-center">
+                  <Item>{item1?.dish_tag}</Item>
+
+                  <FaShoppingBasket></FaShoppingBasket>
+                </div>
               </Description>
             </div>
           ))}
@@ -165,11 +170,8 @@ const Item = styled.div`
   display: block;
   margin: 5px 0 0 0;
   font-family: "Source Sans Pro", sans-serif;
-  // @media (max-width: 768px) {
-  //   font-size: 11px;
-  // }
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  @media (max-width: 768px) {
+    font-size: 14px;
     text-align: center;
   }
 `;
