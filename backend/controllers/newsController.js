@@ -29,7 +29,6 @@ export const addNews = async (req, res) => {
 
 export const getNews = async (req, res) => {
   const news = await News.find({});
-  console.log(news);
   try {
     res.status(200).json({
       status: true,
