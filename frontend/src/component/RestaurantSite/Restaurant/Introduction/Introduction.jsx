@@ -31,7 +31,6 @@ const Introduction = () => {
       link: "/restaurant/Menu",
     },
   ];
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   return (
     <div>
       <Container>
@@ -64,124 +63,64 @@ const Introduction = () => {
             </div>
           ))}
         </div>
+
         <Left>
-          {isMobile ? (
-            <>
-              <ImageContainer>
-                <img
-                  className="image"
-                  src="http://wahabali.com/work/pearl-demo/images/today-special.jpg"
-                  alt=""
-                />
-              </ImageContainer>
-              <Description className="lg:p-5">
-                <Title>Discover</Title>
-                <Header>OUR STORY</Header>
-                <div className="flex justify-between">
-                  <div>
-                    <p className="text-sm md:text-xl  lg:text-xl">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Aenean ac tortor at tellus feugiat congue quis ut nunc.
-                      Semper ac dolor vitae accumsan. interdum hendrerit
-                      lacinia.
-                    </p>
-                  </div>
-                </div>
-                <Link to="/resturant">VIEW FULL STORY</Link>
-              </Description>
-            </>
-          ) : (
-            <>
-              <Description className="lg:p-5">
-                <Title>Discover</Title>
-                <Header>OUR STORY</Header>
-                <div className="flex justify-between mb-6">
-                  <div>
-                    <p className="text-sm md:text-xl lg:w-[480px] lg:text-xl">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Aenean ac tortor at tellus feugiat congue quis ut nunc.
-                      Semper ac dolor vitae accumsan. interdum hendrerit
-                      lacinia.
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  to="/"
-                  className="underline text-lg text-gray-600 cursor-pointer"
-                >
-                  LEARN MORE
-                </Link>
-              </Description>
-              <ImageContainer>
-                <img
-                  className="image"
-                  src="http://wahabali.com/work/pearl-demo/images/our-story.jpg"
-                  alt=""
-                />
-              </ImageContainer>
-            </>
-          )}
+          <Description className="lg:p-5">
+            <Title>Discover</Title>
+            <Header>OUR STORY</Header>
+            <div className="flex justify-between mb-6">
+              <div>
+                <p className="text-sm md:text-xl lg:w-[480px] lg:text-xl">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
+                  ac dolor vitae accumsan. interdum hendrerit lacinia.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/restaurant/ourStory"
+              className="underline text-lg text-gray-600 cursor-pointer"
+            >
+              LEARN MORE
+            </Link>
+          </Description>
+          <ImageContainer>
+            <img
+              className="image"
+              src="http://wahabali.com/work/pearl-demo/images/our-story.jpg"
+              alt=""
+            />
+          </ImageContainer>
         </Left>
 
         {/*OUR STORY..............................  */}
 
         <Left>
-          {isMobile ? (
-            <>
-              <Description className="lg:p-5">
-                <Title>Today’s</Title>
-                <Header>SPECIALS FOOD</Header>
-                <div className="flex justify-between">
-                  <div>
-                    <p className="text-sm md:text-xl  lg:text-xl">
-                      Blue Cheese Crackers with Grapes
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm md:text-xl  lg:text-xl">$12</p>
-                  </div>
-                </div>
-                <Bottombordar />
-                <Item>Chicken / Grapes / Pizza / Cheese / Herbs</Item>
-              </Description>
-              <ImageContainer>
-                <img
-                  className="image"
-                  src="http://wahabali.com/work/pearl-demo/images/today-special.jpg"
-                  alt=""
-                />
-              </ImageContainer>
-            </>
-          ) : (
-            <>
-              <ImageContainer>
-                <img
-                  className="image"
-                  src="http://wahabali.com/work/pearl-demo/images/today-special.jpg"
-                  alt=""
-                />
-              </ImageContainer>
-              <Description className="lg:p-5 mt-8">
-                <Title>Today’s</Title>
-                <Header>SPECIALS FOOD</Header>
-                <div className="flex justify-between lg:w-[480px] mt-10">
-                  <div>
-                    <p className="text-sm md:text-xl  lg:text-xl">
-                      Blue Cheese Crackers with Grapes
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm md:text-xl  lg:text-xl">$12</p>
-                  </div>
-                </div>
-                <Bottombordar />
-                <Item>Chicken / Grapes / Pizza / Cheese / Herbs</Item>
-              </Description>
-            </>
-          )}
+          <ImageContainer>
+            <img
+              className="image"
+              src="http://wahabali.com/work/pearl-demo/images/today-special.jpg"
+              alt=""
+            />
+          </ImageContainer>
+          <Description className="lg:p-5 mt-8">
+            <Title>Today’s</Title>
+            <Header>SPECIALS FOOD</Header>
+            <div className="flex justify-between lg:w-[480px] mt-10">
+              <div>
+                <p className="text-sm md:text-xl  lg:text-xl">
+                  Blue Cheese Crackers with Grapes
+                </p>
+              </div>
+              <div>
+                <p className="text-sm md:text-xl  lg:text-xl">$12</p>
+              </div>
+            </div>
+            <Bottombordar />
+            <Item>Chicken / Grapes / Pizza / Cheese / Herbs</Item>
+          </Description>
         </Left>
       </Container>
-      {/* RESERVATION .....................*/}
     </div>
   );
 };
@@ -236,7 +175,7 @@ const ImageContainer = styled.div`
   width: 100%;
   .image {
     border-radius: ${({ isMobile }) =>
-    isMobile ? "0px 40px 0 40px" : "40px 0 40px 0"};
+      isMobile ? "0px 40px 0 40px" : "40px 0 40px 0"};
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
