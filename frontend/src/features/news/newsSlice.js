@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {};
 
-const roomsSlice = createSlice({
-  name: "rooms",
+const newsSlice = createSlice({
+  name: "news",
   initialState,
   reducers: {},
 });
 
-export const {} = roomsSlice.actions;
-export default roomsSlice.reducer;
+export const {} = newsSlice.actions;
+export default newsSlice.reducer;

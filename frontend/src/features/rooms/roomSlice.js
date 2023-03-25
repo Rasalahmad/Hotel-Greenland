@@ -1,12 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  night: 1,
+};
 
 const roomsSlice = createSlice({
   name: "rooms",
   initialState,
-  reducers: {},
+  reducers: {
+    increment: (state) => {
+      state.night += 1;
+    },
+    decrement: (state) => {
+      state.night -= 1;
+    },
+  },
 });
 
-export const {} = roomsSlice.actions;
+export const { increment, decrement } = roomsSlice.actions;
 export default roomsSlice.reducer;

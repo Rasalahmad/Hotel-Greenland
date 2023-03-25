@@ -35,7 +35,13 @@ const Details = () => {
           <div className="md:w-3/4">
             <ImageGallery items={images} />
           </div>
-          <Checkout noImage btnText={"Book Now"} route={"/booking"} />
+          <Checkout
+            noImage
+            btnText={"Book Now"}
+            route={"/booking"}
+            price={price}
+            guests={guests}
+          />
         </Main>
         <Facilities className="flex justify-between items-center flex-wrap gap-16 my-28">
           <Item>
