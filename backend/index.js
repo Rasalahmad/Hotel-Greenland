@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import multer from "multer";
 import roomsRoute from "./routers/roomsRoute.js";
 import newsRoute from "./routers/newsRoute.js";
+import restaurantRoute from "./routers/restaurantRoute.js";
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.post("/api/upload", upload.array("images"), (req, res) => {
 // routing setup
 app.use("/api/room", roomsRoute);
 app.use("/api/news", newsRoute);
+app.use("/api/restaurant", restaurantRoute);
 
 app.listen(process.env.PORT, () => {
   connect();
