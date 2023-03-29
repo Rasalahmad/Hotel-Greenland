@@ -3,7 +3,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8800/api/",
+    baseUrl:
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_BASE_URL
+        : "http://localhost:8800/api/",
   }),
   endpoints: (builder) => ({}),
 });
