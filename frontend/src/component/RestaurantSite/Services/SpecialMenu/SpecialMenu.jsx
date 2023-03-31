@@ -1,18 +1,41 @@
 import React from "react";
 import styled from "styled-components";
+import { useGetRestaurantQuery } from "../../../../features/restaurant/restaurantApi";
+
 import LeftSide from "./LeftSide/LeftSide";
 import RightSide from "./RightSide/RightSide";
 const SpecialMenu = () => {
-  return (
-    <div>
-      <Container>
-        <Flex>
-          <LeftSide></LeftSide>
-          <RightSide></RightSide>
-        </Flex>
-      </Container>
-    </div>
-  );
+  const {
+    data: restaurantData,
+    isLoading,
+    isError,
+    error,
+  } = useGetRestaurantQuery();
+  console.log(restaurantData);
+  let content = null;
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  } else if (!isLoading && isError) {
+    content = <p>{error}</p>;
+  } else if (!isLoading && !isError && restaurantData?.data?.length === 0) {
+    content = <p>No Room Available</p>;
+  } else {
+    content = (
+      <div>
+        <Container>
+          <Flex>
+            {restaurantData.data && (
+              <LeftSide data={restaurantData.data}></LeftSide>
+            )}
+            {restaurantData.data && (
+              <RightSide data={restaurantData.data}></RightSide>
+            )}
+          </Flex>
+        </Container>
+      </div>
+    );
+  }
+  return content;
 };
 
 export default SpecialMenu;
@@ -25,6 +48,7 @@ const Container = styled.div`
     width: 100%;
   }
 `;
+
 const Flex = styled.div`
   display: flex;
   gap: 40px;

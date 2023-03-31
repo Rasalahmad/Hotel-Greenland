@@ -1,83 +1,13 @@
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 import styled from "styled-components";
-const RightSide = () => {
-  const data2 = [
-    {
-      id: 101,
-      title: "Starter",
-      tiny_title: "Beginning",
-      dishes: [
-        {
-          id: 1,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img1.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-        {
-          id: 2,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img5.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-        {
-          id: 3,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img3.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-      ],
-    },
-    {
-      id: 102,
-      title: "Today’s",
-      tiny_title: "SPECIALS FOOD",
-      dishes: [
-        {
-          id: 1,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img4.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-        {
-          id: 2,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img1.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-      ],
-    },
-    {
-      id: 103,
-      title: "Drinks & Desserts",
-      tiny_title: "MOST DELICIOUS",
-      dishes: [
-        {
-          id: 1,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img7.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-        {
-          id: 2,
-          img: "http://wahabali.com/work/pearl-demo/images/menu/dish-img6.jpg",
-          title: "Blue Cheese Crackers with Grapes",
-          price: "12",
-          dish_tag: "Chicken / Grapes / Pizza / Cheese / Herbs",
-        },
-      ],
-    },
-  ];
+const RightSide = ({ data }) => {
+  const rightData = data.filter((val, i) => i === 3 || i === 4 || i === 5);
+  const dish_title = "Blue Cheese Crackers with Grapes";
 
   return (
     <div>
-      {data2.map((item) => (
+      {rightData.map((item) => (
         <div key={item?.id}>
           <Title>{item?.title}</Title>
           <Header1>{item?.tiny_title}</Header1>
@@ -96,7 +26,7 @@ const RightSide = () => {
                 <div className=" flex justify-between items-center lg:w-[480px] ">
                   <div>
                     <p className=" md:text-2xl  lg:text-xl font-semibold text-lg">
-                      {item1?.title}
+                      {dish_title}
                     </p>
                   </div>
                   <div>
