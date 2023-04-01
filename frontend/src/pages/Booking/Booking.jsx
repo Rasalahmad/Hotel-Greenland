@@ -8,8 +8,17 @@ import { useGetRoomQuery } from "../../features/rooms/roomApi";
 const Booking = () => {
   const { roomId } = useParams();
   const { data: room, isLoading, isError, error } = useGetRoomQuery(roomId);
-  const { name, images, guests, price, weekPrice, desc, around, thumbnail } =
-    room?.data || {};
+  const {
+    name,
+    images,
+    guests,
+    price,
+    night,
+    weekPrice,
+    desc,
+    around,
+    thumbnail,
+  } = room?.data || {};
 
   let content = null;
 
@@ -28,7 +37,7 @@ const Booking = () => {
           btnText={"Total"}
           price={price}
         />
-        <BookingForm style={{ flex: "4" }} />
+        <BookingForm style={{ flex: "4" }} price={price} />
       </Container>
     );
   }
