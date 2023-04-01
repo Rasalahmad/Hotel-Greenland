@@ -85,7 +85,6 @@ const Menu = () => {
       ],
     },
   ];
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   return (
     <div>
       <Container>
@@ -96,7 +95,7 @@ const Menu = () => {
               <Header1>{item?.tiny_title}</Header1>
 
               <div className="lg:flex justify-center">
-                {i % 2 === 0 && !isMobile ? (
+                {i % 2 === 0 ? (
                   <>
                     <div className="">
                       <img

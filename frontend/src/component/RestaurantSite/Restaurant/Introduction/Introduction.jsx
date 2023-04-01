@@ -10,23 +10,21 @@ const Introduction = () => {
       id: 1,
       title: "Special Menu",
       Description:
-        "in this theme we are included many more restaurant font icons.",
+        "Special menu set for every special day with special discounts.",
       img: "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3263791/restaurant-menu-icon-sm.png",
       link: "/restaurant/specialMenu",
     },
     {
       id: 2,
       title: "Elegant interior",
-      Description:
-        "in this theme we are included many more restaurant font icons.",
+      Description: "With a great ambiance, you can test your dishes.",
       img: "https://cdn-icons-png.flaticon.com/512/72/72662.png",
       link: "/restaurant/ourStory",
     },
     {
       id: 3,
       title: "Fresh & Hot Food",
-      Description:
-        "in this theme we are included many more restaurant font icons.",
+      Description: "Freshness in every bite. Choose healthy and fresh foods. ",
       img: "https://static.thenounproject.com/png/3342582-200.png",
       link: "/restaurant/Menu",
     },
@@ -39,9 +37,9 @@ const Introduction = () => {
           <h1 className="h1">OUR SERVICES</h1>
         </div>
         <Description>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac
-          tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae
-          accumsan. interdum hendrerit lacinia.
+          Continually serve your high expectations of delicious-tasting food and
+          hangout with great experience.
+          <br /> Be with Hotal Greenland.
         </Description>
         <div className=" grid lg:grid-cols-3 md:grid-cols-2 gap-5 mx-5 mt-9">
           {restaurant.map((item) => (
@@ -71,9 +69,10 @@ const Introduction = () => {
             <div className="flex justify-between mb-6">
               <div>
                 <p className="text-sm md:text-xl lg:w-[480px] lg:text-xl">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-                  ac dolor vitae accumsan. interdum hendrerit lacinia.
+                  We are perfectly positioned to meet this demand, offering our
+                  guests an extraordinary health experience they have never
+                  tasted. We can confidently claim that our menu is unlike
+                  anything else offered in the industry.
                 </p>
               </div>
             </div>
