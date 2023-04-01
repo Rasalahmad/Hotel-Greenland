@@ -15,7 +15,6 @@ import { useGetRoomQuery } from "../../../../features/rooms/roomApi";
 
 const Details = () => {
   const { roomId } = useParams();
-  console.log(roomId);
   const { data: room, isLoading, isError, error } = useGetRoomQuery(roomId);
   const { name, images, guests, price, weekPrice, desc, around } =
     room?.data || {};
@@ -38,7 +37,7 @@ const Details = () => {
           <Checkout
             noImage
             btnText={"Book Now"}
-            route={"/booking"}
+            route={`/booking/${roomId}`}
             price={price}
             guests={guests}
           />

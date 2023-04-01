@@ -2,21 +2,47 @@ import React from "react";
 import styled from "styled-components";
 import Checkout from "../../component/Checkout/Checkout";
 import BookingForm from "../../component/Form/BookingForm";
+import { useParams } from "react-router-dom";
+import { useGetRoomQuery } from "../../features/rooms/roomApi";
 
 const Booking = () => {
-  return (
-    <Container>
-      <Checkout
-        style={{ flex: "1" }}
-        image={
-          "http://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/apartments/wp-content/uploads/sites/4/2022/05/room1-1024x664.jpeg"
-        }
-        title={"YOUR RESERVATION"}
-        btnText={"1500 / Toal"}
-      />
-      <BookingForm style={{ flex: "4" }} />
-    </Container>
-  );
+  const { roomId } = useParams();
+  const { data: room, isLoading, isError, error } = useGetRoomQuery(roomId);
+  const {
+    name,
+    images,
+    guests,
+    price,
+    night,
+    weekPrice,
+    desc,
+    around,
+    thumbnail,
+  } = room?.data || {};
+
+  let content = null;
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  } else if (!isLoading && isError) {
+    content = <p>{error}</p>;
+  } else {
+    content = (
+      <Container>
+        <Checkout
+          style={{ flex: "1" }}
+          image={thumbnail}
+          title={"YOUR RESERVATION"}
+          guests={guests}
+          btnText={"Total"}
+          price={price}
+        />
+        <BookingForm style={{ flex: "4" }} price={price} />
+      </Container>
+    );
+  }
+
+  return content;
 };
 
 export default Booking;

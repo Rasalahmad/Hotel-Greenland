@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         element: <AllRooms />,
       },
       {
-        path: "/booking",
+        path: "/booking/:roomId",
         element: <Booking />,
       },
       {
