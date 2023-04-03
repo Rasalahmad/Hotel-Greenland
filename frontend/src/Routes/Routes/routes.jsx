@@ -11,6 +11,7 @@ import DoubleRoom from "../../pages/Home/Rooms/DoubleRoom/DoubleRoom";
 import Details from "../../pages/Home/Rooms/SingleRoom/Details";
 import SingleRoom from "../../pages/Home/Rooms/SingleRoom/SingleRoom";
 import FamilyRoom from "../../pages/Home/Rooms/Special/FamilyRoom";
+import Contact from "../../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/allRoom",
         element: <AllRooms />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/booking/:roomId",
