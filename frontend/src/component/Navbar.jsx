@@ -83,7 +83,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/" className="active:bg-transparent">
+              <Link to="/contact" className="active:bg-transparent">
                 CONTACT
               </Link>
             </li>
@@ -152,7 +152,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="active:bg-transparent">
+            <Link to="/contact" className="active:bg-transparent">
               CONTACT
             </Link>
           </li>

@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import "../Restaurant/Restaurant.css";
+import { useForm } from "react-hook-form";
 
 const Reservation = () => {
-  const handlerSubmit = (e) => {
-    e.preventDefault();
+  const { register, handleSubmit, errors } = useForm();
+  console.log(errors);
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   const banner = "http://wahabali.com/work/pearl-demo/images/book-table.jpg";
@@ -17,16 +20,17 @@ const Reservation = () => {
         <div>
           <Title>Book a Table</Title>
           <Header1>RESERVATION</Header1>
-          <form onSubmit={handlerSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="lg:grid grid-cols-2 gap-2 mx-3">
               <div className=" col-span-2 mb-2 lg:mb-1">
                 <div className="field">
                   <input
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-5 "
-                    type="text"
                     placeholder="Type Your Name"
-                    name="user_name"
-                    required
+                    type="text"
+                    {...register("name", {
+                      required: true,
+                    })}
                   />
                 </div>
               </div>
@@ -35,10 +39,11 @@ const Reservation = () => {
                 <div>
                   <input
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-5 "
-                    type="date"
                     placeholder="Appointment Date"
-                    name="user_appointmentDate"
-                    required
+                    type="date"
+                    {...register("user_reservDate", {
+                      required: true,
+                    })}
                   />
                 </div>
               </div>
@@ -47,8 +52,9 @@ const Reservation = () => {
                 <div className="field basic-example2">
                   <select
                     className="block  w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 p-5"
-                    name="reserv_persons"
-                    id="reserv_persons"
+                    {...register("user_reservTime", {
+                      required: true,
+                    })}
                   >
                     <option value="">Choose A Time</option>
                     <option value="9:00am to 12:00pm">9:00am to 12:00pm</option>
@@ -63,8 +69,7 @@ const Reservation = () => {
                 <div className="field">
                   <select
                     className="block p-5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
-                    name="reserv_persons"
-                    id="reserv_persons"
+                    {...register("reserv_persons")}
                   >
                     <option value="">Persons</option>
                     <option value="1">1</option>
@@ -79,10 +84,10 @@ const Reservation = () => {
                 <div className="field">
                   <input
                     className="block p-5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
-                    type="email"
                     placeholder="Type Your Email"
-                    name="user_email"
-                    required
+                    {...register("email", {
+                      pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                    })}
                   />
                 </div>
               </div>
@@ -90,10 +95,11 @@ const Reservation = () => {
                 <div>
                   <input
                     className="block p-5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
-                    name="reserv_phone"
-                    type="number"
                     placeholder="Phone No"
-                    required
+                    {...register("telephone", {
+                      required: true,
+                      pattern: /^01[3-9]\d{8}$/,
+                    })}
                   />
                 </div>
               </div>
