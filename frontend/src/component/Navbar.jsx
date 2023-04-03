@@ -78,10 +78,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a className="active:bg-transparent">BLOG</a>
+              <Link to="/" className="active:bg-transparent">
+                BLOG
+              </Link>
             </li>
             <li>
-              <a className="active:bg-transparent">CONTACT</a>
+              <Link to="/" className="active:bg-transparent">
+                CONTACT
+              </Link>
             </li>
             <li>
               <Link to="allRoom" className="active:bg-transparent">
@@ -139,14 +143,18 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/restaurant" className="active:bg-transparent">
-              RESTURANT
+              Restaurant
             </Link>
           </li>
           <li>
-            <a className="active:bg-transparent">BLOG</a>
+            <Link to="/" className="active:bg-transparent">
+              BLOG
+            </Link>
           </li>
           <li>
-            <a className="active:bg-transparent">CONTACT</a>
+            <Link to="/" className="active:bg-transparent">
+              CONTACT
+            </Link>
           </li>
         </ul>
       </div>

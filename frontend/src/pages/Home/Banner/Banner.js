@@ -23,7 +23,7 @@ const Banner = () => {
               : path === "familySpecialRoom"
               ? "Family Special Rooms"
               : path === "restaurant"
-              ? "Greenland Resturant"
+              ? "Greenland Restaurant"
               : "Book Your Vacation"}
           </Title>
           <SubTitle>

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import OurStorySlider from '../../../Carousel/OurStorySlider/OurStorySlider';
-import Info from '../../Restaurant/Info/Info';
-import MasterChef from './MasterChef/MasterChef';
+import OurStorySlider from "../../../Carousel/OurStorySlider/OurStorySlider";
+import Info from "../../Restaurant/Info/Info";
+import MasterChef from "./MasterChef/MasterChef";
 
 const OurStory = () => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -26,14 +26,14 @@ const OurStory = () => {
                 <div className="flex justify-between">
                   <div>
                     <p className="text-sm md:text-xl  lg:text-xl">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Aenean ac tortor at tellus feugiat congue quis ut nunc.
-                      Semper ac dolor vitae accumsan. interdum hendrerit
-                      lacinia.
+                      Greenland Restaurant is a cozy, brasserie-style restaurant
+                      that offers everything you love about the cuisine without
+                      the attitude. Greenland Restaurant offers classic dishes
+                      like beef kala bhuna and kacchi biryani, as well as fresh
+                      salads made with fresh-ground beef and juicy hamburgers.
                     </p>
                   </div>
                 </div>
-
               </Description>
             </>
           ) : (
@@ -44,10 +44,11 @@ const OurStory = () => {
                 <div className="flex justify-between mb-6">
                   <div>
                     <p className="text-sm md:text-xl lg:w-[480px] lg:text-xl">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Aenean ac tortor at tellus feugiat congue quis ut nunc.
-                      Semper ac dolor vitae accumsan. interdum hendrerit
-                      lacinia.
+                      Greenland Restaurant is a cozy, brasserie-style restaurant
+                      that offers everything you love about the cuisine without
+                      the attitude. Greenland Restaurant offers classic dishes
+                      like beef kala bhuna and kacchi biryani, as well as fresh
+                      salads made with fresh-ground beef and juicy hamburgers.
                     </p>
                   </div>
                 </div>
@@ -68,11 +69,10 @@ const OurStory = () => {
             <Title>Greenland Resort Tour</Title>
             <Header>THE RESTAURANT</Header>
           </Description>
-          <OurStorySlider ></OurStorySlider>
+          <OurStorySlider></OurStorySlider>
           <MasterChef></MasterChef>
           <Info />
         </div>
-
       </Container>
     </div>
   );
@@ -128,7 +128,7 @@ const ImageContainer = styled.div`
   width: 100%;
   .image {
     border-radius: ${({ isMobile }) =>
-    isMobile ? "0px 40px 0 40px" : "40px 0 40px 0"};
+      isMobile ? "0px 40px 0 40px" : "40px 0 40px 0"};
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
