@@ -6,7 +6,7 @@ export const apiSlice = createApi({
     baseUrl:
       process.env.NODE_ENV === "production"
         ? process.env.REACT_APP_BASE_URL
-        : "http://localhost:8800/api/",
+        : "http://localhost:5000/api/",
   }),
   endpoints: (builder) => ({}),
 });

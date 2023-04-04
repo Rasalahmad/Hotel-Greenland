@@ -39,7 +39,12 @@ const Booking = () => {
           room={room}
           name={name}
         />
-        <BookingForm style={{ flex: "4" }} price={price} />
+        <BookingForm
+          style={{ flex: "4" }}
+          price={price}
+          img={thumbnail}
+          name={name}
+        />
       </Container>
     );
   }

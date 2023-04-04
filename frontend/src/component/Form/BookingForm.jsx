@@ -3,13 +3,29 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 
-const BookingForm = ({ price }) => {
+const BookingForm = ({ price, name, img }) => {
   const { register, handleSubmit, errors } = useForm();
   const { night } = useSelector((state) => state.room);
 
   const onSubmit = (data) => {
-    const finalData = { ...data, amount: Number(night) * Number(price) };
-    console.log(finalData);
+    const finalData = {
+      ...data,
+      price: Number(night) * Number(price),
+      productName: name,
+      img: img,
+      status: "pending",
+    };
+    fetch("http://localhost:5000/init", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(finalData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        window.location.replace(result);
+      });
   };
 
   return (
@@ -46,7 +62,7 @@ const BookingForm = ({ price }) => {
             <Label>Telephone *</Label>
             <Input
               type="text"
-              {...register("telephone", {
+              {...register("phone", {
                 required: true,
                 pattern: /^01[3-9]\d{8}$/,
               })}

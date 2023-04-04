@@ -64,29 +64,30 @@ app.post("/api/upload", upload.array("images"), (req, res) => {
 // ----------- ssl commerz setup -------------
 //sslcommerz init
 app.post("/init", (req, res) => {
+  console.log(req.body);
   const data = {
-    total_amount: req.body.room.price,
+    total_amount: req?.body?.price,
     currency: "BDT",
-    product_img: req.body.room?.img,
+    product_img: req?.body?.img,
     tran_id: "REF123",
     success_url: "http://hotelgreenlandbd.com/success",
     fail_url: "http://hotelgreenlandbd.com/fail",
     cancel_url: "http://hotelgreenlandbd.com/cancel",
     ipn_url: "http://hotelgreenlandbd.com/ipn",
     shipping_method: "Courier",
-    product_name: req.body.room.name,
+    product_name: req?.body?.productName,
     product_category: "Electronic",
     product_profile: "general",
-    cus_name: req?.body?.user?.name,
-    cus_email: req?.body?.user?.email,
-    cus_add1: req.body?.user?.city,
+    cus_name: req?.body?.name,
+    cus_email: req?.body?.email,
+    cus_add1: req.body?.city,
     cus_add2: "Dhaka",
     cus_city: "Dhaka",
     cus_state: "Dhaka",
     cus_postcode: "1000",
     cus_country: "Bangladesh",
-    cus_phone: req.body?.user?.phone,
-    cus_fax: req.body?.user?.phone,
+    cus_phone: req.body?.phone,
+    cus_fax: req.body?.phone,
     ship_name: "Customer Name",
     ship_add1: "Dhaka",
     ship_add2: "Dhaka",
@@ -100,19 +101,28 @@ app.post("/init", (req, res) => {
     value_c: "ref003_C",
     value_d: "ref004_D",
   };
+  console.log(data);
   const sslcommer = new SslCommerzPayment(
     process.env.STORE_ID,
     process.env.STORE_PASS,
     false
   ); //true for live default false for sandbox
-  sslcommer.init(data).then((data) => {
-    //process the response that got from sslcommerz
-    //https://developer.sslcommerz.com/doc/v4/#returned-parameters
-    if (data.GatewayPageURL) {
-      res.status(200).json(data.GatewayPageURL);
-    }
-    res.status(400).json("Payment seasson failed");
-  });
+  sslcommer
+    .init(data)
+    .then((data) => {
+      //process the response that got from sslcommerz
+      //https://developer.sslcommerz.com/doc/v4/#returned-parameters
+      if (data.GatewayPageURL) {
+        res.status(200).json(data.GatewayPageURL);
+      }
+      res.status(400).json("Payment seasson failed");
+    })
+    .catch((err) =>
+      res.status(400).json({
+        status: false,
+        message: error,
+      })
+    );
 });
 
 app.post("/success", async (req, res) => {
