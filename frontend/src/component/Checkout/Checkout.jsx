@@ -6,7 +6,16 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment } from "../../features/rooms/roomSlice";
 
-const Checkout = ({ noImage, image, title, btnText, route, price, guests }) => {
+const Checkout = ({
+  noImage,
+  image,
+  title,
+  btnText,
+  route,
+  price,
+  guests,
+  name,
+}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -17,7 +26,9 @@ const Checkout = ({ noImage, image, title, btnText, route, price, guests }) => {
     <Container>
       <div>{!noImage && <Image src={image} />}</div>
       <div>
-        <Heading>{title}</Heading>
+        <Heading>
+          {title} <br /> {name}{" "}
+        </Heading>
         <div className="flex text-white gap-4 p-4">
           <div className="flex flex-col gap-1 w-1/2 cursor-pointer bg-black py-5 text-center">
             <label className="-mb-2 text-gray-400 font-bold ">CHECK-IN</label>

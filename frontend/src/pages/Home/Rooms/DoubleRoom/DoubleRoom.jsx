@@ -128,7 +128,7 @@ const DoubleRoom = () => {
                     </Facilities>
                   </FContainer>
                   <Description>{item.desc.slice(0, 100)}</Description>
-                  <Link to="/booking">
+                  <Link to={`/booking/${item._id}`}>
                     <Button>BOOK NOW</Button>
                   </Link>
                   <hr />

@@ -32,10 +32,12 @@ const Booking = () => {
         <Checkout
           style={{ flex: "1" }}
           image={thumbnail}
-          title={"YOUR RESERVATION"}
+          title={`YOUR RESERVATION`}
           guests={guests}
           btnText={"Total"}
           price={price}
+          room={room}
+          name={name}
         />
         <BookingForm style={{ flex: "4" }} price={price} />
       </Container>
