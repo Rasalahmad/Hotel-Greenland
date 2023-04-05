@@ -120,7 +120,7 @@ app.post("/init", (req, res) => {
     .catch((err) =>
       res.status(400).json({
         status: false,
-        message: error,
+        message: err,
       })
     );
 });
