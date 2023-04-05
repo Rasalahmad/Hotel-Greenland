@@ -64,7 +64,6 @@ app.post("/api/upload", upload.array("images"), (req, res) => {
 // ----------- ssl commerz setup -------------
 //sslcommerz init
 app.post("/init", (req, res) => {
-  console.log(req.body);
   const data = {
     total_amount: req?.body?.price,
     currency: "BDT",
@@ -101,7 +100,6 @@ app.post("/init", (req, res) => {
     value_c: "ref003_C",
     value_d: "ref004_D",
   };
-  console.log(data);
   const sslcommer = new SslCommerzPayment(
     process.env.STORE_ID,
     process.env.STORE_PASS,
