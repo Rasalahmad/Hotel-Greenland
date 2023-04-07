@@ -12,6 +12,7 @@ import Details from "../../pages/Home/Rooms/SingleRoom/Details";
 import SingleRoom from "../../pages/Home/Rooms/SingleRoom/SingleRoom";
 import FamilyRoom from "../../pages/Home/Rooms/Special/FamilyRoom";
 import Contact from "../../pages/Contact/Contact";
+import SuccessView from "../../component/Success/SuccessView";
 
 export const router = createBrowserRouter([
   {
@@ -67,5 +68,9 @@ export const router = createBrowserRouter([
         element: <Menu />,
       },
     ],
+  },
+  {
+    path: "/success",
+    element: <SuccessView />,
   },
 ]);
