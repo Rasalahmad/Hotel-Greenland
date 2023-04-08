@@ -55,7 +55,10 @@ const HotelDataTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/faculty/test" style={{ textDecoration: "none" }}>
+            <Link
+              to={`/hotels/${params.row._id}`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -77,7 +80,7 @@ const HotelDataTable = () => {
         <div className="datatable">
           <div className="datatableTitle">
             Hotel List
-            <Link to={`/faculty/facultyForm`} className="link">
+            <Link to={`/hotels/hotelForm`} className="link">
               Add New
             </Link>
           </div>

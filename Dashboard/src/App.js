@@ -22,7 +22,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="hotels">
               <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":roomId" element={<Single />} />
               <Route
                 path="facultyForm"
                 element={
