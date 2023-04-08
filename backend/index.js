@@ -124,15 +124,15 @@ app.post("/init", (req, res) => {
 });
 
 app.post("/success", async (req, res) => {
-  res.status(200).redirect("http://hotelgreenlandbd.com/success");
+  res.status(200).redirect(`${process.env.StoreRoute}/success`);
 });
 
 app.post("/fail", async (req, res) => {
-  res.status(200).redirect("http://hotelgreenlandbd.com/fail");
+  res.status(200).redirect(`${process.env.StoreRoute}/fail`);
 });
 
 app.post("/cancel", async (req, res) => {
-  res.status(200).redirect("http://hotelgreenlandbd.com/cancel");
+  res.status(200).redirect(`${process.env.StoreRoute}/cancel`);
 });
 
 // --------- ssl commerz setup end -------------
