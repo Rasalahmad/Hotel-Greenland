@@ -14,9 +14,9 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        {location.pathname === "/hotels" ? (
+        {location?.pathname === "/hotels" ? (
           <HotelDataTable />
-        ) : location.pathname === "/committee" ? (
+        ) : location?.pathname === "/committee" ? (
           <CommitteeDataTable />
         ) : (
           <></>
