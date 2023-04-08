@@ -1,41 +1,42 @@
 export const userColumns = [
-  { field: "_id", headerName: "ID", width: 250 },
   {
-    field: "image",
-    headerName: "User",
-    width: 230,
+    field: "thumbnail",
+    headerName: "ROOM",
+    width: 250,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img
-            className="cellImg"
-            src={`http://localhost:5000/images/${params.row.image}`}
-            alt="avatar"
-          />
+          <img className="cellImg" src={params.row.thumbnail} alt="avatar" />
           {params.row.name}
         </div>
       );
     },
   },
+  { field: "guests", headerName: "GUESTS", width: 200 },
   {
-    field: "batch",
-    headerName: "Batch",
+    field: "price",
+    headerName: "PRICE",
     width: 150,
   },
 
   {
-    field: "designation",
-    headerName: "Designation",
+    field: "weekPrice",
+    headerName: "WEEKLY PRICE",
     width: 200,
   },
+  // {
+  //   field: "isAvailable",
+  //   headerName: "AVAILABILITY",
+  //   width: 200,
+  // },
   {
-    field: "role",
-    headerName: "Role",
+    field: "isAvailable",
+    headerName: "AVAILABILITY",
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.role}`}>
-          {params.row.role}
+        <div className={`cellWithStatus ${params.row.isAvailable}`}>
+          {params.row.isAvailable}
         </div>
       );
     },

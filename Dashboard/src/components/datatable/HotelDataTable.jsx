@@ -76,7 +76,7 @@ const HotelDataTable = () => {
       ) : (
         <div className="datatable">
           <div className="datatableTitle">
-            Add New Committee Member
+            Hotel List
             <Link to={`/faculty/facultyForm`} className="link">
               Add New
             </Link>
