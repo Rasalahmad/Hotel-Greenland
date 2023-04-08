@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { makeRequest } from "../../axios";
 
-const FacultyDataTable = () => {
+const HotelDataTable = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ const FacultyDataTable = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await makeRequest.get("/faculty");
+        const res = await makeRequest.get("/room/getAllRoom");
         setData(res.data.data);
       } catch (err) {
         setError(err);
@@ -97,4 +97,4 @@ const FacultyDataTable = () => {
   );
 };
 
-export default FacultyDataTable;
+export default HotelDataTable;
