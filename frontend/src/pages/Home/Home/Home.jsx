@@ -1,7 +1,5 @@
 import React from "react";
-import Footer from "../../../component/Footer";
 import About from "../About/About";
-import Banner from "../Banner/Banner";
 import Facilities from "../Facilities/Facilities";
 import FamusFacilities from "../Facilities/FamusFacilities";
 import News from "../News/News";

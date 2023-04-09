@@ -28,10 +28,10 @@ export default function NewsSlider({ data }) {
             slidesPerView: 1,
           },
           768: {
-            slidesPerView: 1,
+            slidesPerView: 2,
           },
           1024: {
-            slidesPerView: 2,
+            slidesPerView: 3,
           },
           1400: {
             slidesPerView: 3,
@@ -41,12 +41,13 @@ export default function NewsSlider({ data }) {
         pagination={{
           clickable: true,
         }}
+        spaceBetween={20}
         modules={[Autoplay, Pagination]}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
-        className="mySwiper"
+        className="mySwiper "
       >
         {data.map((item) => (
           <SwiperSlide key={item?._id}>
