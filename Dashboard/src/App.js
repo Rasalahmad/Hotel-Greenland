@@ -3,12 +3,12 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import CommitteeForm from "./pages/new/CommitteeForm";
-import FacultyForm from "./pages/new/FacultyForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { committeeInputs, facultyInputs } from "./formSource";
+import { committeeInputs, roomInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import RoomForm from "./pages/new/RoomForm";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -24,10 +24,8 @@ function App() {
               <Route index element={<List />} />
               <Route path=":roomId" element={<Single />} />
               <Route
-                path="facultyForm"
-                element={
-                  <FacultyForm inputs={facultyInputs} title="Add New Faculty" />
-                }
+                path="roomForm"
+                element={<RoomForm inputs={roomInputs} title="Add New Room" />}
               />
             </Route>
             <Route path="committee">
