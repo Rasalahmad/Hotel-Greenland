@@ -80,7 +80,7 @@ const HotelDataTable = () => {
         <div className="datatable">
           <div className="datatableTitle">
             Hotel List
-            <Link to={`/hotels/hotelForm`} className="link">
+            <Link to={`/hotels/roomForm`} className="link">
               Add New
             </Link>
           </div>

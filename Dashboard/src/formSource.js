@@ -1,4 +1,4 @@
-export const facultyInputs = [
+export const roomInputs = [
   {
     id: "name",
     label: "Name",
@@ -6,40 +6,34 @@ export const facultyInputs = [
     placeholder: "name",
   },
   {
-    id: "about",
-    label: "About",
+    id: "desc",
+    label: "Description",
     type: "text",
-    placeholder: "about",
+    placeholder: "description",
   },
   {
-    id: "designation",
-    label: "Designation",
+    id: "roomType",
+    label: "Room Type",
     type: "text",
-    placeholder: "designation",
+    placeholder: "room type",
   },
   {
-    id: "university",
-    label: "University",
+    id: "weekprice",
+    label: "Week Price",
     type: "text",
-    placeholder: "university name",
+    placeholder: "week price",
   },
   {
-    id: "fbLink",
-    label: "Facebook Link",
+    id: "guests",
+    label: "Number Of Guests",
     type: "text",
-    placeholder: "Facebook Link",
+    placeholder: "number of guests",
   },
   {
-    id: "instraLink",
-    label: "Instragram Link",
+    id: "price",
+    label: "Price",
     type: "text",
-    placeholder: "Instragram Link",
-  },
-  {
-    id: "linkedinLink",
-    label: "Linkedin Link",
-    type: "text",
-    placeholder: "Linkedin Link",
+    placeholder: "price",
   },
 ];
 
