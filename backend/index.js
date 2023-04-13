@@ -61,8 +61,9 @@ app.post("/api/upload/single", upload.single("image"), (req, res) => {
   res.status(200).json(file.filename);
 });
 
-app.post("/api/upload/multiple", upload.array("images", 5), (req, res) => {
+app.post("/api/upload/multiple", upload.array("images"), (req, res) => {
   const file = req.files;
+  console.log(file);
   return res.status(200).json(file);
 });
 

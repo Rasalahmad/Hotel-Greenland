@@ -46,19 +46,21 @@ const RoomForm = ({ inputs, title }) => {
   const uploadMultipleFile = async (files) => {
     try {
       const formData = new FormData();
-      formData.append("files", files);
-      const res = await makeRequest.post("/upload", formData);
-      return res.data;
+      for (let i = 0; i < files.length; i++) {
+        formData.append("images", files[i]);
+      }
+      const res = await makeRequest.post("/upload/multiple", formData);
+      console.log(res.data);
     } catch (err) {
-      Swal.fire("Error", "Can't upload this image", "error");
+      console.error(err);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const image = await upload(file);
-    // const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, image };
+    const images = await uploadMultipleFile(selectedFiles);
+    const data = { ...info, image, images };
     // const res = await makeRequest.post("/faculty", data);
     // if (res.data) {
     //   Swal.fire(
