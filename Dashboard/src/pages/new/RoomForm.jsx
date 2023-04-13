@@ -50,7 +50,7 @@ const RoomForm = ({ inputs, title }) => {
         formData.append("images", files[i]);
       }
       const res = await makeRequest.post("/upload/multiple", formData);
-      console.log(res.data);
+      return res.data;
     } catch (err) {
       console.error(err);
     }
@@ -58,9 +58,9 @@ const RoomForm = ({ inputs, title }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const image = await upload(file);
+    const thumbnail = await upload(file);
     const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, image, images };
+    const data = { ...info, thumbnail, images };
     // const res = await makeRequest.post("/faculty", data);
     // if (res.data) {
     //   Swal.fire(
