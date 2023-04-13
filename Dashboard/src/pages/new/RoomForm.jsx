@@ -34,8 +34,8 @@ const RoomForm = ({ inputs, title }) => {
   const upload = async (file) => {
     try {
       const formData = new FormData();
-      formData.append("file", file);
-      const res = await makeRequest.post("/upload", formData);
+      formData.append("image", file);
+      const res = await makeRequest.post("/upload/single", formData);
       return res.data;
     } catch (err) {
       Swal.fire("Error", "Can't upload this image", "error");
@@ -57,8 +57,8 @@ const RoomForm = ({ inputs, title }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const image = await upload(file);
-    const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, image, images };
+    // const images = await uploadMultipleFile(selectedFiles);
+    const data = { ...info, image };
     // const res = await makeRequest.post("/faculty", data);
     // if (res.data) {
     //   Swal.fire(

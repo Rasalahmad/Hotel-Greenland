@@ -56,9 +56,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-app.post("/api/upload", upload.array("images"), (req, res) => {
-  const file = req.files;
+app.post("/api/upload/single", upload.single("image"), (req, res) => {
+  const file = req.file;
   res.status(200).json(file.filename);
+});
+
+app.post("/api/upload/multiple", upload.array("images", 5), (req, res) => {
+  const file = req.files;
+  return res.status(200).json(file);
 });
 
 // ----------- ssl commerz setup -------------
