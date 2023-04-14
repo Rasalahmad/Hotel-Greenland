@@ -109,7 +109,6 @@ export const getRoom = async (req, res) => {
 export const deleteRoom = async (req, res, next) => {
   try {
     const room = await Room.findByIdAndDelete({ _id: ObjectId(req.params.id) });
-    console.log(room);
     if (room) {
       res.status(200).json({
         status: true,
