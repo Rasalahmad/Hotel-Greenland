@@ -60,7 +60,7 @@ const RoomForm = ({ inputs, title }) => {
     e.preventDefault();
     const thumbnail = await upload(file);
     const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, thumbnail, images, isAvailable: "Available" };
+    const data = { ...info, thumbnail, images };
     const res = await makeRequest.post("/room", data);
     if (res.data) {
       Swal.fire("Success", "Room Added successfully", "success");
