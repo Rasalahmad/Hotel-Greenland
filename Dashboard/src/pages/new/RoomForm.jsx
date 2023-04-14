@@ -60,18 +60,13 @@ const RoomForm = ({ inputs, title }) => {
     e.preventDefault();
     const thumbnail = await upload(file);
     const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, thumbnail, images };
-    // const res = await makeRequest.post("/faculty", data);
-    // if (res.data) {
-    //   Swal.fire(
-    //     "Success",
-    //     "The Committee Member Added successfully",
-    //     "success"
-    //   );
-    // } else {
-    //   Swal.fire("Error", "Something went wrong", "error");
-    // }
-    console.log(data);
+    const data = { ...info, thumbnail, images, isAvailable: "Available" };
+    const res = await makeRequest.post("/room", data);
+    if (res.data) {
+      Swal.fire("Success", "Room Added successfully", "success");
+    } else {
+      Swal.fire("Error", "Something went wrong", "error");
+    }
   };
 
   return (
