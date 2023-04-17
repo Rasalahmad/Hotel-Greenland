@@ -12,40 +12,44 @@ const CommitteeDataTable = () => {
       id: 1,
       transId: "SDFSDFSDFFD15334353",
       name: "Rasel Ahmad",
-      profile:
+      roomName: "Single Room - 101",
+      roomImage:
         "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       price: 1200,
-      roomName: "Single Room - 101",
       date: "20-04-2023 - 21-04-2023",
       checkInTime: "6 am",
+      payment: "Bkash",
     },
     {
       id: 2,
       transId: "SDFSDFSDFFD153331321",
       name: "Ayon Barua",
-      profile:
+      roomImage:
         "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       price: 1200,
       roomName: "Single Room - 102",
       date: "21-04-2023 - 22-04-2023",
       checkInTime: "6 am",
+      payment: "Nogot",
     },
     {
       id: 3,
       transId: "SDFSDFSDFFD153343145",
       name: "Talimul",
-      profile:
+      roomImage:
         "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       price: 1200,
       roomName: "Single Room - 104",
       date: "20-04-2023 - 21-04-2023",
       checkInTime: "6 am",
+      payment: "Card",
     },
   ];
 
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -82,27 +86,26 @@ const CommitteeDataTable = () => {
       }
     });
   };
+  const handleStatusChange = (e, id) => {
+    e.preventDefault();
+    // update the status in db
+  };
 
   const actionColumn = [
     {
-      field: "action",
-      headerName: "Action",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link to="/committee/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row._id)}
-            >
-              Delete
-            </div>
-          </div>
-        );
-      },
+      field: "status",
+      headerName: "Status",
+      width: 150,
+      renderCell: (params) => (
+        <select
+          value={params.value}
+          onChange={(e) => handleStatusChange(e, params.row.id)}
+        >
+          <option value="approved">Approved</option>
+          <option value="pending">Pending</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      ),
     },
   ];
   return (

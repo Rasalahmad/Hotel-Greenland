@@ -39,24 +39,24 @@ export const userColumns = [
 ];
 
 export const transColumns = [
+  { field: "transId", headerName: "Transaction ID", width: 200 },
   {
-    field: "user",
-    headerName: "User",
+    field: "room",
+    headerName: "Room",
     width: 200,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.profile} alt="avatar" />
-          {params.row.name}
+          <img className="cellImg" src={params.row.roomImage} alt="avatar" />
+          {params.row.roomName}
         </div>
       );
     },
   },
-  { field: "transId", headerName: "Transaction ID", width: 200 },
   { field: "price", headerName: "Amount", width: 100 },
   {
-    field: "roomName",
-    headerName: "Room Name",
+    field: "name",
+    headerName: "Customer",
     width: 150,
   },
 
@@ -68,6 +68,11 @@ export const transColumns = [
   {
     field: "checkInTime",
     headerName: "CheckIn",
+    width: 100,
+  },
+  {
+    field: "payment",
+    headerName: "Payment Method",
     width: 100,
   },
 ];
