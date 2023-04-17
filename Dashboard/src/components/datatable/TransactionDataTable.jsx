@@ -128,6 +128,7 @@ const TransactionDataTable = () => {
             rowsPerPageOptions={[9]}
             checkboxSelection
             getRowId={(rows) => rows.id}
+            disableSelectionOnClick={true}
           />
           {error && <p>{error}</p>}
         </div>
