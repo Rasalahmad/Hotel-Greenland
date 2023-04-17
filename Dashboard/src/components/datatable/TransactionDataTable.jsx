@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { makeRequest } from "../../axios";
 
-const CommitteeDataTable = () => {
+const TransactionDataTable = () => {
   const trans_data = [
     {
       id: 1,
@@ -136,4 +136,4 @@ const CommitteeDataTable = () => {
   );
 };
 
-export default CommitteeDataTable;
+export default TransactionDataTable;

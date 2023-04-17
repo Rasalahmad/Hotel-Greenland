@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Datatable from "../../components/datatable/Datatable";
 import { useLocation } from "react-router-dom";
-import CommitteeDataTable from "../../components/datatable/CommitteeDataTable";
+import TransactionDataTable from "../../components/datatable/TransactionDataTable";
 import HotelDataTable from "../../components/datatable/HotelDataTable";
 
 const List = () => {
@@ -17,7 +17,7 @@ const List = () => {
         {location?.pathname === "/hotels" ? (
           <HotelDataTable />
         ) : location?.pathname === "/transaction" ? (
-          <CommitteeDataTable />
+          <TransactionDataTable />
         ) : (
           <></>
         )}
