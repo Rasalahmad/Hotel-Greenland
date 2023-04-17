@@ -28,7 +28,7 @@ function App() {
                 element={<RoomForm inputs={roomInputs} title="Add New Room" />}
               />
             </Route>
-            <Route path="committee">
+            <Route path="transaction">
               <Route index element={<List />} />
               <Route path=":productId" element={<Single />} />
               <Route
