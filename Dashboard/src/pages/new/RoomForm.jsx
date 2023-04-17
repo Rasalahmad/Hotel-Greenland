@@ -34,8 +34,8 @@ const RoomForm = ({ inputs, title }) => {
   const upload = async (file) => {
     try {
       const formData = new FormData();
-      formData.append("file", file);
-      const res = await makeRequest.post("/upload", formData);
+      formData.append("image", file);
+      const res = await makeRequest.post("/upload/single", formData);
       return res.data;
     } catch (err) {
       Swal.fire("Error", "Can't upload this image", "error");
@@ -46,30 +46,27 @@ const RoomForm = ({ inputs, title }) => {
   const uploadMultipleFile = async (files) => {
     try {
       const formData = new FormData();
-      formData.append("files", files);
-      const res = await makeRequest.post("/upload", formData);
+      for (let i = 0; i < files.length; i++) {
+        formData.append("images", files[i]);
+      }
+      const res = await makeRequest.post("/upload/multiple", formData);
       return res.data;
     } catch (err) {
-      Swal.fire("Error", "Can't upload this image", "error");
+      console.error(err);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const image = await upload(file);
+    const thumbnail = await upload(file);
     const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, image, images };
-    // const res = await makeRequest.post("/faculty", data);
-    // if (res.data) {
-    //   Swal.fire(
-    //     "Success",
-    //     "The Committee Member Added successfully",
-    //     "success"
-    //   );
-    // } else {
-    //   Swal.fire("Error", "Something went wrong", "error");
-    // }
-    console.log(data);
+    const data = { ...info, thumbnail, images };
+    const res = await makeRequest.post("/room", data);
+    if (res.data) {
+      Swal.fire("Success", "Room Added successfully", "success");
+    } else {
+      Swal.fire("Error", "Something went wrong", "error");
+    }
   };
 
   return (

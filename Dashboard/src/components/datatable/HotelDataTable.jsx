@@ -37,9 +37,9 @@ const HotelDataTable = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          makeRequest.delete(`/faculty/${id}`);
+          makeRequest.delete(`/room/${id}`);
           setData(data.filter((item) => item._id !== id));
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          Swal.fire("Deleted!", "Room has been Deleted.", "success");
         } catch (err) {
           setError(err);
         }

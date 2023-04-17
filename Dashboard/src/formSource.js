@@ -18,15 +18,15 @@ export const roomInputs = [
     placeholder: "room type",
   },
   {
-    id: "weekprice",
+    id: "weekPrice",
     label: "Week Price",
-    type: "text",
+    type: "number",
     placeholder: "week price",
   },
   {
     id: "guests",
     label: "Number Of Guests",
-    type: "text",
+    type: "number",
     placeholder: "number of guests",
   },
   {

@@ -105,3 +105,23 @@ export const getRoom = async (req, res) => {
     });
   }
 };
+
+export const deleteRoom = async (req, res, next) => {
+  try {
+    const room = await Room.findByIdAndDelete({ _id: ObjectId(req.params.id) });
+    if (room) {
+      res.status(200).json({
+        status: true,
+        message: "Room Deleted successfully",
+      });
+    } else {
+      res.status(404).send("Item not found");
+    }
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Member can't Delete",
+      error,
+    });
+  }
+};

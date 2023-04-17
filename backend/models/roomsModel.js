@@ -27,12 +27,17 @@ const roomsSchema = mongoose.Schema(
       required: [true, "Room name is required"],
       trim: true,
     },
-    gests: Number,
+    guests: Number,
     weekPrice: Number,
     desc: String,
     price: {
       type: Number,
       required: [true, "Price is required"],
+    },
+    isAvailable: {
+      type: String,
+      enum: ["Available", "Unavailable"],
+      default: "Available",
     },
     services: [
       {
