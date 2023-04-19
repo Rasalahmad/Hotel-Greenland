@@ -106,6 +106,28 @@ export const getRoom = async (req, res) => {
   }
 };
 
+
+export const updateRoom = async (req, res, next) => {
+  try {
+    const updated = await Room.findByIdAndUpdate(
+      {_id: ObjectId(req.params.id)},
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json({
+      status: true,
+      message: "Room updated successfully",
+      data: updated,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Room can't update",
+      error,
+    });
+  }
+};
+
 export const deleteRoom = async (req, res, next) => {
   try {
     const room = await Room.findByIdAndDelete({ _id: ObjectId(req.params.id) });

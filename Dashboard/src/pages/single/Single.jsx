@@ -6,12 +6,16 @@ import List from "../../components/table/Table";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../axios";
+import Modal from "./Modal/Modal";
+import EditForm from "../new/EditForm";
+
 
 const Single = () => {
   const { roomId } = useParams();
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +31,13 @@ const Single = () => {
     fetchData();
   }, [roomId]);
 
+  if (!data) {
+    return <p>Loading.......</p>;
+  }
   const { name, thumbnail, roomType, guests, price, isAvailable } = data;
+  console.log(data);
+
+
 
   return (
     <div className="single">
@@ -35,8 +45,11 @@ const Single = () => {
       <div className="singleContainer">
         <Navbar />
         <div className="top">
-          <div className="left">
-            <div className="editButton">Edit</div>
+          <div className="leftSide">
+            <Modal>
+            <EditForm loading={loading} data={data}></EditForm>
+               </Modal>
+
             <h1 className="title">Information</h1>
             <div className="item">
               <img src={thumbnail} alt="" className="itemImg" />
