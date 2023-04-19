@@ -24,11 +24,6 @@ export const userColumns = [
     headerName: "WEEKLY PRICE",
     width: 200,
   },
-  // {
-  //   field: "isAvailable",
-  //   headerName: "AVAILABILITY",
-  //   width: 200,
-  // },
   {
     field: "isAvailable",
     headerName: "AVAILABILITY",
@@ -40,6 +35,45 @@ export const userColumns = [
         </div>
       );
     },
+  },
+];
+
+export const transColumns = [
+  { field: "transId", headerName: "Transaction ID", width: 200 },
+  {
+    field: "room",
+    headerName: "Room",
+    width: 200,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.roomImage} alt="avatar" />
+          {params.row.roomName}
+        </div>
+      );
+    },
+  },
+  { field: "price", headerName: "Amount", width: 100 },
+  {
+    field: "name",
+    headerName: "Customer",
+    width: 150,
+  },
+
+  {
+    field: "date",
+    headerName: "Date",
+    width: 250,
+  },
+  {
+    field: "checkInTime",
+    headerName: "CheckIn",
+    width: 100,
+  },
+  {
+    field: "payment",
+    headerName: "Payment Method",
+    width: 100,
   },
 ];
 
