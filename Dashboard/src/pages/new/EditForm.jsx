@@ -15,7 +15,6 @@ const EditForm = ({ data, loading }) => {
   const [isAvailable, setIsAvailability] = useState(data?.isAvailable) ?? "";
   const [file, setFile] = useState(data?.thumbnail ?? {});
   const [selectedFiles, setSelectedFiles] = useState(data?.images);
-  console.log(file);
 
   const handleFileChange = (event) => {
     const fileList = event.target.files;
@@ -172,35 +171,31 @@ const EditForm = ({ data, loading }) => {
                 <input
                   type="file"
                   id="images"
-                  name="images"
                   style={{ display: "none" }}
                   multiple={true}
-                  disabled
+                  onChange={handleFileChange}
                 />
               </div>
               <div className="images">
-                {data?.images &&
-                  data?.images.map((file, index) => (
+                {selectedFiles &&
+                  selectedFiles.map((file, index) => (
                     <div key={index} className="container">
-                      <img src={file?.original} alt="" />
-                    </div>
-                  ))}
-                {/* {
-                    images.map((item,index)=>(
-                    <div key={index} className="container">
-                       <img
-                    src={
-                      item?.original
-                    }
-                    alt=""
-                  />
-                   <CloseIcon
+                      <img
+                        src={
+                          file
+                            ? file.filename
+                              ? URL.createObjectURL(file)
+                              : file?.original
+                            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                        }
+                        alt=""
+                      />
+                      <CloseIcon
                         className="crossIcon"
                         onClick={() => handleRemoveFile(index)}
-                        />
-                  </div>
-                  ))
-                } */}
+                      />
+                    </div>
+                  ))}
               </div>
               <button type="submit">Update</button>
             </form>
