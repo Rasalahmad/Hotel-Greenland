@@ -8,14 +8,14 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../../axios";
 import Modal from "./Modal/Modal";
 import EditForm from "../new/EditForm";
-
+// import "./Modal.scss";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Single = () => {
   const { roomId } = useParams();
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,13 +31,16 @@ const Single = () => {
     fetchData();
   }, [roomId]);
 
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleModal = () => {
+    setIsActive(!isActive);
+  };
+
   if (!data) {
     return <p>Loading.......</p>;
   }
   const { name, thumbnail, roomType, guests, price, isAvailable } = data;
-  console.log(data);
-
-
 
   return (
     <div className="single">
@@ -46,10 +49,19 @@ const Single = () => {
         <Navbar />
         <div className="top">
           <div className="leftSide">
-            <Modal>
-            <EditForm loading={loading} data={data}></EditForm>
-               </Modal>
-
+            <>
+              <button onClick={toggleModal} className="editButton">
+                Edit
+              </button>
+              <div className={`modal ${isActive ? "active" : ""}`}>
+                <div className="modal-content">
+                  <span className="close-button">
+                    <CloseIcon onClick={toggleModal}></CloseIcon>
+                  </span>
+                  {isActive && <EditForm loading={loading} data={data} />}
+                </div>
+              </div>
+            </>
             <h1 className="title">Information</h1>
             <div className="item">
               <img src={thumbnail} alt="" className="itemImg" />
