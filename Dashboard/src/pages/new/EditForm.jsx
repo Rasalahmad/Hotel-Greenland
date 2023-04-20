@@ -6,7 +6,6 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import CloseIcon from "@mui/icons-material/Close";
 
 const EditForm = ({ data, loading }) => {
-  console.log(data?.name);
   const [name, setName] = useState(data?.name ?? "");
   const [desc, setDesc] = useState(data?.desc) ?? "";
   const [roomType, setRoomType] = useState(data?.roomType) ?? "";
@@ -14,8 +13,49 @@ const EditForm = ({ data, loading }) => {
   const [guests, setGuests] = useState(data?.guests) ?? "";
   const [price, setPrice] = useState(data?.price) ?? "";
   const [isAvailable, setIsAvailability] = useState(data?.isAvailable) ?? "";
+  const [file, setFile] = useState(data?.thumbnail ?? {});
+  const [selectedFiles, setSelectedFiles] = useState(data?.images);
+  console.log(file);
 
-  console.log(name, desc, roomType, weekPrice, guests, price);
+  const handleFileChange = (event) => {
+    const fileList = event.target.files;
+    const fileArray = Array.from(fileList);
+    setSelectedFiles([...selectedFiles, ...fileArray]);
+  };
+
+  // remove selected image
+  const handleRemoveFile = (indexToRemove) => {
+    const updatedFiles = selectedFiles.filter(
+      (file, index) => index !== indexToRemove
+    );
+    setSelectedFiles(updatedFiles);
+  };
+
+  // upload single file
+  const upload = async (file) => {
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      const res = await makeRequest.post("/upload/single", formData);
+      return res.data;
+    } catch (err) {
+      Swal.fire("Error", "Can't upload this image", "error");
+    }
+  };
+
+  // upload single file
+  const uploadMultipleFile = async (files) => {
+    try {
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        formData.append("images", files[i]);
+      }
+      const res = await makeRequest.post("/upload/multiple", formData);
+      return res.data;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const onSubmit = async (e) => {
     // e.preventDefault();
@@ -36,7 +76,16 @@ const EditForm = ({ data, loading }) => {
         </div>
         <div className=" bottom">
           <div className="left">
-            <img src={data?.thumbnail} alt="" />
+            <img
+              src={
+                file
+                  ? typeof file === "string"
+                    ? file
+                    : URL.createObjectURL(file)
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt=""
+            />
           </div>
           <div className="right">
             <form onSubmit={(e) => e.preventDefault()}>
@@ -47,9 +96,8 @@ const EditForm = ({ data, loading }) => {
                 <input
                   type="file"
                   id="thumbnail"
-                  name="thumbnail"
+                  onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }}
-                  disabled
                 />
               </div>
 
