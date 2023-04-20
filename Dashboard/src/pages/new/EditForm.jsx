@@ -33,10 +33,12 @@ const EditForm = ({ data, loading }) => {
   // upload single file
   const upload = async (file) => {
     try {
-      const formData = new FormData();
-      formData.append("image", file);
-      const res = await makeRequest.post("/upload/single", formData);
-      return res.data;
+      if (typeof file !== "string") {
+        const formData = new FormData();
+        formData.append("image", file);
+        const res = await makeRequest.post("/upload/single", formData);
+        return res.data;
+      }
     } catch (err) {
       Swal.fire("Error", "Can't upload this image", "error");
     }
@@ -45,26 +47,42 @@ const EditForm = ({ data, loading }) => {
   // upload single file
   const uploadMultipleFile = async (files) => {
     try {
-      const formData = new FormData();
-      for (let i = 0; i < files.length; i++) {
-        formData.append("images", files[i]);
+      if (!files[0]?.original) {
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+          formData.append("images", files[i]);
+        }
+        const res = await makeRequest.post("/upload/multiple", formData);
+        return res.data;
       }
-      const res = await makeRequest.post("/upload/multiple", formData);
-      return res.data;
     } catch (err) {
       console.error(err);
     }
   };
 
   const onSubmit = async (e) => {
-    // e.preventDefault();
-    console.log(data);
-    // const res = await makeRequest.post(`/room/${_id}`, data);
-    // if (res.data) {
-    //   Swal.fire("Success", "Room Added successfully", "success");
-    // } else {
-    //   Swal.fire("Error", "Something went wrong", "error");
-    // }
+    e.preventDefault();
+    const thumbnail = await upload(file);
+    const images = await uploadMultipleFile(selectedFiles);
+    const _data = {
+      nmae: name,
+      desc: desc,
+      roomType: roomType,
+      weekPrice: weekPrice,
+      guests: guests,
+      price: price,
+      isAvailable: isAvailable,
+      thumbnail: thumbnail ? thumbnail : data?.thumbnail,
+      images: images ? images : data?.images,
+    };
+    console.log(_data);
+
+    const res = await makeRequest.put(`/room/${data?._id}`, _data);
+    if (res.data) {
+      Swal.fire("Success", "Room Added successfully", "success");
+    } else {
+      Swal.fire("Error", "Something went wrong", "error");
+    }
   };
 
   return (
@@ -87,7 +105,7 @@ const EditForm = ({ data, loading }) => {
             />
           </div>
           <div className="right">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={onSubmit}>
               <div className="formInput">
                 <label htmlFor="thumbnail">
                   Thumbnail: <DriveFolderUploadOutlinedIcon className="icon" />
@@ -178,24 +196,26 @@ const EditForm = ({ data, loading }) => {
               </div>
               <div className="images">
                 {selectedFiles &&
-                  selectedFiles.map((file, index) => (
-                    <div key={index} className="container">
-                      <img
-                        src={
-                          file
-                            ? file.filename
-                              ? URL.createObjectURL(file)
+                  selectedFiles.map((file, index) => {
+                    return (
+                      <div key={index} className="container">
+                        <img
+                          src={
+                            file
+                              ? file.original
+                                ? file?.original
+                                : URL.createObjectURL(file)
                               : file?.original
-                            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                        }
-                        alt=""
-                      />
-                      <CloseIcon
-                        className="crossIcon"
-                        onClick={() => handleRemoveFile(index)}
-                      />
-                    </div>
-                  ))}
+                          }
+                          alt=""
+                        />
+                        <CloseIcon
+                          className="crossIcon"
+                          onClick={() => handleRemoveFile(index)}
+                        />
+                      </div>
+                    );
+                  })}
               </div>
               <button type="submit">Update</button>
             </form>
