@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./login.scss";
+import { LoginContext } from "../../context/loginContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { handleLogin } = useContext(LoginContext);
+
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === "greenland" && password === "greenland@123") {
-      console.log("logged in");
+    if (username === "greenland" && password === "ARzQVa7i9phdJzs0/fZlFA==") {
+      localStorage.setItem("username", JSON.stringify(username));
+      handleLogin();
+      Swal.fire("Success", "Logged in successfully", "success");
+    } else {
+      Swal.fire("Error", "Credentials Didn't match", "error");
     }
   };
 

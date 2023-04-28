@@ -9,35 +9,52 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import RoomForm from "./pages/new/RoomForm";
+import { LoginContext } from "./context/loginContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  const { isLoggedIn } = useContext(LoginContext);
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
+            <Route index element={isLoggedIn ? <Home /> : <Login />} />
             <Route path="hotels">
-              <Route index element={<List />} />
-              <Route path=":roomId" element={<Single />} />
+              <Route index element={isLoggedIn ? <List /> : <Login />} />
+              <Route
+                path=":roomId"
+                element={isLoggedIn ? <Single /> : <Login />}
+              />
               <Route
                 path="roomForm"
-                element={<RoomForm inputs={roomInputs} title="Add New Room" />}
+                element={
+                  isLoggedIn ? (
+                    <RoomForm inputs={roomInputs} title="Add New Room" />
+                  ) : (
+                    <Login />
+                  )
+                }
               />
             </Route>
             <Route path="transaction">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
+              <Route index element={isLoggedIn ? <List /> : <Login />} />
+              <Route
+                path=":productId"
+                element={isLoggedIn ? <Single /> : <Login />}
+              />
               <Route
                 path="committeeForm"
                 element={
-                  <CommitteeForm
-                    inputs={committeeInputs}
-                    title="Add New Member"
-                  />
+                  isLoggedIn ? (
+                    <CommitteeForm
+                      inputs={committeeInputs}
+                      title="Add New Member"
+                    />
+                  ) : (
+                    <Login />
+                  )
                 }
               />
             </Route>
