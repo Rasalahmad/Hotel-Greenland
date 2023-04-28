@@ -1,9 +1,41 @@
-import "./login.scss"
+import React, { useState } from "react";
+import "./login.scss";
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
-export default Login
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username === "greenland" && password === "greenland@123") {
+      console.log("logged in");
+    }
+  };
+
+  return (
+    <div className="login-page">
+      <div className="login-card">
+        <h2 className="login-form__title">Hotel Greenland</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            className="login-form__input"
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <input
+            className="login-form__input"
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="login-form__submit" type="submit">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
