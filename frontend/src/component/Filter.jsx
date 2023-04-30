@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-hot-toast";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 // import { handleSearch, setHotel } from "../../features/searchSlice";
 
@@ -15,59 +16,6 @@ const Filter = ({ setSearch }) => {
   const [endDate, setEndDate] = useState(new Date());
   const [room, setRoom] = useState("1 room");
   const [people, setPeople] = useState("1 person");
-  const dispatch = useDispatch();
-
-  const formatStartDate = moment(startDate).format("MMMM Do YYYY");
-  const formatEndDate = moment(endDate).format("MMMM Do YYYY");
-
-  const searchQuery = {
-    startDate: formatStartDate,
-    endDate: formatEndDate,
-    noOfRoom: room,
-    noOfPeople: people,
-    onClick: true,
-  };
-
-  const fetchData = async () => {
-    try {
-      const res = await axios.get(
-        "https://cht-travel-server-production.up.railway.app/hotels"
-      );
-      const data = res.data;
-      if (data) {
-        const filteredData = data.filter((item) => item?.isAvailable === true);
-        // dispatch(setHotel(filteredData));
-      } else {
-        // handle case when no data is returned
-      }
-    } catch (error) {
-      toast.error(error.message);
-      console.error(error);
-    }
-  };
-
-  const handleClick = () => {
-    if (!startDate) {
-      toast.error("Please select Check-in date");
-    } else if (!endDate) {
-      toast.error("Please select Check-out date");
-    } else {
-      // dispatch(handleSearch(searchQuery));
-      fetchData();
-    }
-
-    // call api
-    // const fetchData = async () => {
-    //   const res = await fetch(
-    //     "https://cht-travel-server-production.up.railway.app/hotels"
-    //   );
-    //   const data = await res.json();
-    //   const filteredData = data?.filter((item) => item?.isAvailable === true);
-    //   dispatch(setHotel(filteredData));
-    // };
-
-    // fetchData();
-  };
 
   return (
     <Container>
@@ -145,15 +93,15 @@ const Filter = ({ setSearch }) => {
         </div>
 
         <div className="flex flex-col gap-1 w-full bg-transparent lg:w-1/3 rounded-lg border border-white text-white cursor-pointer">
-          <button className="btn bg-transparent w-full flex items-center justify-center h-full">
+          <Link
+            to={"allRoom"}
+            className="btn bg-transparent w-full flex items-center justify-center h-full"
+          >
             <AiOutlineSearch className="mr-2" size={24} />
-            <div
-              className="bg-transparent gap-2 outline-none text-lg"
-              onClick={handleClick}
-            >
+            <div className="bg-transparent gap-2 outline-none text-lg">
               Search
             </div>
-          </button>
+          </Link>
         </div>
       </div>
     </Container>

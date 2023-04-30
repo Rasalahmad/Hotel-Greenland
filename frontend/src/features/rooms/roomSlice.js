@@ -1,21 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  night: 1,
+  numberOfDays: {
+    night: 1,
+    startDate: "",
+    endDate: "",
+  },
 };
 
 const roomsSlice = createSlice({
   name: "rooms",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.night += 1;
-    },
-    decrement: (state) => {
-      state.night -= 1;
+    BookingTime: (state, { payload }) => {
+      state.numberOfDays = payload;
     },
   },
 });
 
-export const { increment, decrement } = roomsSlice.actions;
+export const { BookingTime } = roomsSlice.actions;
 export default roomsSlice.reducer;

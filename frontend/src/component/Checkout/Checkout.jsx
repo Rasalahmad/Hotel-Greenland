@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import DatePicker from "react-datepicker";
+import DatePicker, { setDefaultLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "../../features/rooms/roomSlice";
+import {
+  BookingTime,
+  decrement,
+  increment,
+} from "../../features/rooms/roomSlice";
+import { differenceInDays, toDate } from "date-fns";
+import moment from "moment";
 
 const Checkout = ({
   noImage,
@@ -16,19 +22,38 @@ const Checkout = ({
   guests,
   name,
 }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const { numberOfDays } = useSelector((state) => state.room);
+  console.log(numberOfDays);
+  const [startDate, setStartDate] = useState(
+    numberOfDays?.startDate ? numberOfDays?.startDate : new Date()
+  );
+  const [endDate, setEndDate] = useState(
+    numberOfDays?.endDate ? numberOfDays?.endDate : new Date()
+  );
+  const [isSelected, setIsSelected] = useState(true);
 
-  const { night } = useSelector((state) => state.room);
+  const night =
+    startDate && endDate && differenceInDays(endDate, startDate) + 1;
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (startDate && endDate) {
+      dispatch(BookingTime({ night, startDate, endDate }));
+    }
+  }, [dispatch, endDate, night, startDate]);
 
   return (
     <Container>
       <div>{!noImage && <Image src={image} />}</div>
       <div>
-        <Heading>
-          {title} <br /> {name}{" "}
-        </Heading>
+        {title || name ? (
+          <Heading>
+            {title} <br /> {name}{" "}
+          </Heading>
+        ) : (
+          <noscript />
+        )}
         <div className="flex text-white gap-4 p-4">
           <div className="flex flex-col gap-1 w-1/2 cursor-pointer bg-black py-5 text-center">
             <label className="-mb-2 text-gray-400 font-bold ">CHECK-IN</label>
@@ -36,13 +61,11 @@ const Checkout = ({
               className="input w-full flex focus:outline-none z-10 bg-transparent text-white text-center"
               placeholderText={"Check-in"}
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
+              onChange={(date) => [setStartDate(date), setIsSelected(false)]}
               startDate={startDate}
               endDate={endDate}
               minDate={new Date()}
               dateFormat="EEE, dd/MM/yy"
-              // formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 3)}
             />
           </div>
           <div className="flex flex-col gap-1 w-1/2 cursor-pointer bg-black py-5 text-center">
@@ -52,12 +75,10 @@ const Checkout = ({
               placeholderText={"Check-in"}
               selected={endDate}
               onChange={(date) => setEndDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              minDate={new Date()}
+              endDate={endDate < startDate ? startDate : endDate}
+              minDate={startDate}
               dateFormat="EEE, dd/MM/yy"
-              // formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 3)}
+              readOnly={isSelected}
             />
           </div>
         </div>
@@ -71,17 +92,17 @@ const Checkout = ({
           <div className="w-1/2 h-28 cursor-pointer bg-black my-8 py-5 text-center text-white">
             NIGHTS
             <div className="flex justify-center gap-8">
-              <button
+              {/* <button
                 onClick={() => dispatch(decrement())}
                 className="btn"
                 disabled={night === 1}
               >
                 -
-              </button>
+              </button> */}
               <p className="text-4xl">{night}</p>
-              <button onClick={() => dispatch(increment())} className="btn">
+              {/* <button onClick={() => dispatch(increment())} className="btn">
                 +
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
