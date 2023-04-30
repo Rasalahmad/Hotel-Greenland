@@ -11,7 +11,7 @@ import restaurantRoute from "./routers/restaurantRoute.js";
 const app = express();
 
 const corsOrigin = {
-  origin: process.env.DOMAINURL,
+  origin: "http://localhost:3000",
   credentials: true,
   optionSuccessStatus: 200,
 };
