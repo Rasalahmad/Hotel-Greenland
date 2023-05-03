@@ -11,11 +11,15 @@ import restaurantRoute from "./routers/restaurantRoute.js";
 const app = express();
 
 const corsOrigin = {
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "http://admin.hotelgreenlandbd.com",
+    "http://www.hotelgreenlandbd.com",
+  ],
   credentials: true,
   optionSuccessStatus: 200,
 };
-app.use(cors());
+app.use(cors(corsOrigin));
 
 // database connection
 mongoose.set("strictQuery", false);
