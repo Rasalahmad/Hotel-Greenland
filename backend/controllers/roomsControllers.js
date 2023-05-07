@@ -29,7 +29,10 @@ export const addRoom = async (req, res) => {
 };
 
 export const getSingleRooms = async (req, res) => {
-  const rooms = await Room.find({ roomType: "single room" });
+  const rooms = await Room.find({
+    roomType: "single room",
+    isAvailable: "Available",
+  });
   try {
     res.status(200).json({
       status: true,
@@ -44,7 +47,10 @@ export const getSingleRooms = async (req, res) => {
   }
 };
 export const getDoubleRooms = async (req, res) => {
-  const rooms = await Room.find({ roomType: "double room" });
+  const rooms = await Room.find({
+    roomType: "double room",
+    isAvailable: "Available",
+  });
   try {
     res.status(200).json({
       status: true,
@@ -59,7 +65,10 @@ export const getDoubleRooms = async (req, res) => {
   }
 };
 export const getSpecialRooms = async (req, res) => {
-  const rooms = await Room.find({ roomType: "special room" });
+  const rooms = await Room.find({
+    roomType: "special room",
+    isAvailable: "Available",
+  });
   try {
     res.status(200).json({
       status: true,
@@ -75,7 +84,7 @@ export const getSpecialRooms = async (req, res) => {
 };
 
 export const getAllRooms = async (req, res) => {
-  const rooms = await Room.find({});
+  const rooms = await Room.find({ isAvailable: "Available" });
   try {
     res.status(200).json({
       status: true,
@@ -139,8 +148,19 @@ export const updateRoomAvailability = async (req, res, next) => {
     );
     res.status(200).json("Room status has been updated.");
   } catch (err) {
-    console.log(err);
-    next(err);
+    res.status(500).json({ status: false, message: "Internal Server Error" });
+  }
+};
+
+export const updateAvailability = async (req, res, next) => {
+  try {
+    const data = await Room.updateOne(
+      { _id: req.params.id },
+      { $set: { isAvailable: req.body.isAvailable } }
+    );
+    res.status(200).json("Room status has been updated.");
+  } catch (err) {
+    res.status(500).json({ status: false, message: "Internal Server Error" });
   }
 };
 

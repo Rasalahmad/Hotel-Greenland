@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Checkout from "../../component/Checkout/Checkout";
 import BookingForm from "../../component/Form/BookingForm";
@@ -55,7 +55,17 @@ const Booking = () => {
     alldates.includes(moment(date).format("YYYY-MM-DD"))
   );
 
-  console.log(isFound);
+  useEffect(() => {
+    if (isFound) {
+      const res = axios.put(
+        `http://localhost:5000/api/room/makeUnavailable/${_id}`,
+        {
+          isAvailable: "Unavailable",
+        }
+      );
+      return res.data;
+    }
+  }, [_id, isFound]);
 
   const onSubmit = (data) => {
     const finalData = {

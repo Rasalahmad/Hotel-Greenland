@@ -7,6 +7,7 @@ import {
   getRoom,
   getSingleRooms,
   getSpecialRooms,
+  updateAvailability,
   updateRoom,
   updateRoomAvailability,
 } from "../controllers/roomsControllers.js";
@@ -16,6 +17,7 @@ const router = express.Router();
 router.post("/", addRoom);
 router.put("/:id", updateRoom);
 router.put("/availability/:id", updateRoomAvailability);
+router.put("/makeUnavailable/:id", updateAvailability);
 router.delete("/:id", deleteRoom);
 router.get("/singleRooms", getSingleRooms);
 router.get("/doubleRooms", getDoubleRooms);
