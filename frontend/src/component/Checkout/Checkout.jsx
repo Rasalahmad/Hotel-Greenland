@@ -92,17 +92,7 @@ const Checkout = ({
           <div className="w-1/2 h-28 cursor-pointer bg-black my-8 py-5 text-center text-white">
             NIGHTS
             <div className="flex justify-center gap-8">
-              {/* <button
-                onClick={() => dispatch(decrement())}
-                className="btn"
-                disabled={night === 1}
-              >
-                -
-              </button> */}
               <p className="text-4xl">{night}</p>
-              {/* <button onClick={() => dispatch(increment())} className="btn">
-                +
-              </button> */}
             </div>
           </div>
         </div>

@@ -5,12 +5,12 @@ import { useSelector } from "react-redux";
 
 const BookingForm = ({ price, name, img }) => {
   const { register, handleSubmit, errors } = useForm();
-  const { night } = useSelector((state) => state.room);
+  const { numberOfDays } = useSelector((state) => state.room);
 
   const onSubmit = (data) => {
     const finalData = {
       ...data,
-      price: Number(night) * Number(price),
+      price: Number(numberOfDays?.night) * Number(price),
       productName: name,
       img: img,
       status: "pending",
