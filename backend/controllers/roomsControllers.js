@@ -106,11 +106,10 @@ export const getRoom = async (req, res) => {
   }
 };
 
-
 export const updateRoom = async (req, res, next) => {
   try {
     const updated = await Room.findByIdAndUpdate(
-      {_id: ObjectId(req.params.id)},
+      { _id: ObjectId(req.params.id) },
       { $set: req.body },
       { new: true }
     );
@@ -125,6 +124,22 @@ export const updateRoom = async (req, res, next) => {
       message: "Room can't update",
       error,
     });
+  }
+};
+
+export const updateRoomAvailability = async (req, res, next) => {
+  try {
+    await Room.updateOne(
+      { _id: ObjectId(req.params.id) },
+      {
+        $push: {
+          unavailableDates: req.body.dates,
+        },
+      }
+    );
+    res.status(200).json("Room status has been updated.");
+  } catch (err) {
+    next(err);
   }
 };
 

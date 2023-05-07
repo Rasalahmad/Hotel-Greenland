@@ -57,6 +57,9 @@ const roomsSchema = mongoose.Schema(
         icon: String,
       },
     ],
+    unavailableDates: {
+      type: [Date],
+    },
   },
   {
     timestamps: true,
