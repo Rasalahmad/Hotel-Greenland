@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Checkout from "../../component/Checkout/Checkout";
 import BookingForm from "../../component/Form/BookingForm";
@@ -25,6 +25,7 @@ const Booking = () => {
     thumbnail,
     unavailableDates,
   } = room?.data || {};
+  const [payLater, setPayLater] = useState("");
 
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -121,6 +122,8 @@ const Booking = () => {
           img={thumbnail}
           name={name}
           onSubmit={onSubmit}
+          payLater={payLater}
+          setPayLater={setPayLater}
         />
       </Container>
     );

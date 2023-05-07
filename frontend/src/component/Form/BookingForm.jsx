@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
-const BookingForm = ({ onSubmit }) => {
+const BookingForm = ({ onSubmit, payLater, setPayLater }) => {
   const { register, handleSubmit, errors } = useForm();
-
   return (
     <Container>
       <LoginInfo>
@@ -108,13 +107,27 @@ const BookingForm = ({ onSubmit }) => {
           <Label>Coupon</Label>
           <Input type="text" />
         </div> */}
-        <div className="my-4 flex items-center">
-          <input className="w-5 h-5" type="checkbox" id="tc" required />
-          <label for="tc" className="ml-2 text-base cursor-pointer">
-            Terms and Condition *
-          </label>
+        <div className="flex gap-5">
+          <div className="my-4 flex items-center">
+            <input className="w-5 h-5" type="checkbox" id="tc" required />
+            <label for="tc" className="ml-2 text-base cursor-pointer">
+              Terms and Condition *
+            </label>
+          </div>
+          <div className="my-4 flex items-center">
+            <input
+              className="w-5 h-5"
+              type="checkbox"
+              id="paylater"
+              onChange={(e) => setPayLater(e.target.checked)}
+              checked={payLater}
+            />
+            <label for="paylater" className="ml-2 text-base cursor-pointer">
+              Pay Later
+            </label>
+          </div>
         </div>
-        <Button type="submit" value={"Checkout"} />
+        <Button type="submit" value={payLater ? "Pay In Cash" : "Checkout"} />
       </Form>
     </Container>
   );
