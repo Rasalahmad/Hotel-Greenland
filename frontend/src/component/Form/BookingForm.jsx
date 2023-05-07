@@ -1,32 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
 
-const BookingForm = ({ price, name, img }) => {
+const BookingForm = ({ onSubmit }) => {
   const { register, handleSubmit, errors } = useForm();
-  const { numberOfDays } = useSelector((state) => state.room);
-
-  const onSubmit = (data) => {
-    const finalData = {
-      ...data,
-      price: Number(numberOfDays?.night) * Number(price),
-      productName: name,
-      img: img,
-      status: "pending",
-    };
-    fetch("http://localhost:5000/init", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(finalData),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        window.location.replace(result);
-      });
-  };
 
   return (
     <Container>

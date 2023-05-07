@@ -23,7 +23,6 @@ const Checkout = ({
   name,
 }) => {
   const { numberOfDays } = useSelector((state) => state.room);
-  console.log(numberOfDays);
   const [startDate, setStartDate] = useState(
     numberOfDays?.startDate ? numberOfDays?.startDate : new Date()
   );
