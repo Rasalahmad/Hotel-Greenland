@@ -76,6 +76,10 @@ const Booking = () => {
       img: thumbnail,
       status: "pending",
     };
+    if (payLater) {
+      // booking page
+      console.log(finalData);
+    }
     // fetch("http://localhost:5000/init", {
     //   method: "POST",
     //   headers: {
