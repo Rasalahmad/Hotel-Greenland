@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
-const BookingForm = ({ onSubmit, payLater, setPayLater }) => {
+const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
   const { register, handleSubmit, errors } = useForm();
   return (
     <Container>
@@ -127,7 +127,11 @@ const BookingForm = ({ onSubmit, payLater, setPayLater }) => {
             </label>
           </div>
         </div>
-        <Button type="submit" value={payLater ? "Pay In Cash" : "Checkout"} />
+        <Button
+          type="submit"
+          disabled={isFound}
+          value={payLater ? "Pay In Cash" : "Checkout"}
+        />
       </Form>
     </Container>
   );

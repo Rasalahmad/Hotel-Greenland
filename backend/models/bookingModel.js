@@ -5,11 +5,11 @@ const bookingSchema = mongoose.Schema(
     transID: {
       type: String,
     },
-    customer: {
+    name: {
       type: String,
       required: [true, "Room type is required"],
     },
-    mobile: {
+    phone: {
       type: String,
       required: true,
     },
@@ -29,7 +29,24 @@ const bookingSchema = mongoose.Schema(
     guests: Number,
     paymentMethod: {
       type: String,
-      required: true,
+    },
+    address: {
+      type: String,
+    },
+    arrival: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    img: {
+      type: String,
+    },
+    request: {
+      type: String,
+    },
+    status: {
+      type: String,
     },
   },
   {

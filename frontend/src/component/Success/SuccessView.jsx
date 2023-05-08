@@ -1,8 +1,12 @@
+import moment from "moment";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SuccessView = () => {
-  const nANa = "Nano";
+  const { state } = useLocation();
+  const { paymentMethod, price, roomName, status, bookingDates } =
+    state.booking;
+  const lastIndex = bookingDates.length - 1;
   return (
     <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12">
       <div class=" w-full my-auto lg:mb-0 mb-10 ">
@@ -24,22 +28,32 @@ const SuccessView = () => {
             <div className=" text-left text-lg font-semibold mt-10">
               <p className="flex justify-between">
                 Payment type
-                <span>{nANa}</span>
+                <span>{paymentMethod}</span>
+              </p>
+              {paymentMethod !== "Cash" && (
+                <p className="flex justify-between">
+                  Transaction Id <span>1211653513213212</span>
+                </p>
+              )}
+              <p className="flex justify-between">
+                Amount {paymentMethod === "Cash" && "have to "} paid{" "}
+                <span>{price}</span>
               </p>
               <p className="flex justify-between">
-                Transaction Id <span>{nANa}</span>
+                Room <span>{roomName}</span>
               </p>
               <p className="flex justify-between">
-                Amount paid <span>{nANa}</span>
+                status <span>{status}</span>
               </p>
               <p className="flex justify-between">
-                Bank <span>{nANa}</span>
-              </p>
-              <p className="flex justify-between">
-                Mobile <span>{nANa}</span>
-              </p>
-              <p className="flex justify-between">
-                Email <span>{nANa}</span>
+                Booking Dates{" "}
+                <span>
+                  {moment(bookingDates[0]).format("DD-MM-YYYY")}
+                  {lastIndex > 0 &&
+                    ` to ${moment(bookingDates[lastIndex * 1]).format(
+                      "DD-MM-YYYY"
+                    )}`}
+                </span>
               </p>
             </div>
 

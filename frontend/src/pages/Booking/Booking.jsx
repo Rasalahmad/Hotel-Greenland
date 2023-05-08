@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Checkout from "../../component/Checkout/Checkout";
 import BookingForm from "../../component/Form/BookingForm";
-import { useParams } from "react-router-dom";
+import { Navigate, Route, useNavigate, useParams } from "react-router-dom";
 import { useGetRoomQuery } from "../../features/rooms/roomApi";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import axios from "axios";
+import SuccessView from "../../component/Success/SuccessView";
+import {
+  useCreateBookingMutation,
+  useMarkUnavailableMutation,
+} from "../../features/booking/bookingApi";
 
 const Booking = () => {
   const { roomId } = useParams();
   const { numberOfDays } = useSelector((state) => state.room);
   const { data: room, isLoading, isError, error } = useGetRoomQuery(roomId);
+
   const {
     _id,
     name,
@@ -26,6 +32,8 @@ const Booking = () => {
     unavailableDates,
   } = room?.data || {};
   const [payLater, setPayLater] = useState("");
+
+  const navigate = useNavigate();
 
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -68,37 +76,37 @@ const Booking = () => {
     }
   }, [_id, isFound]);
 
+  const [markUnavailable] = useMarkUnavailableMutation();
+  const [createBooking] = useCreateBookingMutation();
+
   const onSubmit = (data) => {
     const finalData = {
       ...data,
       price: Number(numberOfDays?.night) * Number(price),
-      productName: name,
+      roomName: name,
       img: thumbnail,
       status: "pending",
+      bookingDates: alldates,
+      paymentMethod: payLater ? "Cash" : "",
     };
-    if (payLater) {
-      // booking page
-      console.log(finalData);
-    }
-    // fetch("http://localhost:5000/init", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(finalData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //   });
-    // Mark the room as unavailable for the selected dates
-    const res = axios.put(
-      `http://localhost:5000/api/room/availability/${_id}`,
-      {
-        dates: alldates,
-      }
-    );
-    return res.data;
+
+    markUnavailable({ roomId: _id, dates: alldates })
+      .unwrap()
+      .then(() => {
+        createBooking(finalData)
+          .unwrap()
+          .then((res) => {
+            const booking = res.data;
+            console.log(booking);
+            navigate("/success", { state: { booking } });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   let content = null;
@@ -128,6 +136,7 @@ const Booking = () => {
           onSubmit={onSubmit}
           payLater={payLater}
           setPayLater={setPayLater}
+          isFound={isFound}
         />
       </Container>
     );
