@@ -7,6 +7,7 @@ import { SslCommerzPayment } from "sslcommerz";
 import roomsRoute from "./routers/roomsRoute.js";
 import newsRoute from "./routers/newsRoute.js";
 import restaurantRoute from "./routers/restaurantRoute.js";
+import bookingRoute from "./routers/bookingRoute.js";
 
 const app = express();
 
@@ -154,6 +155,7 @@ app.post("/cancel", async (req, res) => {
 app.use("/api/room", roomsRoute);
 app.use("/api/news", newsRoute);
 app.use("/api/restaurant", restaurantRoute);
+app.use("/api/booking", bookingRoute);
 
 app.listen(process.env.PORT, () => {
   connect();
