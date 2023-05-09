@@ -127,11 +127,7 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
             </label>
           </div>
         </div>
-        <Button
-          type="submit"
-          disabled={isFound}
-          value={payLater ? "Pay In Cash" : "Checkout"}
-        />
+        <Button type="submit" value={payLater ? "Pay In Cash" : "Checkout"} />
       </Form>
     </Container>
   );

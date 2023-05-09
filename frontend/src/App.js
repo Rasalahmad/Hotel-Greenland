@@ -2,11 +2,13 @@ import React from "react";
 import { RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import { router } from "./Routes/Routes/routes";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <Container>
       <RouterProvider router={router}></RouterProvider>
+      <Toaster />
     </Container>
   );
 }

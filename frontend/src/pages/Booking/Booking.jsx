@@ -12,6 +12,7 @@ import {
   useCreateBookingMutation,
   useMarkUnavailableMutation,
 } from "../../features/booking/bookingApi";
+import toast from "react-hot-toast";
 
 const Booking = () => {
   const { roomId } = useParams();
@@ -79,7 +80,13 @@ const Booking = () => {
   const [markUnavailable] = useMarkUnavailableMutation();
   const [createBooking] = useCreateBookingMutation();
 
+  const notify = () => toast.error("This room is not available for now");
+
   const onSubmit = (data) => {
+    if (isFound) {
+      notify();
+      return;
+    }
     const finalData = {
       ...data,
       price: Number(numberOfDays?.night) * Number(price),
