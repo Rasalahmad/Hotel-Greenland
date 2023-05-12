@@ -1,12 +1,20 @@
 import Booking from "../models/bookingModel.js";
+import { sendMailWithGmail } from "../util.js/email.js";
 
 export const addBooking = async (req, res) => {
   const booking = new Booking(req.body);
   try {
+    const mailData = {
+      to: [booking?.email],
+      subject: `${booking?.roomName} booked successfully`,
+      text: `Dear ${booking?.name}, \n Welcome to Hotel Greenland. ${booking?.roomName} has been booked successfully. \n you have to pay ${booking?.price}tk on cash when checkIn. \n payment status: ${booking?.status} \n Thank you.`,
+    };
+    await sendMailWithGmail(mailData);
+
     const result = await booking.save();
     res.status(200).json({
       status: true,
-      message: "Book successfully",
+      message: "Booked successfully",
       data: result,
     });
   } catch (error) {

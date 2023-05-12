@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { sendMailWithGmail } from "../util.js/email";
+import { sendMailWithGmail } from "../util.js/email.js";
 dotenv.config();
 
 export const sendEmail = async (req, res) => {
@@ -7,7 +7,7 @@ export const sendEmail = async (req, res) => {
     const mailData = {
       to: [req.email],
       subject: req.subject,
-      text: req.test,
+      text: req.text,
     };
     await sendMailWithGmail(mailData);
 
