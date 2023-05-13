@@ -10,7 +10,7 @@ const Contact = () => {
           <img
             src="https://img.freepik.com/free-vector/hotel-building-concept-illustration_114360-14039.jpg?w=2000"
             alt=""
-            srcset=""
+            srcSet=""
           />
         </div>
         <div className=" flex items-center justify-center col-span-6 lg:mr-[20px]">

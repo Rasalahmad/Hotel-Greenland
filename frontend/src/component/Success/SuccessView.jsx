@@ -1,12 +1,32 @@
 import moment from "moment";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const SuccessView = () => {
   const { state } = useLocation();
   const { paymentMethod, price, roomName, status, bookingDates } =
     state.booking;
   const lastIndex = bookingDates.length - 1;
+
+  const handleDownload = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "http://localhost:5000/api/download-pdf",
+        { paymentMethod, price, roomName, status, bookingDates },
+        { responseType: "blob" }
+      )
+      .then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "booking.pdf");
+        document.body.appendChild(link);
+        link.click();
+      });
+  };
+
   return (
     <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12">
       <div class=" w-full my-auto lg:mb-0 mb-10 ">
@@ -57,14 +77,22 @@ const SuccessView = () => {
               </p>
             </div>
 
-            <div class="py-10 text-center">
-              <Link
-                to="/"
-                class="px-12 bg-gray-600 hover:bg-gray-500 rounded-lg text-white font-semibold py-3"
-              >
-                GO BACK
-              </Link>
-              <p class="text-gray-600 my-2 mt-8">
+            <div className="py-10 text-center">
+              <div className="flex justify-between">
+                <Link
+                  to="/"
+                  className="px-12 bg-green-400 hover:bg-green-500 rounded-lg text-white font-semibold py-3"
+                >
+                  GO BACK
+                </Link>
+                <button
+                  onClick={handleDownload}
+                  className="px-12 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold py-3"
+                >
+                  Download Pdf
+                </button>
+              </div>
+              <p className="text-gray-600 my-2 mt-8">
                 Thank you for completing your secure online payment.
               </p>
               <p> Have a great day! </p>
@@ -77,7 +105,7 @@ const SuccessView = () => {
           className=" w-[800px] "
           src="https://www.pngmart.com/files/7/Payment-PNG-Free-Download.png"
           alt=""
-          srcset=""
+          srcSet=""
         />
       </div>
     </div>
