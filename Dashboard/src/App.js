@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import RoomForm from "./pages/new/RoomForm";
 import { LoginContext } from "./context/loginContext";
+import Booking from "./pages/single/Booking";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -38,11 +39,11 @@ function App() {
                 }
               />
             </Route>
-            <Route path="transaction">
+            <Route path="booking">
               <Route index element={isLoggedIn ? <List /> : <Login />} />
               <Route
-                path=":productId"
-                element={isLoggedIn ? <Single /> : <Login />}
+                path=":bookingId"
+                element={isLoggedIn ? <Booking /> : <Login />}
               />
               <Route
                 path="committeeForm"

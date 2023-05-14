@@ -16,7 +16,7 @@ const List = () => {
         <Navbar />
         {location?.pathname === "/hotels" ? (
           <HotelDataTable />
-        ) : location?.pathname === "/transaction" ? (
+        ) : location?.pathname === "/booking" ? (
           <TransactionDataTable />
         ) : (
           <></>

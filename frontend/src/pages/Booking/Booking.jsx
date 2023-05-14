@@ -18,8 +18,16 @@ const Booking = () => {
   const { numberOfDays } = useSelector((state) => state.room);
   const { data: room, isLoading, isError, error } = useGetRoomQuery(roomId);
 
-  const { _id, name, guests, price, thumbnail, unavailableDates } =
-    room?.data || {};
+  const {
+    _id,
+    name,
+    guests,
+    price,
+    thumbnail,
+    unavailableDates,
+    desc,
+    isAvailable,
+  } = room?.data || {};
   const [payLater, setPayLater] = useState("");
 
   const navigate = useNavigate();
@@ -82,7 +90,10 @@ const Booking = () => {
       img: thumbnail,
       status: "pending",
       bookingDates: alldates,
-      paymentMethod: payLater ? "Cash" : "",
+      paymentMethod: payLater ? "Unpaid" : "",
+      guests: guests,
+      desc: desc,
+      isAvailable: isAvailable,
     };
 
     markUnavailable({ roomId: _id, dates: alldates })

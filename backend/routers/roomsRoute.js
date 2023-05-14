@@ -3,6 +3,7 @@ import {
   addRoom,
   deleteRoom,
   getAllRooms,
+  getAllRoomsInDashBoard,
   getDoubleRooms,
   getRoom,
   getSingleRooms,
@@ -23,6 +24,7 @@ router.get("/singleRooms", getSingleRooms);
 router.get("/doubleRooms", getDoubleRooms);
 router.get("/specialRooms", getSpecialRooms);
 router.get("/getAllRoom", getAllRooms);
+router.get("/getAllRooms", getAllRoomsInDashBoard);
 router.get("/getRoom/:id", getRoom);
 
 export default router;

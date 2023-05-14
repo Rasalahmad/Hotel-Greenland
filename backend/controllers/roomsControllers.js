@@ -99,6 +99,22 @@ export const getAllRooms = async (req, res) => {
   }
 };
 
+export const getAllRoomsInDashBoard = async (req, res) => {
+  const rooms = await Room.find();
+  try {
+    res.status(200).json({
+      status: true,
+      data: rooms,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
 export const getRoom = async (req, res) => {
   const room = await Room.findOne({ _id: ObjectId(req.params.id) });
   try {

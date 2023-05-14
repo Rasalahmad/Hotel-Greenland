@@ -1,5 +1,6 @@
 import Booking from "../models/bookingModel.js";
 import { sendMailWithGmail } from "../util.js/email.js";
+import { ObjectId } from "mongodb";
 
 export const addBooking = async (req, res) => {
   const booking = new Booking(req.body);
@@ -37,6 +38,22 @@ export const addBooking = async (req, res) => {
 
 export const getBooking = async (req, res) => {
   const booking = await Booking.find({});
+  try {
+    res.status(200).json({
+      status: true,
+      data: booking,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
+export const getSingleBooking = async (req, res) => {
+  const booking = await Booking.findById({ _id: ObjectId(req.params.id) });
   try {
     res.status(200).json({
       status: true,

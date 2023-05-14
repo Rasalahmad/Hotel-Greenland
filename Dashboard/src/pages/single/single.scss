@@ -39,7 +39,15 @@
             border-radius: 50%;
             object-fit: cover;
           }
-
+          .bookingImg {
+            width: 400px;
+            object-fit: contain;
+            flex: 1;
+            max-height: 400px;
+          }
+          .bookingDeatils {
+            flex: 1;
+          }
           .details {
             .itemTitle {
               margin-bottom: 10px;
@@ -92,8 +100,8 @@
   }
 
   .form {
-    padding: 20px 40px ;
-    .tiny{
+    padding: 20px 40px;
+    .tiny {
       text-align: center;
       margin-bottom: 30px;
     }
@@ -102,44 +110,43 @@
       font-weight: 700;
       font-size: large;
     }
-    .input{
+    .input {
       color: #5a5a5a;
       border-radius: 5px;
       padding: 8px 16px;
     }
-    .input[type="text"],[type="number"], select {
+    .input[type="text"],
+    [type="number"],
+    select {
       width: 100%;
       height: 100%;
       outline: 0;
       font-size: 14px;
       line-height: 1.4;
       border-radius: 3px;
-      border: 1px solid rgba(255,255,255,0);
+      border: 1px solid rgba(255, 255, 255, 0);
       background-color: #e0e0e0;
       box-sizing: border-box;
       transition: all 0.3s ease-in-out;
       margin-bottom: 0;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 40px 0px;
+      border: none;
+      color: #fff;
+      background: #434bdf;
+      outline: none;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 25px;
+      color: #fff;
+      font-weight: 600;
+      font-size: medium;
+      font-weight: 800;
+    }
   }
-  .button{
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin: 40px 0px;
-    border: none;
-    color: #fff;
-    background: #434bdf;
-    outline: none;
-    cursor: pointer;
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px 25px;
-    color: #fff;
-    font-weight: 600;
-    font-size: medium;
-    font-weight: 800;
-  }
-  }
-  
 }
-
-

@@ -44,10 +44,10 @@ const Sidebar = () => {
               <span>Hotels</span>
             </li>
           </Link>
-          <Link to="/transaction" style={{ textDecoration: "none" }}>
+          <Link to="/booking" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
-              <span>Transaction</span>
+              <span>Bookings</span>
             </li>
           </Link>
           <li>

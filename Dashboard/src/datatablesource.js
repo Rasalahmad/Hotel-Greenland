@@ -39,15 +39,15 @@ export const userColumns = [
 ];
 
 export const transColumns = [
-  { field: "transId", headerName: "Transaction ID", width: 200 },
+  // { field: "transId", headerName: "Transaction ID", width: 200 },
   {
     field: "room",
     headerName: "Room",
-    width: 200,
+    width: 250,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.roomImage} alt="avatar" />
+          <img className="cellImg" src={params.row.img} alt="avatar" />
           {params.row.roomName}
         </div>
       );
@@ -59,19 +59,18 @@ export const transColumns = [
     headerName: "Customer",
     width: 150,
   },
-
   {
-    field: "date",
-    headerName: "Date",
-    width: 250,
+    field: "email",
+    headerName: "Email",
+    width: 200,
   },
   {
-    field: "checkInTime",
-    headerName: "CheckIn",
-    width: 100,
+    field: "phone",
+    headerName: "Mobile No.",
+    width: 150,
   },
   {
-    field: "payment",
+    field: "paymentMethod",
     headerName: "Payment Method",
     width: 100,
   },
