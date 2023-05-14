@@ -68,7 +68,7 @@ const Booking = () => {
   useEffect(() => {
     if (isFound) {
       const res = axios.put(
-        `http://localhost:5000/api/room/makeUnavailable/${_id}`,
+        `http://api.hotelgreenlandbd.com/api/room/makeUnavailable/${_id}`,
         {
           isAvailable: "Unavailable",
         }
