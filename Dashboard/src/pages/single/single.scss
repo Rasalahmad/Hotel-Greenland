@@ -76,6 +76,16 @@
                 }
               }
             }
+            .button {
+              margin-top: 15px;
+              background-color: lightgreen;
+              padding: 5px 10px;
+              outline: none;
+              border-radius: 5px;
+              border: none;
+              cursor: pointer;
+              font-size: 16px;
+            }
           }
         }
       }

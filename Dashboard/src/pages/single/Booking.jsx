@@ -49,11 +49,13 @@ const Booking = () => {
     price,
     isAvailable,
     bookingDates,
-  } = data;
+  } = data || {};
 
-  const lastIndex = bookingDates?.length > 0 && bookingDates?.length - 1;
+  console.log(bookingDates?.[0]);
 
-  const toggleModal = () => {
+  const lastIndex = bookingDates?.length && bookingDates?.length - 1;
+
+  const handleStatus = () => {
     setIsActive(!isActive);
   };
 
@@ -72,19 +74,6 @@ const Booking = () => {
             <Navbar />
             <div className="top">
               <div className="leftSide">
-                <>
-                  <button onClick={toggleModal} className="editButton">
-                    Edit
-                  </button>
-                  <div className={`modal ${isActive ? "active" : ""}`}>
-                    <div className="modal-content">
-                      <span className="close-button">
-                        <CloseIcon onClick={toggleModal}></CloseIcon>
-                      </span>
-                      {isActive && <EditForm loading={loading} data={data} />}
-                    </div>
-                  </div>
-                </>
                 <h1 className="title">Room Details</h1>
                 <div className="item">
                   <img src={img} alt="" className="bookingImg" />
@@ -152,17 +141,18 @@ const Booking = () => {
                     <div className="detailItem">
                       <span className="itemKey">Booking Dates :</span>
                       <span className="itemValue">
-                        {/* {moment(bookingDates[0]).format("DD-MM-YYYY")}
+                        {moment(bookingDates?.[0]).format("DD-MM-YYYY")}
                         {lastIndex > 0 &&
-                          ` to ${moment(bookingDates[lastIndex * 1]).format(
+                          ` to ${moment(bookingDates[lastIndex * 1])?.format(
                             "DD-MM-YYYY"
-                          )}`} */}
+                          )}`}
                       </span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Status :</span>
                       <span className="itemValue">{status}</span>
                     </div>
+                    <button className="button">Change Status</button>
                   </div>
                   <img
                     src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg"
