@@ -2,6 +2,7 @@ import moment from "moment";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const SuccessView = () => {
   const { state } = useLocation();
@@ -18,6 +19,9 @@ const SuccessView = () => {
         { responseType: "blob" }
       )
       .then((response) => {
+        if (!response.data) {
+          toast.loading("Generating your pdf. please wait...");
+        }
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;

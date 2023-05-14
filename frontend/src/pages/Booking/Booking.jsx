@@ -7,7 +7,6 @@ import { useGetRoomQuery } from "../../features/rooms/roomApi";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import axios from "axios";
-import SuccessView from "../../component/Success/SuccessView";
 import {
   useCreateBookingMutation,
   useMarkUnavailableMutation,
@@ -19,19 +18,8 @@ const Booking = () => {
   const { numberOfDays } = useSelector((state) => state.room);
   const { data: room, isLoading, isError, error } = useGetRoomQuery(roomId);
 
-  const {
-    _id,
-    name,
-    images,
-    guests,
-    price,
-    night,
-    weekPrice,
-    desc,
-    around,
-    thumbnail,
-    unavailableDates,
-  } = room?.data || {};
+  const { _id, name, guests, price, thumbnail, unavailableDates } =
+    room?.data || {};
   const [payLater, setPayLater] = useState("");
 
   const navigate = useNavigate();
@@ -104,8 +92,13 @@ const Booking = () => {
           .unwrap()
           .then((res) => {
             const booking = res.data;
-            console.log(booking);
-            navigate("/success", { state: { booking } });
+            if (!booking) {
+              toast.loading(
+                "Please wait. We will redirect you into the success page"
+              );
+            } else {
+              navigate("/success", { state: { booking } });
+            }
           })
           .catch((error) => {
             console.log(error);
