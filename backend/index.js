@@ -16,8 +16,10 @@ const app = express();
 const corsOrigin = {
   origin: [
     "http://localhost:3000",
-    "http://admin.hotelgreenlandbd.com",
+    "http://www.admin.hotelgreenlandbd.com",
     "http://www.hotelgreenlandbd.com",
+    "http://hotelgreenlandbd.com",
+    "http://admin.hotelgreenlandbd.com",
   ],
   credentials: true,
   optionSuccessStatus: 200,
