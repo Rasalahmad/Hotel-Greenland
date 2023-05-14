@@ -11,6 +11,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import RoomForm from "./pages/new/RoomForm";
 import { LoginContext } from "./context/loginContext";
 import Booking from "./pages/single/Booking";
+import RestaurantData from "./components/datatable/RestaurantData";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -38,6 +39,10 @@ function App() {
                   )
                 }
               />
+            </Route>
+            <Route path="restaurant">
+              <Route index element={isLoggedIn ? <List /> : <Login />} />
+             
             </Route>
             <Route path="booking">
               <Route index element={isLoggedIn ? <List /> : <Login />} />

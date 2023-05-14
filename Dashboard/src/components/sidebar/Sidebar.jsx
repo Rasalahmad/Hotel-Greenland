@@ -11,6 +11,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -42,6 +43,12 @@ const Sidebar = () => {
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Hotels</span>
+            </li>
+          </Link>
+          <Link to="/restaurant" style={{ textDecoration: "none" }}>
+            <li>
+              <RestaurantMenuIcon className="icon" />
+              <span>Restaurant</span>
             </li>
           </Link>
           <Link to="/booking" style={{ textDecoration: "none" }}>
