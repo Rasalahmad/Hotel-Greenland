@@ -42,3 +42,21 @@ export const addFood = async (req, res) => {
           });
         }
       };
+
+      export const getSingleFood = async (req, res) => {
+        const food = await Restaurnt.find({
+          title: req.params.title,
+        });
+        try {
+          res.status(200).json({
+            status: true,
+            data: food,
+          });
+        } catch (error) {
+          res.status(400).json({
+            status: false,
+            message: "Data can't fetch",
+            error,
+          });
+        }
+      };

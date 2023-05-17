@@ -160,3 +160,95 @@
     }
   }
 }
+.restaurant {
+  display: flex;
+  width: 100%;
+  .restaurantContainer {
+    flex: 6;
+    .top {
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+
+      .leftSide {
+        flex: 1;
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        padding: 20px;
+        position: relative;
+        min-width: 300px;
+
+        .editButton {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 5px;
+          font-size: 15px;
+          color: rgb(135, 216, 12);
+          background-color: #7551f818;
+          cursor: pointer;
+          border: 1px solid rgb(135, 216, 12);
+
+          border-radius: 0px 0px 0px 5px;
+        }
+        .details {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .itemKey {
+            font-weight: bold;
+            color: gray;
+            margin-right: 5px;
+            font-size: 25px;
+          }
+
+          .itemValue {
+            font-weight: 400;
+            font-size: 20px;
+            color: rgb(135, 216, 12);
+          }
+        }
+      }
+      .right {
+        flex: 2;
+        .link {
+          text-decoration: none;
+          color: rgb(135, 216, 12);
+          font-size: 16px;
+          font-weight: 400;
+          background-color: #7551f818;;
+          border: 1px solid rgb(135, 216, 12);
+          padding: 5px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .dish {
+          display: flex;
+          -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+          box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+          padding: 20px;
+          position: relative;
+          justify-content: space-around;
+          align-items: center;
+          .dishImg {
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            border: 3px solid rgb(135, 216, 12);
+          }
+
+          .tagPrice {
+            margin-top: 15px;
+            display: flex;
+            gap: 30px;
+            .price {
+              font-size: 19px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
