@@ -78,7 +78,6 @@ const Restaurant = () => {
                   <div>
                     <span className="itemKey">Menu Title :</span>
                     <span className="itemValue">{item?.title}</span>
-                    {item?.title}
                     <p>
                       <span className="itemKey">Tiny Title :</span>
                       <span className="itemValue">{item?.tiny_title}</span>
@@ -92,18 +91,17 @@ const Restaurant = () => {
                 </div>
                 {item?.dishes.map((vol) => (
                   <div className="dish">
-                    <div >
-                      <img
-                        src={vol?.img}
-                        className="dishImg"
-                        alt=""
-                      />
+                    <div>
+                      <img src={vol?.img} className="dishImg" alt="" />
                     </div>
                     <div>
                       <h2>Blue Cheese Crackers with Grapes</h2>
                       <div className="tagPrice">
                         <p>{vol?.dish_tag}</p>
-                        <p><span className="price">Price: </span>{vol?.price} ৳</p>
+                        <p>
+                          <span className="price">Price: </span>
+                          {vol?.price} ৳
+                        </p>
                       </div>
                     </div>
                   </div>
