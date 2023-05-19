@@ -5,8 +5,9 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useParams } from "react-router-dom";
 import { makeRequest } from "../../axios";
-import EditForm from "../new/EditForm";
 import CloseIcon from "@mui/icons-material/Close";
+import RestaurantForm from "../new/RestaurantForm";
+import DishesForm from "../new/DishesForm";
 
 const Restaurant = () => {
   const { restaurantTitle } = useParams();
@@ -27,13 +28,15 @@ const Restaurant = () => {
     };
     fetchData();
   }, [restaurantTitle]);
-
   const [isActive, setIsActive] = useState(false);
+  const [active, setActive] = useState(false);
 
   const toggleModal = () => {
     setIsActive(!isActive);
   };
-  console.log(data);
+  const modal = () => {
+    setActive(!active);
+  };
   if (!data) {
     return (
       <div className="single">
@@ -63,7 +66,7 @@ const Restaurant = () => {
                       <span className="close-button">
                         <CloseIcon onClick={toggleModal}></CloseIcon>
                       </span>
-                      {isActive && <EditForm loading={loading} data={data} />}
+                      {isActive && <RestaurantForm loading={loading} isActive={isActive} toggleModal={toggleModal} data={item}/>}
                     </div>
                   </div>
                 </>
@@ -78,7 +81,6 @@ const Restaurant = () => {
                   <div>
                     <span className="itemKey">Menu Title :</span>
                     <span className="itemValue">{item?.title}</span>
-                    {item?.title}
                     <p>
                       <span className="itemKey">Tiny Title :</span>
                       <span className="itemValue">{item?.tiny_title}</span>
@@ -87,11 +89,22 @@ const Restaurant = () => {
                 </div>
               </div>
               <div className="right">
-                <div className="">
-                  <button className="link">Add New Dish</button>
-                </div>
+              <>
+                  <button onClick={modal} className="editButton link">
+                  Add New Dish
+                  </button>
+                  <div className={`modal ${active ? "active" : ""}`}>
+                    <div className="modal-content">
+                      <span className="close-button">
+                        <CloseIcon onClick={modal}></CloseIcon>
+                      </span>
+                      {active && <DishesForm data={item} modal={modal} />}
+                    </div>
+                  </div>
+                </> 
                 {item?.dishes.map((vol) => (
-                  <div className="dish">
+                  <div className="dish" >
+                     
                     <div >
                       <img
                         src={vol?.img}
