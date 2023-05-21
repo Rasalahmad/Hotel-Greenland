@@ -60,3 +60,26 @@ export const addFood = async (req, res) => {
           });
         }
       };
+
+      export const updateRestaurant = async (req, res, next) => {
+        console.log(req.body);
+        try {
+          const updated = await Restaurnt.findByIdAndUpdate(
+            { _id: Object(req.params.id) },
+            { $set: req.body },
+            { new: true }
+          );
+          console.log(updated);
+          res.status(200).json({
+            status: true,
+            message: "updated successfully",
+            data: updated,
+          });
+        } catch (error) {
+          res.status(500).json({
+            status: false,
+            message: " can't update",
+            error,
+          });
+        }
+      };

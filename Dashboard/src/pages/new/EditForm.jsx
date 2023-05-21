@@ -79,7 +79,7 @@ const EditForm = ({ data, loading }) => {
 
     const res = await makeRequest.put(`/room/${data?._id}`, _data);
     if (res.data) {
-      Swal.fire("Success", "Room Added successfully", "success");
+      Swal.fire("Success", "Room Update successfully", "success");
     } else {
       Swal.fire("Error", "Something went wrong", "error");
     }
