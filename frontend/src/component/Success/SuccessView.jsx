@@ -14,7 +14,7 @@ const SuccessView = () => {
     e.preventDefault();
     axios
       .post(
-        "http://api.hotelgreenlandbd.com/api/download-pdf",
+        "https://api.hotelgreenlandbd.com/api/download-pdf",
         { paymentMethod, price, roomName, status, bookingDates },
         { responseType: "blob" }
       )

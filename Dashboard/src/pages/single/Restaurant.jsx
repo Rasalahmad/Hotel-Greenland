@@ -103,6 +103,7 @@ const Restaurant = () => {
                   </div>
                 </> 
                 {item?.dishes.map((vol) => (
+
                   <div className="dish" >
                      
                     <div >
@@ -111,12 +112,16 @@ const Restaurant = () => {
                         className="dishImg"
                         alt=""
                       />
+
                     </div>
                     <div>
                       <h2>Blue Cheese Crackers with Grapes</h2>
                       <div className="tagPrice">
                         <p>{vol?.dish_tag}</p>
-                        <p><span className="price">Price: </span>{vol?.price} ৳</p>
+                        <p>
+                          <span className="price">Price: </span>
+                          {vol?.price} ৳
+                        </p>
                       </div>
                     </div>
                   </div>
