@@ -68,22 +68,10 @@ export const router = createBrowserRouter([
         path: "/restaurant/menu",
         element: <Menu />,
       },
-      {
-        path: "/payment/success/:transaction_Id",
-        element: <Success />,
-      },
-      {
-        path: "/payment/fail/:transaction_id",
-        element: <Success />,
-      },
-      {
-        path: "/payment/cancel/:transaction_id",
-        element: <Success />,
-      },
     ],
   },
   {
-    path: "/success",
+    path: "//payment/success/:transaction_Id",
     element: <SuccessView />,
   },
 ]);

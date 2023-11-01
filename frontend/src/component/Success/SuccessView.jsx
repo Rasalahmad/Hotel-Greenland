@@ -5,36 +5,36 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 const SuccessView = () => {
-  const { state } = useLocation();
-  const { paymentMethod, price, roomName, status, bookingDates } =
-    state.booking;
-  const lastIndex = bookingDates.length - 1;
+  // const { state } = useLocation();
+  // const { paymentMethod, price, roomName, status, bookingDates } =
+  //   state?.booking;
+  // const lastIndex = bookingDates.length - 1;
 
-  const handleDownload = (e) => {
-    e.preventDefault();
-    axios
-      .post(
-        "https://api.hotelgreenlandbd.com/api/download-pdf",
-        { paymentMethod, price, roomName, status, bookingDates },
-        { responseType: "blob" }
-      )
-      .then((response) => {
-        if (!response.data) {
-          toast.loading("Generating your pdf. please wait...");
-        }
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "booking.pdf");
-        document.body.appendChild(link);
-        link.click();
-      });
-  };
+  // const handleDownload = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post(
+  //       "https://api.hotelgreenlandbd.com/api/download-pdf",
+  //       { paymentMethod, price, roomName, status, bookingDates },
+  //       { responseType: "blob" }
+  //     )
+  //     .then((response) => {
+  //       if (!response.data) {
+  //         toast.loading("Generating your pdf. please wait...");
+  //       }
+  //       const url = window.URL.createObjectURL(new Blob([response.data]));
+  //       const link = document.createElement("a");
+  //       link.href = url;
+  //       link.setAttribute("download", "booking.pdf");
+  //       document.body.appendChild(link);
+  //       link.click();
+  //     });
+  // };
 
   return (
     <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12">
       <div class=" w-full my-auto lg:mb-0 mb-10 ">
-        <div class="bg-white p-6 rounded-xl  shadow-lg card-bordered">
+        <div class="bg-white p-6">
           <svg
             viewBox="0 0 24 24"
             class="text-green-600 w-16 h-16 mx-auto my-6"
@@ -49,7 +49,7 @@ const SuccessView = () => {
               Payment Done!
             </h3>
 
-            <div className=" text-left text-lg font-semibold mt-10">
+            {/* <div className=" text-left text-lg font-semibold mt-10">
               <p className="flex justify-between">
                 Payment type
                 <span>{paymentMethod}</span>
@@ -79,10 +79,10 @@ const SuccessView = () => {
                     )}`}
                 </span>
               </p>
-            </div>
+            </div> */}
 
-            <div className="py-10 text-center">
-              <div className="flex justify-between">
+            <div className="py-2 text-center">
+              {/* <div className="flex justify-between">
                 <Link
                   to="/"
                   className="px-12 bg-green-400 hover:bg-green-500 rounded-lg text-white font-semibold py-3"
@@ -95,22 +95,14 @@ const SuccessView = () => {
                 >
                   Download Pdf
                 </button>
-              </div>
-              <p className="text-gray-600 my-2 mt-8">
+              </div> */}
+              <p className="text-gray-600">
                 Thank you for completing your secure online payment.
               </p>
               <p> Have a great day! </p>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <img
-          className=" w-[800px] "
-          src="https://www.pngmart.com/files/7/Payment-PNG-Free-Download.png"
-          alt=""
-          srcSet=""
-        />
       </div>
     </div>
   );
