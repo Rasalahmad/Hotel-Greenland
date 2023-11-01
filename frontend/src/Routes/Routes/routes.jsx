@@ -13,6 +13,7 @@ import SingleRoom from "../../pages/Home/Rooms/SingleRoom/SingleRoom";
 import FamilyRoom from "../../pages/Home/Rooms/Special/FamilyRoom";
 import Contact from "../../pages/Contact/Contact";
 import SuccessView from "../../component/Success/SuccessView";
+import Success from "../../pages/payment/Success";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,18 @@ export const router = createBrowserRouter([
       {
         path: "/restaurant/menu",
         element: <Menu />,
+      },
+      {
+        path: "/payment/success/:transaction_Id",
+        element: <Success />,
+      },
+      {
+        path: "/payment/fail/:transaction_id",
+        element: <Success />,
+      },
+      {
+        path: "/payment/cancel/:transaction_id",
+        element: <Success />,
       },
     ],
   },

@@ -1,58 +1,49 @@
 import mongoose from "mongoose";
 
-const bookingSchema = mongoose.Schema(
-  {
-    transID: {
-      type: String,
-    },
-    name: {
-      type: String,
-      required: [true, "Room type is required"],
-    },
-    phone: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
-    roomName: {
-      type: String,
-      required: [true, "Thumbnail is requuied"],
-    },
-    price: {
-      type: Number,
-      required: [true, "Price is required"],
-    },
-    bookingDates: { type: [Date] },
-    guests: Number,
-    paymentMethod: {
-      type: String,
-    },
-    address: {
-      type: String,
-    },
-    arrival: {
-      type: String,
-    },
-    city: {
-      type: String,
-    },
-    img: {
-      type: String,
-    },
-    request: {
-      type: String,
-    },
-    status: {
-      type: String,
-    },
+const bookingSchema = new mongoose.Schema({
+  total_amount: Number,
+  currency: String,
+  product_img: String,
+  tran_id: String,
+  success_url: String,
+  fail_url: String,
+  cancel_url: String,
+  ipn_url: String,
+  shipping_method: String,
+  product_name: String,
+  product_category: String,
+  product_profile: String,
+  cus_name: String,
+  cus_email: String,
+  cus_add1: String,
+  cus_add2: String,
+  cus_city: String,
+  cus_state: String,
+  cus_postcode: Number,
+  cus_country: String,
+  cus_phone: String,
+  cus_fax: String,
+  ship_name: String,
+  ship_add1: String,
+  ship_add2: String,
+  ship_city: String,
+  ship_state: String,
+  ship_postcode: Number,
+  ship_country: String,
+  multi_card_name: String,
+  arrival: String,
+  bookingDates: [String],
+  desc: String,
+  guests: String,
+  price: Number,
+  request: String,
+  paymentStatus: {
+    type: String,
+    default: "Pending",
   },
-  {
-    timestamps: true,
-  }
-);
+});
 
+// Create a Mongoose model using the schema
 const Booking = mongoose.model("booking", bookingSchema);
+
 export default Booking;

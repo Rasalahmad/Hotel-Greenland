@@ -61,17 +61,17 @@ const Booking = () => {
     alldates.includes(moment(date).format("YYYY-MM-DD"))
   );
 
-  useEffect(() => {
-    if (isFound) {
-      const res = axios.put(
-        `https://api.hotelgreenlandbd.com/api/room/makeUnavailable/${_id}`,
-        {
-          isAvailable: "Unavailable",
-        }
-      );
-      return res.data;
-    }
-  }, [_id, isFound]);
+  // useEffect(() => {
+  //   if (isFound) {
+  //     const res = axios.put(
+  //       `http://localhost:5000/api/room/makeUnavailable/${_id}`,
+  //       {
+  //         isAvailable: "Unavailable",
+  //       }
+  //     );
+  //     return res.data;
+  //   }
+  // }, [_id, isFound]);
 
   const [markUnavailable] = useMarkUnavailableMutation();
   const [createBooking] = useCreateBookingMutation();
@@ -88,7 +88,7 @@ const Booking = () => {
       price: Number(numberOfDays?.night) * Number(price),
       roomName: name,
       img: thumbnail,
-      status: "pending",
+      paymentStatus: "pending",
       bookingDates: alldates,
       paymentMethod: payLater ? "Unpaid" : "",
       guests: guests,
@@ -96,27 +96,16 @@ const Booking = () => {
       isAvailable: isAvailable,
     };
 
-    markUnavailable({ roomId: _id, dates: alldates })
-      .unwrap()
-      .then(() => {
-        createBooking(finalData)
-          .unwrap()
-          .then((res) => {
-            const booking = res.data;
-            if (!booking) {
-              toast.loading(
-                "Please wait. We will redirect you into the success page"
-              );
-            } else {
-              navigate("/success", { state: { booking } });
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    axios
+      .post("http://localhost:5000/api/booking/payment", finalData)
+      .then((res) => {
+        if (res.data) {
+          window.location.replace(res.data.data);
+        }
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error making POST request:", error);
+        // Handle the error here
       });
   };
 
