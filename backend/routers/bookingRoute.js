@@ -19,6 +19,6 @@ router.post("/payment/fail/:transaction_Id", paymentFailRoute);
 router.post("/payment/cancel/:transaction_Id", paymentCancelRoute);
 
 router.get("/", getBooking);
-router.get("/:id", getSingleBooking);
+router.get("/:trans_id", getSingleBooking);
 
 export default router;

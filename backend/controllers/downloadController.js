@@ -6,8 +6,8 @@ export const downloadPdf = async (req, res) => {
   const doc = new PDFDocument();
   const dynamicText = `Room Name: ${req.body.roomName}
    \nTotal: ${req.body.price} 
-   \nPayment Type: ${req.body.paymentMethod}
-  \nPayment Status : ${req.body.status} 
+   \nPayment Type: Cash
+  \nPayment Status : ${req.body.paymentStatus} 
   \nBooking Dates: ${moment(req.body.bookingDates[0]).format("DD-MM-YYYY")} ${
     lastIndex > 0
       ? `to ${moment(bookingDates[lastIndex * 1]).format("DD-MM-YYYY")}`

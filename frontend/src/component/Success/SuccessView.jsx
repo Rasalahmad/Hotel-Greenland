@@ -3,33 +3,52 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useGetSingleBookingQuery } from "../../features/booking/bookingApi";
 
 const SuccessView = () => {
+  const location = useLocation();
+
+  const trans_id = location.pathname.split("/")[3];
+  const {
+    data: booking,
+    isLoading,
+    isError,
+    error,
+  } = useGetSingleBookingQuery(trans_id);
+
+  console.log(booking.data, "booking");
+
   // const { state } = useLocation();
   // const { paymentMethod, price, roomName, status, bookingDates } =
   //   state?.booking;
-  // const lastIndex = bookingDates.length - 1;
+  const lastIndex = booking?.data?.bookingDates?.length - 1;
 
-  // const handleDownload = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post(
-  //       "https://api.hotelgreenlandbd.com/api/download-pdf",
-  //       { paymentMethod, price, roomName, status, bookingDates },
-  //       { responseType: "blob" }
-  //     )
-  //     .then((response) => {
-  //       if (!response.data) {
-  //         toast.loading("Generating your pdf. please wait...");
-  //       }
-  //       const url = window.URL.createObjectURL(new Blob([response.data]));
-  //       const link = document.createElement("a");
-  //       link.href = url;
-  //       link.setAttribute("download", "booking.pdf");
-  //       document.body.appendChild(link);
-  //       link.click();
-  //     });
-  // };
+  const handleDownload = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://api.hotelgreenlandbd.com/api/download-pdf",
+        {
+          paymentStatus: booking?.data?.paymentStatus,
+          price: booking?.data?.price,
+          roomName: booking?.data?.product_name,
+          status: booking?.data?.paymentStatus,
+          bookingDates: booking?.data?.bookingDates,
+        },
+        { responseType: "blob" }
+      )
+      .then((response) => {
+        if (!response.data) {
+          toast.loading("Generating your pdf. please wait...");
+        }
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "booking.pdf");
+        document.body.appendChild(link);
+        link.click();
+      });
+  };
 
   return (
     <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12">
@@ -49,40 +68,39 @@ const SuccessView = () => {
               Payment Done!
             </h3>
 
-            {/* <div className=" text-left text-lg font-semibold mt-10">
+            <div className=" text-left text-lg font-semibold mt-10">
+              <p className="flex justify-between">
+                Transaction ID
+                <span>{booking?.data?.tran_id}</span>
+              </p>
               <p className="flex justify-between">
                 Payment type
-                <span>{paymentMethod}</span>
-              </p>
-              {paymentMethod !== "Cash" && (
-                <p className="flex justify-between">
-                  Transaction Id <span>1211653513213212</span>
-                </p>
-              )}
-              <p className="flex justify-between">
-                Amount {paymentMethod === "Cash" && "have to "} paid{" "}
-                <span>{price}</span>
+                <span>{booking?.data?.paymentStatus}</span>
               </p>
               <p className="flex justify-between">
-                Room <span>{roomName}</span>
+                Amount
+                <span>{booking?.data?.price}</span>
               </p>
               <p className="flex justify-between">
-                status <span>{status}</span>
+                Room <span>{booking?.data?.product_name}</span>
+              </p>
+              <p className="flex justify-between">
+                Name <span>{booking?.data?.cus_name}</span>
               </p>
               <p className="flex justify-between">
                 Booking Dates{" "}
                 <span>
-                  {moment(bookingDates[0]).format("DD-MM-YYYY")}
+                  {moment(booking?.data?.bookingDates[0]).format("DD-MM-YYYY")}
                   {lastIndex > 0 &&
-                    ` to ${moment(bookingDates[lastIndex * 1]).format(
-                      "DD-MM-YYYY"
-                    )}`}
+                    ` to ${moment(
+                      booking?.data?.bookingDates[lastIndex * 1]
+                    ).format("DD-MM-YYYY")}`}
                 </span>
               </p>
-            </div> */}
+            </div>
 
             <div className="py-2 text-center">
-              {/* <div className="flex justify-between">
+              <div className="flex justify-between">
                 <Link
                   to="/"
                   className="px-12 bg-green-400 hover:bg-green-500 rounded-lg text-white font-semibold py-3"
@@ -95,7 +113,7 @@ const SuccessView = () => {
                 >
                   Download Pdf
                 </button>
-              </div> */}
+              </div>
               <p className="text-gray-600">
                 Thank you for completing your secure online payment.
               </p>
