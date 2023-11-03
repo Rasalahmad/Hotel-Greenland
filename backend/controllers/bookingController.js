@@ -187,6 +187,7 @@ export const paymentCancelRoute = async (req, res) => {
 
 export const getBooking = async (req, res) => {
   const booking = await Booking.find({});
+  console.log(booking);
   try {
     res.status(200).json({
       status: true,
@@ -205,6 +206,7 @@ export const getSingleBooking = async (req, res) => {
   const booking = await Booking.findOne({
     tran_id: ObjectId(req.params.trans_id),
   });
+  console.log(booking);
   try {
     res.status(200).json({
       status: true,
