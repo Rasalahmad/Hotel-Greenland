@@ -4,8 +4,6 @@ import { ObjectId } from "mongodb";
 import { SslCommerzPayment } from "sslcommerz";
 import express from "express";
 
-const router = express.Router();
-
 export const addBooking = async (req, res) => {
   const booking = new Booking(req.body);
   try {

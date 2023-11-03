@@ -86,12 +86,7 @@ const TransactionDataTable = () => {
         "Loading"
       ) : (
         <div className="datatable">
-          <div className="datatableTitle">
-            Transactions
-            <Link to={`/committee/committeeForm`} className="link">
-              Add New
-            </Link>
-          </div>
+          <div className="datatableTitle">Transactions</div>
           <DataGrid
             className="datagrid"
             rows={data}
