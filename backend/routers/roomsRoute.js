@@ -6,6 +6,7 @@ import {
   getAllRoomsInDashBoard,
   getDoubleRooms,
   getRoom,
+  getRoomTransaction,
   getSingleRooms,
   getSpecialRooms,
   updateAvailability,
@@ -26,5 +27,6 @@ router.get("/specialRooms", getSpecialRooms);
 router.get("/getAllRoom", getAllRooms);
 router.get("/getAllRooms", getAllRoomsInDashBoard);
 router.get("/getRoom/:id", getRoom);
+router.get("/transaction/:id", getRoomTransaction);
 
 export default router;

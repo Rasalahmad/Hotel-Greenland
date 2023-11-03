@@ -31,6 +31,21 @@ const Single = () => {
     fetchData();
   }, [roomId]);
 
+  const [stats, setStats] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await makeRequest.get(`/room/transaction/${roomId}`);
+        setStats(res.data.data);
+      } catch (err) {
+        setError(err);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, [roomId]);
+
   const [isActive, setIsActive] = useState(false);
 
   const toggleModal = () => {
@@ -97,7 +112,11 @@ const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart aspect={3 / 1} title="Earming ( Last 6 Months)" />
+            <Chart
+              data={stats}
+              aspect={3 / 1}
+              title="Earming ( Last 6 Months)"
+            />
           </div>
         </div>
         {data?.bookings?.length > 0 && (
