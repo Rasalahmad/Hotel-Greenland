@@ -58,7 +58,13 @@ const Single = () => {
                   <span className="close-button">
                     <CloseIcon onClick={toggleModal}></CloseIcon>
                   </span>
-                  {isActive && <EditForm loading={loading} data={data} />}
+                  {isActive && (
+                    <EditForm
+                      loading={loading}
+                      data={data}
+                      setIsActive={setIsActive}
+                    />
+                  )}
                 </div>
               </div>
             </>

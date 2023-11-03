@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 
-const EditForm = ({ data, loading }) => {
+const EditForm = ({ data, loading, setIsActive }) => {
   const [name, setName] = useState(data?.name ?? "");
   const [desc, setDesc] = useState(data?.desc) ?? "";
   const [roomType, setRoomType] = useState(data?.roomType) ?? "";
@@ -75,11 +75,11 @@ const EditForm = ({ data, loading }) => {
       thumbnail: thumbnail ? thumbnail : data?.thumbnail,
       images: images ? images : data?.images,
     };
-    console.log(_data);
 
     const res = await makeRequest.put(`/room/${data?._id}`, _data);
     if (res.data) {
       Swal.fire("Success", "Room Update successfully", "success");
+      setIsActive(false);
     } else {
       Swal.fire("Error", "Something went wrong", "error");
     }
@@ -174,12 +174,14 @@ const EditForm = ({ data, loading }) => {
               </div>
               <div className="formInput">
                 <label>Availability</label>
-                <input
-                  type="text"
+                <select
                   id="availability"
                   value={isAvailable}
                   onChange={(e) => setIsAvailability(e.target.value)}
-                />
+                >
+                  <option value="Available">Available</option>
+                  <option value="Unavailable">Unavailable</option>
+                </select>
               </div>
 
               <div className="formInput">
