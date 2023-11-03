@@ -116,17 +116,27 @@ export const getAllRoomsInDashBoard = async (req, res) => {
 };
 
 export const getRoom = async (req, res) => {
-  const room = await Room.findOne({ _id: ObjectId(req.params.id) });
   try {
+    const room = await Room.findOne({ _id: ObjectId(req.params.id) }).populate(
+      "bookings"
+    );
+
+    if (!room) {
+      return res.status(404).json({
+        status: false,
+        message: "Room not found",
+      });
+    }
+
     res.status(200).json({
       status: true,
       data: room,
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       status: false,
-      message: "Data can't fetch",
-      error,
+      message: "Data can't be fetched",
+      error: error.message,
     });
   }
 };

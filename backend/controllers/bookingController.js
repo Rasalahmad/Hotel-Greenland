@@ -143,7 +143,12 @@ export const paymentSuccessRoute = async (req, res) => {
 
     await Room.findOneAndUpdate(
       { name: booking.product_name },
-      { $set: { isAvailable: "Unavailable" } },
+      {
+        $addToSet: {
+          bookings: booking._id,
+        },
+        $set: { isAvailable: "Unavailable" },
+      },
       { session }
     );
 
