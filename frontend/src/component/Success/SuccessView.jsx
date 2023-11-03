@@ -16,7 +16,7 @@ const SuccessView = () => {
     error,
   } = useGetSingleBookingQuery(trans_id);
 
-  console.log(booking.data, "booking");
+  console.log(booking?.data, "booking");
 
   // const { state } = useLocation();
   // const { paymentMethod, price, roomName, status, bookingDates } =

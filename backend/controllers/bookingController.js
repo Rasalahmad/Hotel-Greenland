@@ -2,7 +2,6 @@ import Booking from "../models/bookingModel.js";
 import { sendMailWithGmail } from "../util.js/email.js";
 import { ObjectId } from "mongodb";
 import { SslCommerzPayment } from "sslcommerz";
-import express from "express";
 
 export const addBooking = async (req, res) => {
   const booking = new Booking(req.body);
