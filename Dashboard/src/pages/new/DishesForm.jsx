@@ -4,14 +4,20 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { makeRequest } from "../../axios";
 import Swal from "sweetalert2";
 const DishesForm = ({ data }) => {
+  const [title, setTitle] = useState();
   const [price, setPrice] = useState();
+  const [tag, setTag] = useState();
   const [file, setFile] = useState({});
 
+
+    // upload single file
   const upload = async (file) => {
+    console.log(file);
     try {
       if (typeof file !== "string") {
         const formData = new FormData();
         formData.append("image", file);
+        // console.log();
         const res = await makeRequest.post("/upload/single", formData);
         return res.data;
       }
@@ -23,17 +29,29 @@ const DishesForm = ({ data }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const img = await upload(file);
-    
+    const _data={
+        title:title,
+      dish_tag:tag,
+      // img:img,
+      price:price
+    }
+    console.log(_data);
+    const res = await makeRequest.post(`/restaurant/${data?._id}`, _data);
+    if (res.data) {
+      Swal.fire("Success", "Room Update successfully", "success");
+    } else {
+      Swal.fire("Error", "Something went wrong", "error");
+    }
   };
   return (
     <div>
       <div className="left">
         <img src={file} alt="" />
       </div>
-      {data?.dishes?.map((item, i) => (
+     
         <div style={{ marginTop: "20px" }} className="reataurantForm">
-          {i == 1 && (
-            <div key={item?._id}>
+    
+            <div>
               <div className="flex">
                 <img
                   style={{ width: "80px" }}
@@ -42,58 +60,56 @@ const DishesForm = ({ data }) => {
                 />
                 <h1 className="menu">Dish </h1>
               </div>
-
               <form onSubmit={onSubmit} className="form">
                 <div className="formInput">
-                  <label htmlFor="thumbnail">
+                  <label htmlFor="img">
                     Dish Image:{" "}
                     <DriveFolderUploadOutlinedIcon className="icon" />
                   </label>
                   <input
                     type="file"
                     id="img"
-                    placeholder={item?.img}
+                    placeholder={file}
                     onChange={(e) => setFile(e.target.files[0])}
                     style={{ display: "none" }}
                   />
                 </div>
-             
+
                 <div className="formInput">
                   <label> Title :</label>
                   <input
                     type="text"
                     id="title"
                     placeholder="Set Dish Title"
-                    onChange={(e) => e.target.value}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-               
-                  <div className="formInput">
-                    <label>Dish Tag:</label>
-                    <input
-                      type="text"
-                      id="dish_tag"
-                      placeholder={item?.dish_tag}
-                      onChange={(e) => e.target.value}
-                    />
-                  </div>
-                  <div className="formInput">
-                    <label>Price:</label>
-                    <input
-                      type="text"
-                      id="Price"
-                      placeholder={item?.price}
-                      onChange={(e) => e.target.value}
-                    />
-                  </div>
-                
-             
-                <button type="submit">Update</button>
+
+                <div className="formInput">
+                  <label>Dish Tag:</label>
+                  <input
+                    type="text"
+                    id="dish_tag"
+                    placeholder="Chicken / Grapes / Pizza / Cheese / Herbs"
+                    onChange={(e) => setTag(e.target.value)}
+                  />
+                </div>
+                <div className="formInput">
+                  <label>Price:</label>
+                  <input
+                    type="number"
+                    id="Price"
+                    placeholder="205"
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </div>
+
+                <button type="submit">Add Dish</button>
               </form>
             </div>
-          )}
+          
         </div>
-      ))}
+    
     </div>
   );
 };

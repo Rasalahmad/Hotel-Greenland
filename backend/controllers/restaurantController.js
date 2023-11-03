@@ -61,6 +61,41 @@ export const addFood = async (req, res) => {
         }
       };
 
+
+      export const addDish = async (req, res) => {
+        console.log(req.params.id);
+        console.log(req.body);
+        const food =await Restaurnt.findByIdAndInsertOne(
+          { _id: Object(req.params.id) },
+            { $set: req.body },
+            { new: true }
+        );
+        console.log(food)
+        // try {
+        //     const result = await food.save();
+        //     res.status(200).json({
+        //       status: true,
+        //       message: "Food added successfully",
+        //       data: result,
+        //     });
+        //   } catch (error) {
+        //     if (error.name === "ValidationError") {
+        //       let errors = {};
+        //       Object.keys(error.errors).forEach((key) => {
+        //         errors = error.errors[key];
+        //       });
+        //       return res.status(400).json({
+        //         status: false,
+        //         error: errors,
+        //       });
+        //     }
+        //     res.status(500).json({
+        //       status: false,
+        //       message: "Something went wrong",
+        //     });
+        //   }
+        };
+
       export const updateRestaurant = async (req, res, next) => {
         console.log(req.body);
         try {
