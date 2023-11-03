@@ -236,6 +236,7 @@ export const getSingleBooking = async (req, res) => {
     });
   }
 };
+
 export const getIndividualBooking = async (req, res) => {
   const booking = await Booking.findById({
     _id: ObjectId(req.params.id),

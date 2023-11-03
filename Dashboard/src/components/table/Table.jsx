@@ -15,7 +15,7 @@ const List = ({ rows }) => {
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">Transaction ID</TableCell>
-            <TableCell className="tableCell">Product</TableCell>
+            <TableCell className="tableCell">Room</TableCell>
             <TableCell className="tableCell">Customer</TableCell>
             <TableCell className="tableCell">Date</TableCell>
             <TableCell className="tableCell">Amount</TableCell>
