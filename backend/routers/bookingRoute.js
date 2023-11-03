@@ -2,6 +2,7 @@ import express from "express";
 import {
   addBooking,
   getBooking,
+  getIndividualBooking,
   getSingleBooking,
   paymentCancelRoute,
   paymentFailRoute,
@@ -19,6 +20,7 @@ router.post("/payment/fail/:transaction_Id", paymentFailRoute);
 router.post("/payment/cancel/:transaction_Id", paymentCancelRoute);
 
 router.get("/", getBooking);
+router.get("/individual/:id", getIndividualBooking);
 router.get("/:trans_id", getSingleBooking);
 
 export default router;

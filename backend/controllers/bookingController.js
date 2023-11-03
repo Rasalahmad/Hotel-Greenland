@@ -216,3 +216,21 @@ export const getSingleBooking = async (req, res) => {
     });
   }
 };
+export const getIndividualBooking = async (req, res) => {
+  const booking = await Booking.findById({
+    _id: ObjectId(req.params.id),
+  });
+
+  try {
+    res.status(200).json({
+      status: true,
+      data: booking,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
