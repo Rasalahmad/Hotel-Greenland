@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import Booking from "../models/bookingModel.js";
+import Room from "../models/roomsModel.js";
 import { sendMailWithGmail } from "../util.js/email.js";
 import { ObjectId } from "mongodb";
 import { SslCommerzPayment } from "sslcommerz";
@@ -131,13 +133,21 @@ export const paymentRoute = async (req, res) => {
 };
 
 export const paymentSuccessRoute = async (req, res) => {
-  console.log("hit");
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
   try {
     const booking = await Booking.findOne({
       tran_id: req.params.transaction_Id,
-    });
+    }).session(session);
 
-    const result = await Booking.findOneAndUpdate(
+    await Room.findOneAndUpdate(
+      { name: booking.product_name },
+      { $set: { isAvailable: "Unavailable" } },
+      { session }
+    );
+
+    await Booking.findOneAndUpdate(
       {
         tran_id: req.params.transaction_Id,
       },
@@ -146,12 +156,18 @@ export const paymentSuccessRoute = async (req, res) => {
           paymentStatus: "Paid",
         },
       }
-    );
+    ).session(session);
+
+    await session.commitTransaction();
+
     res.redirect(
       `${process.env.DOMAINURL}/payment/success/${req.params.transaction_Id}`
     );
   } catch (error) {
+    await session.abortTransaction();
     res.status(500).json({ success: false, error: error });
+  } finally {
+    session.endSession();
   }
 };
 
