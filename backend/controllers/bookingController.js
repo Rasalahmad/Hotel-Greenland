@@ -4,8 +4,6 @@ import { ObjectId } from "mongodb";
 import { SslCommerzPayment } from "sslcommerz";
 import express from "express";
 
-const router = express.Router();
-
 export const addBooking = async (req, res) => {
   const booking = new Booking(req.body);
   try {
@@ -207,6 +205,24 @@ export const getSingleBooking = async (req, res) => {
     tran_id: ObjectId(req.params.trans_id),
   });
   console.log(booking);
+  try {
+    res.status(200).json({
+      status: true,
+      data: booking,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+export const getIndividualBooking = async (req, res) => {
+  const booking = await Booking.findById({
+    _id: ObjectId(req.params.id),
+  });
+
   try {
     res.status(200).json({
       status: true,

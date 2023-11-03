@@ -41,37 +41,37 @@ export const userColumns = [
 export const transColumns = [
   // { field: "transId", headerName: "Transaction ID", width: 200 },
   {
-    field: "room",
+    field: "product_name",
     headerName: "Room",
     width: 250,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.roomName}
+          <img className="cellImg" src={params.row.product_img} alt="avatar" />
+          {params.row.product_name}
         </div>
       );
     },
   },
   { field: "price", headerName: "Amount", width: 100 },
   {
-    field: "name",
+    field: "cus_name",
     headerName: "Customer",
     width: 150,
   },
   {
-    field: "email",
+    field: "cus_email",
     headerName: "Email",
     width: 200,
   },
   {
-    field: "phone",
+    field: "cus_phone",
     headerName: "Mobile No.",
     width: 150,
   },
   {
-    field: "paymentMethod",
-    headerName: "Payment Method",
+    field: "paymentStatus",
+    headerName: "Payment Status",
     width: 100,
   },
 ];
