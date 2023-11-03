@@ -18,7 +18,7 @@ const Booking = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await makeRequest.get(`/booking/${bookingId}`);
+        const res = await makeRequest.get(`/booking/individual/${bookingId}`);
         setData(res.data.data);
       } catch (err) {
         setError(err);
