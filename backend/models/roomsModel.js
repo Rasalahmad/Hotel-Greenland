@@ -58,6 +58,12 @@ const roomsSchema = mongoose.Schema(
       },
     ],
     unavailableDates: { type: [Date] },
+    bookings: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "booking",
+      },
+    ],
   },
   {
     timestamps: true,

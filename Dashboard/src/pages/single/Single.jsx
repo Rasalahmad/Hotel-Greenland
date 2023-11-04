@@ -31,6 +31,21 @@ const Single = () => {
     fetchData();
   }, [roomId]);
 
+  const [stats, setStats] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await makeRequest.get(`/room/transaction/${roomId}`);
+        setStats(res.data.data);
+      } catch (err) {
+        setError(err);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, [roomId]);
+
   const [isActive, setIsActive] = useState(false);
 
   const toggleModal = () => {
@@ -58,7 +73,13 @@ const Single = () => {
                   <span className="close-button">
                     <CloseIcon onClick={toggleModal}></CloseIcon>
                   </span>
-                  {isActive && <EditForm loading={loading} data={data} />}
+                  {isActive && (
+                    <EditForm
+                      loading={loading}
+                      data={data}
+                      setIsActive={setIsActive}
+                    />
+                  )}
                 </div>
               </div>
             </>
@@ -91,13 +112,19 @@ const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart aspect={3 / 1} title="Earming ( Last 6 Months)" />
+            <Chart
+              data={stats}
+              aspect={3 / 1}
+              title="Earming ( Last 6 Months)"
+            />
           </div>
         </div>
-        <div className="bottom">
-          <h1 className="title">Last Transactions</h1>
-          <List />
-        </div>
+        {data?.bookings?.length > 0 && (
+          <div className="bottom">
+            <h1 className="title">Last Transactions</h1>
+            <List rows={data?.bookings} />
+          </div>
+        )}
       </div>
     </div>
   );

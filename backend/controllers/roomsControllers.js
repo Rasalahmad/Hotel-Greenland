@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Room from "../models/roomsModel.js";
 import { ObjectId } from "mongodb";
 
@@ -116,17 +117,27 @@ export const getAllRoomsInDashBoard = async (req, res) => {
 };
 
 export const getRoom = async (req, res) => {
-  const room = await Room.findOne({ _id: ObjectId(req.params.id) });
   try {
+    const room = await Room.findOne({ _id: ObjectId(req.params.id) }).populate(
+      "bookings"
+    );
+
+    if (!room) {
+      return res.status(404).json({
+        status: false,
+        message: "Room not found",
+      });
+    }
+
     res.status(200).json({
       status: true,
       data: room,
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       status: false,
-      message: "Data can't fetch",
-      error,
+      message: "Data can't be fetched",
+      error: error.message,
     });
   }
 };
@@ -196,6 +207,97 @@ export const deleteRoom = async (req, res, next) => {
       status: false,
       message: "Member can't Delete",
       error,
+    });
+  }
+};
+
+export const getRoomTransaction = async (req, res) => {
+  try {
+    const roomId = req.params.id;
+
+    const startDate = new Date();
+    startDate.setMonth(startDate.getMonth() - 6);
+
+    const pipeline = [
+      {
+        $match: {
+          _id: mongoose.Types.ObjectId(roomId),
+        },
+      },
+      {
+        $lookup: {
+          from: "bookings",
+          localField: "bookings",
+          foreignField: "_id",
+          as: "bookings",
+        },
+      },
+      {
+        $unwind: "$bookings",
+      },
+      {
+        $match: {
+          "bookings.createdAt": { $gte: startDate },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            $month: "$bookings.createdAt",
+          },
+          income: { $sum: "$bookings.price" },
+        },
+      },
+    ];
+
+    const roomWithIncome = await Room.aggregate(pipeline);
+
+    // Map month numbers to month names
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get the current month and year
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    const last6Months = [];
+    for (let i = 5; i >= 0; i--) {
+      const month = (currentMonth - i + 12) % 12;
+      last6Months.push(month);
+    }
+
+    // Create an array with 0 total income for the last 6 months
+    const resultData = last6Months.map((monthIndex) => {
+      const monthData = roomWithIncome.find(
+        (data) => data._id === monthIndex + 1
+      );
+      return {
+        name: monthNames[monthIndex],
+        Total: monthData ? monthData.income : 0,
+      };
+    });
+
+    res.status(200).json({
+      status: true,
+      data: resultData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Data can't be fetched",
+      error: error.message,
     });
   }
 };

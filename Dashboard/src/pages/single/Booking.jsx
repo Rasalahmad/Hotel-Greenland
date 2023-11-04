@@ -18,7 +18,7 @@ const Booking = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await makeRequest.get(`/booking/individual${bookingId}`);
+        const res = await makeRequest.get(`/booking/individual/${bookingId}`);
         setData(res.data.data);
       } catch (err) {
         setError(err);
@@ -34,7 +34,7 @@ const Booking = () => {
 
   const {
     name,
-    img,
+    product_img,
     address,
     email,
     phone,
@@ -47,17 +47,13 @@ const Booking = () => {
     guests,
     roomName,
     price,
-    isAvailable,
+    paymentStatus,
     bookingDates,
   } = data || {};
 
   console.log(bookingDates?.[0]);
 
   const lastIndex = bookingDates?.length && bookingDates?.length - 1;
-
-  const handleStatus = () => {
-    setIsActive(!isActive);
-  };
 
   if (!data || loading) {
     return <p>Loading.......</p>;
@@ -76,11 +72,11 @@ const Booking = () => {
               <div className="leftSide">
                 <h1 className="title">Room Details</h1>
                 <div className="item">
-                  <img src={img} alt="" className="bookingImg" />
+                  <img src={product_img} alt="" className="bookingImg" />
                   <div className="details bookingDeatils">
                     <h2 className="itemTitle">{roomName}</h2>
                     <div className="detailItem">
-                      <span className="itemKey">Descriptioin :</span>
+                      <span className="itemKey">Description :</span>
                       <span className="itemValue">{desc ? desc : ""}</span>
                     </div>
                     <div className="detailItem">
@@ -89,12 +85,23 @@ const Booking = () => {
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Price :</span>
-                      <span className="itemValue">{price} / per night</span>
+                      <span className="itemValue"> ৳ {price} / per night</span>
                     </div>
                     <div className="detailItem">
-                      <span className="itemKey">Availability :</span>
-                      <span className={`itemValue ${isAvailable}`}>
-                        {isAvailable ? isAvailable : ""}
+                      <span className="itemKey">Payment Status :</span>
+                      <span
+                        className="itemValue"
+                        style={{
+                          background:
+                            paymentStatus === "Paid"
+                              ? "lightgreen"
+                              : "lightgray",
+                          padding: "5px",
+                          borderRadius: "5px",
+                        }}
+                      >
+                        {" "}
+                        ৳ {paymentStatus}
                       </span>
                     </div>
                   </div>
