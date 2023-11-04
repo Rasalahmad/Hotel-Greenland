@@ -1,17 +1,15 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import styled from "styled-components";
 import ContactForm from "../../component/Form/ContactForm";
+import contacrtImg from "../../assets/images/hotel-contact-form.avif";
 const Contact = () => {
   return (
     <>
       <Title>Contact Us</Title>
       <div className="lg:grid grid-cols-12 my-12 lg:mx-10 card-bordered  rounded-xl  mx-2 ">
         <div className=" col-span-6 ">
-          <img
-            src="https://img.freepik.com/free-vector/hotel-building-concept-illustration_114360-14039.jpg?w=2000"
-            alt=""
-            srcSet=""
-          />
+          <img src={contacrtImg} alt="" srcSet="" />
         </div>
         <div className=" flex items-center justify-center col-span-6 lg:mr-[20px]">
           <div className="divider lg:flex hidden lg:divider-horizontal"></div>
