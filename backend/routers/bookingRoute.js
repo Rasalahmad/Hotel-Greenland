@@ -4,6 +4,7 @@ import {
   getBooking,
   getIndividualBooking,
   getSingleBooking,
+  getUserBooking,
   paymentCancelRoute,
   paymentFailRoute,
   paymentRoute,
@@ -21,6 +22,7 @@ router.post("/payment/cancel/:transaction_Id", paymentCancelRoute);
 
 router.get("/", getBooking);
 router.get("/individual/:id", getIndividualBooking);
+router.get("/:email", getUserBooking);
 router.get("/:trans_id", getSingleBooking);
 
 export default router;
