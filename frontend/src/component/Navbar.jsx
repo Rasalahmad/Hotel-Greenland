@@ -1,9 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/images/glLogo.png";
+import User from "../assets/icons/user.png";
+import logOUT from "../assets/icons/logout.png";
+import google from "../assets/icons/google.png";
+import { AuthContext } from "../Context/AuthProvider";
 
 const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.form?.pathname || "/";
+  const { googleLogin, user, logOut } = useContext(AuthContext);
+  console.log(user);
+  const handlerGoogleSingIn = () => {
+    googleLogin()
+      .then((result) => {
+        navigate(from, { replace: true });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  const handleLogOut = () => {
+    logOut().then().carch();
+  };
   return (
     <div className="navbar bg-transparent absolute text-white">
       <div className="navbar-start">
@@ -34,7 +56,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li style={{ zIndex: "1000" }}>
-              <p>
+              <p className=" uppercase">
                 Rooms
                 <svg
                   className="fill-current"
@@ -85,11 +107,6 @@ const Navbar = () => {
             <li>
               <Link to="/contact" className="active:bg-transparent">
                 CONTACT
-              </Link>
-            </li>
-            <li>
-              <Link to="allRoom" className="active:bg-transparent">
-                BOOK NOW
               </Link>
             </li>
           </ul>
@@ -158,10 +175,53 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end invisible lg:visible">
-        <Link to="allRoom" className="btn btn-outline btn-wide text-white">
-          Book Now
-        </Link>
+      <div className="navbar-end ">
+        <div className="dropdown dropdown-hover dropdown-end relative right-3">
+          <label tabIndex={0} className="">
+            <img
+              src={user?.photoURL ? user?.photoURL : User}
+              style={{ width: "40px" }}
+              alt=""
+              className=" rounded-full"
+            />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-gray-500 rounded-box w-56"
+          >
+            {user?.email ? (
+              <>
+                <li>
+                  <Link
+                    to="orders"
+                    className="btn btn-outline text-white w-auto mb-4"
+                  >
+                    Order List
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogOut}
+                    className="bg-white text-gray-500 font-bold flex justify-center hover:border-[1px] hover:bg-transparent hover:text-white"
+                  >
+                    LogOut
+                    <img src={logOUT} alt="" className="w-5" />
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  onClick={handlerGoogleSingIn}
+                  className="btn  text-white w-auto"
+                >
+                  Google
+                  <img src={google} alt="" className="w-5" />
+                </button>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );
