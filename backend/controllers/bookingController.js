@@ -205,7 +205,6 @@ export const paymentCancelRoute = async (req, res) => {
 
 export const getBooking = async (req, res) => {
   const booking = await Booking.find({});
-  console.log(booking);
   try {
     res.status(200).json({
       status: true,
@@ -241,6 +240,25 @@ export const getSingleBooking = async (req, res) => {
 export const getIndividualBooking = async (req, res) => {
   const booking = await Booking.findById({
     _id: ObjectId(req.params.id),
+  });
+
+  try {
+    res.status(200).json({
+      status: true,
+      data: booking,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
+export const getUserBooking = async (req, res) => {
+  const booking = await Booking.findOne({
+    cus_email: req.params.email,
   });
 
   try {
