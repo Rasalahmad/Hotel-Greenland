@@ -35,19 +35,19 @@ const Booking = () => {
   const {
     name,
     product_img,
-    address,
-    email,
-    phone,
-    city,
-    arival,
-    paymentMethod,
+    cus_add1,
+    cus_email,
+    cus_phone,
+    cus_city,
+    cus_country,
+    arrival,
+    paymentStatus,
     request,
     status,
     desc,
     guests,
     roomName,
     price,
-    paymentStatus,
     bookingDates,
   } = data || {};
 
@@ -117,29 +117,41 @@ const Booking = () => {
                     style={{ flex: "1", textAlign: "right" }}
                   >
                     <h2 className="itemTitle">{name}</h2>
-                    <div className="detailItem">
+                    <div className="detailItem ">
                       <span className="itemKey">Descriptioin :</span>
-                      <span className="itemValue">{address}</span>
+                      <br />
+                      <span className="itemValue">address: {cus_add1}</span>
+                      <span
+                        style={{
+                          display: "flex",
+                          gap: "2px",
+                          justifyContent: "end",
+                        }}
+                        className="itemValue"
+                      >
+                        city: {cus_city}
+                      </span>
+                      <span className="itemValue">country: {cus_country}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Guest Allowed :</span>
-                      <span className="itemValue">{city}</span>
+                      <span className="itemValue">{guests}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Email :</span>
-                      <span className="itemValue">{email}</span>
+                      <span className="itemValue">{cus_email}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Phone :</span>
-                      <span className="itemValue">{phone}</span>
+                      <span className="itemValue">{cus_phone}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Payment :</span>
-                      <span className="itemValue">{paymentMethod}</span>
+                      <span className="itemValue">{paymentStatus}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Arrival Time :</span>
-                      <span className="itemValue">{arival}</span>
+                      <span className="itemValue">{arrival}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Request :</span>
@@ -161,11 +173,7 @@ const Booking = () => {
                     </div>
                     <button className="button">Change Status</button>
                   </div>
-                  <img
-                    src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg"
-                    alt=""
-                    className="bookingImg"
-                  />
+                  <img src="/user.jpg" alt="" className="bookingImg" />
                 </div>
               </div>
             </div>

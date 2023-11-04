@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "//payment/success/:transaction_Id",
+    path: "/payment/success/:transaction_Id",
     element: <SuccessView />,
   },
 ]);
