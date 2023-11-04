@@ -19,6 +19,9 @@ export const bookingApi = apiSlice.injectEndpoints({
     getSingleBooking: builder.query({
       query: (id) => `/booking/${id}`,
     }),
+    getUserBooking: builder.query({
+      query: (email) => `/booking/${email}`,
+    }),
   }),
 });
 
@@ -26,4 +29,5 @@ export const {
   useCreateBookingMutation,
   useMarkUnavailableMutation,
   useGetSingleBookingQuery,
+  useGetUserBookingQuery,
 } = bookingApi;
