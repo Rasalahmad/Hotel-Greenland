@@ -20,12 +20,16 @@ const Banner = () => {
               ? "Single Rooms"
               : path === "doubleRooms"
               ? "Double Rooms"
+              : path === "register"
+              ? "Create Your Account"
+              : path === "login"
+              ? "Log In Greenland"
               : path === "familySpecialRoom"
               ? "Family Special Rooms"
               : path === "restaurant"
               ? "Greenland Restaurant"
               : path === "contact"
-              ? "Let’s chat and get a quote!"
+              ? "Let’s chat andquote!"
               : "Book Your Vacation"}
           </Title>
           <SubTitle>
@@ -79,6 +83,7 @@ const Title = styled.div`
   font-family: "Great Vibes";
   color: white;
   font-size: 75px;
+
   @media (max-width: 768px) {
     font-size: 36px;
   }

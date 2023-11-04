@@ -15,6 +15,8 @@ import Contact from "../../pages/Contact/Contact";
 import SuccessView from "../../component/Success/SuccessView";
 import Success from "../../pages/payment/Success";
 import Orders from "../../pages/Orders/Orders";
+import Login from "../../pages/Auth/Login";
+import Register from "../../pages/Auth/Register";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: "/familySpecialRoom",
         element: <FamilyRoom />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/allRoom",

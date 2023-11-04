@@ -1,28 +1,16 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/images/glLogo.png";
 import User from "../assets/icons/user.png";
 import logOUT from "../assets/icons/logout.png";
-import google from "../assets/icons/google.png";
+
 import { AuthContext } from "../Context/AuthProvider";
 
 const Navbar = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.form?.pathname || "/";
-  const { googleLogin, user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   console.log(user);
-  const handlerGoogleSingIn = () => {
-    googleLogin()
-      .then((result) => {
-        navigate(from, { replace: true });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+
   const handleLogOut = () => {
     logOut().then().carch();
   };
@@ -160,7 +148,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/restaurant" className="active:bg-transparent">
-              Restaurant
+              RESTURANT
             </Link>
           </li>
           <li>
@@ -176,27 +164,31 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end ">
-        <div className="dropdown dropdown-hover dropdown-end relative right-3">
-          <label tabIndex={0} className="">
-            <img
-              src={user?.photoURL ? user?.photoURL : User}
-              style={{ width: "40px" }}
-              alt=""
-              className=" rounded-full"
-            />
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-gray-500 rounded-box w-56"
-          >
-            {user?.email ? (
-              <>
+        {user?.email ? (
+          <>
+            <div className="dropdown dropdown-hover dropdown-end relative right-3">
+              <label tabIndex={0} className="">
+                <img
+                  src={user?.photoURL ? user?.photoURL : User}
+                  style={{ width: "40px" }}
+                  alt=""
+                  className=" rounded-full"
+                />
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-gray-500 rounded-box w-56"
+              >
+                <div className="text-center texr-xl font-semibold mb-4 border-b-[1px] pb-2">
+                  <p>{user?.displayName}</p>
+                  <p>{user?.email}</p>
+                </div>
                 <li>
                   <Link
                     to="orders"
                     className="btn btn-outline text-white w-auto mb-4"
                   >
-                    Order List
+                    Booking List
                   </Link>
                 </li>
                 <li>
@@ -208,20 +200,27 @@ const Navbar = () => {
                     <img src={logOUT} alt="" className="w-5" />
                   </button>
                 </li>
-              </>
-            ) : (
-              <li>
-                <button
-                  onClick={handlerGoogleSingIn}
-                  className="btn  text-white w-auto"
-                >
-                  Google
-                  <img src={google} alt="" className="w-5" />
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex gap-4">
+              <Link
+                to="register"
+                className="btn btn-outline text-white w-auto mb-4"
+              >
+                Register
+              </Link>
+              <Link
+                to="login"
+                className="btn btn-outline text-white w-auto mb-4"
+              >
+                Log In
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
