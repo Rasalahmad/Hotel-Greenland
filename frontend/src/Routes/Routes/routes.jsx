@@ -14,6 +14,7 @@ import FamilyRoom from "../../pages/Home/Rooms/Special/FamilyRoom";
 import Contact from "../../pages/Contact/Contact";
 import SuccessView from "../../component/Success/SuccessView";
 import Success from "../../pages/payment/Success";
+import Orders from "../../pages/Orders/Orders";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "/restaurant/menu",
         element: <Menu />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Checkout from "../../component/Checkout/Checkout";
 import BookingForm from "../../component/Form/BookingForm";
@@ -12,6 +12,7 @@ import {
   useMarkUnavailableMutation,
 } from "../../features/booking/bookingApi";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Booking = () => {
   const { roomId } = useParams();
