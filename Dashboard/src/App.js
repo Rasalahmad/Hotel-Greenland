@@ -46,13 +46,7 @@ function App() {
                 element={isLoggedIn ? <Restaurant /> : <Login />}
               />
             </Route>
-            <Route path="orders">
-              <Route index element={isLoggedIn ? <List /> : <Login />} />
-              <Route
-                path=":trans_id"
-                element={isLoggedIn ? <Restaurant /> : <Login />}
-              />
-            </Route>
+
             <Route path="booking">
               <Route index element={isLoggedIn ? <List /> : <Login />} />
               <Route

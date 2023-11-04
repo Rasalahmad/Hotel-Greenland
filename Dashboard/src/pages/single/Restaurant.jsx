@@ -66,7 +66,14 @@ const Restaurant = () => {
                       <span className="close-button">
                         <CloseIcon onClick={toggleModal}></CloseIcon>
                       </span>
-                      {isActive && <RestaurantForm loading={loading} isActive={isActive} toggleModal={toggleModal} data={item}/>}
+                      {isActive && (
+                        <RestaurantForm
+                          loading={loading}
+                          isActive={isActive}
+                          toggleModal={toggleModal}
+                          data={item}
+                        />
+                      )}
                     </div>
                   </div>
                 </>
@@ -89,9 +96,9 @@ const Restaurant = () => {
                 </div>
               </div>
               <div className="right">
-              <>
+                <>
                   <button onClick={modal} className="editButton link">
-                  Add New Dish
+                    Add New Dish
                   </button>
                   <div className={`modal ${active ? "active" : ""}`}>
                     <div className="modal-content">
@@ -101,18 +108,11 @@ const Restaurant = () => {
                       {active && <DishesForm data={item} modal={modal} />}
                     </div>
                   </div>
-                </> 
+                </>
                 {item?.dishes.map((vol) => (
-
-                  <div className="dish" >
-                     
-                    <div >
-                      <img
-                        src={vol?.img}
-                        className="dishImg"
-                        alt=""
-                      />
-
+                  <div className="dish">
+                    <div>
+                      <img src={vol?.img} className="dishImg" alt="" />
                     </div>
                     <div>
                       <h2>Blue Cheese Crackers with Grapes</h2>
