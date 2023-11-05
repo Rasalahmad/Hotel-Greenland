@@ -11,7 +11,7 @@ const Register = () => {
           </div>
           <div className=" flex items-center justify-center col-span-6 lg:mr-[20px]">
             <div className=" lg:flex hidden "></div>
-            <div className="w-full bg-white p-5">
+            <div className="w-full bg-white p-5 card-bordered shadow-lg rounded-lg">
               <RegisterForm />
             </div>
           </div>
