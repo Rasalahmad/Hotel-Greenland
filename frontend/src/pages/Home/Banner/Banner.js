@@ -25,7 +25,7 @@ const Banner = () => {
               : path === "login"
               ? "Log In Greenland"
               : path === "familySpecialRoom"
-              ? "Family Special Rooms"
+              ? "Family Special"
               : path === "restaurant"
               ? "Greenland Restaurant"
               : path === "contact"

@@ -17,6 +17,7 @@ import Success from "../../pages/payment/Success";
 import Orders from "../../pages/Orders/Orders";
 import Login from "../../pages/Auth/Login";
 import Register from "../../pages/Auth/Register";
+import PrivateRoute from "../Private/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +62,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/booking/:roomId",
-        element: <Booking />,
+        element: (
+          <PrivateRoute>
+            <Booking />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/restaurant",
