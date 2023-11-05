@@ -12,6 +12,7 @@ import { FaSwimmingPool } from "react-icons/fa";
 import Checkout from "../../../../component/Checkout/Checkout";
 import { useParams } from "react-router-dom";
 import { useGetRoomQuery } from "../../../../features/rooms/roomApi";
+import Loader from "../../../../component/Loader/Loader";
 
 const Details = () => {
   const { roomId } = useParams();
@@ -22,7 +23,7 @@ const Details = () => {
   let content = null;
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loader />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else {

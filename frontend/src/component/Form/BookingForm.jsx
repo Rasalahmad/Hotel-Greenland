@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
@@ -5,13 +6,17 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
   const { user } = useContext(AuthContext);
-  const nameParts = user?.displayName.split(" ");
+  const nameParts = user?.displayName?.split(" ");
 
   console.log(user?.displayName);
   console.log(nameParts);
+  let firstName = "";
+  let lastName = "";
+  if (user?.displayName) {
+    firstName = nameParts[0]; // "Talimul"
+    lastName = nameParts[1] || "";
+  }
 
-  const firstName = nameParts[0]; // "Talimul"
-  const lastName = nameParts[1];
   const { register, handleSubmit, errors } = useForm();
   return (
     <Container>

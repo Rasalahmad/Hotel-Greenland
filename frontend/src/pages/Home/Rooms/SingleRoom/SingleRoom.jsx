@@ -9,6 +9,7 @@ import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CheckBox from "../../../../component/Checkbox/CheckBox";
 import { useGetSingleRoomQuery } from "../../../../features/rooms/roomApi";
+import Loader from "../../../../component/Loader/Loader";
 
 const SingleRoom = () => {
   const { data: roomData, isLoading, isError, error } = useGetSingleRoomQuery();
@@ -64,7 +65,7 @@ const SingleRoom = () => {
   let content = null;
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loader />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else if (!isLoading && !isError && roomData?.data?.length === 0) {

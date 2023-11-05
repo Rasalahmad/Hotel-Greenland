@@ -9,6 +9,7 @@ import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CheckBox from "../../../../component/Checkbox/CheckBox";
 import { useGetDoubleRoomQuery } from "../../../../features/rooms/roomApi";
+import Loader from "../../../../component/Loader/Loader";
 
 const DoubleRoom = () => {
   const { data: roomData, isLoading, isError, error } = useGetDoubleRoomQuery();
@@ -64,7 +65,7 @@ const DoubleRoom = () => {
   let content = null;
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loader />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else if (!isLoading && !isError && roomData?.data?.length === 0) {

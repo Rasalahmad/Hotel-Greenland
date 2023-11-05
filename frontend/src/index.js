@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import AuthProvider from "./Context/AuthProvider";
-
+import "react-loading-skeleton/dist/skeleton.css";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
