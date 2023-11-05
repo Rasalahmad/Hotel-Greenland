@@ -30,6 +30,7 @@ const RegisterForm = () => {
         navigate("/");
         const userInfo = {
           displayName: data.name,
+          phoneNumber: data.telephone,
         };
         updateUser(userInfo);
       })
@@ -71,7 +72,7 @@ const RegisterForm = () => {
               })}
             />
           </div>
-          <div className="md:w-72 flex flex-col md:ml-6 md:mt-0 mt-4">
+          <div className="md:w-72 flex flex-col md:ml-6 md:mt-0 mt-8 lg:mt-auto">
             <label className="text-base font-semibold leading-none text-gray-800">
               Email Address
             </label>
@@ -98,7 +99,7 @@ const RegisterForm = () => {
               })}
             />
           </div>
-          <div className="md:w-72 flex flex-col">
+          <div className="md:w-72 flex flex-col mt-8 lg:mt-auto">
             <label className="text-base font-semibold leading-none text-gray-800">
               Password
             </label>
@@ -111,7 +112,7 @@ const RegisterForm = () => {
             />
           </div>
         </div>
-        <p className="text-red-400">{singUpError}</p>
+        <p className="text-red-500 mt-3">{singUpError}</p>
         <p className="text-xs leading-3 text-gray-600 mt-4">
           By creating an account, I consent to the processing of my personal
           data in accordance with the PRIVACY POLICY

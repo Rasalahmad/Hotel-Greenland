@@ -42,6 +42,7 @@ const LogINForm = () => {
         console.log(error.message);
       });
   };
+
   return (
     <div>
       <div>
@@ -56,9 +57,11 @@ const LogINForm = () => {
                 className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-indigo-700 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100"
                 {...register("email", {
                   pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                  message: "Email required",
                 })}
               />
             </div>
+            <p className="text-red-300">{errors.email}</p>
             <div className="md:w-72 flex flex-col">
               <label className="text-base font-semibold leading-none text-gray-800">
                 Password
@@ -72,7 +75,7 @@ const LogINForm = () => {
               />
             </div>
           </div>
-          <p className="text-red-400">{loginError}</p>
+          <p className="text-red-400 text-center mt-5">{loginError}</p>
 
           <div className="flex items-center justify-center w-full ">
             <button className="mt-9 uppercase text-base font-semibold leading-none rounded-full text-white py-4 px-10 bg-indigo-700  hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none">
