@@ -6,12 +6,13 @@ import Skeleton from "react-loading-skeleton";
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
-  const { user, isLoading } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
-  if (isLoading) {
+  if (loading) {
     return (
-      <div>
-        <Skeleton count={1} className="w-[90vw] mx-auto" />
+      <div className="lg:flex lg:mx-24">
+        <Skeleton count={1} className="w-[30vw] mx-auto" />
+        <Skeleton count={1} className="w-[70vw] mx-auto" />
       </div>
     );
   }

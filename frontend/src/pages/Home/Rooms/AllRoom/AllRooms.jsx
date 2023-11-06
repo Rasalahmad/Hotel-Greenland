@@ -65,7 +65,7 @@ const AllRooms = () => {
   let content = null;
 
   if (isLoading) {
-    content = <Loader />;
+    content = <Loader type={"allList"} />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else if (!isLoading && !isError && roomData?.data?.length === 0) {

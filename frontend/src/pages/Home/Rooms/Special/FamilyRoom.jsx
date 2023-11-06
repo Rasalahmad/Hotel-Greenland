@@ -70,7 +70,7 @@ const FamilyRoom = () => {
   let content = null;
 
   if (isLoading) {
-    content = <Loader />;
+    content = <Loader type={"List"} />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else if (!isLoading && !isError && roomData?.data?.length === 0) {
