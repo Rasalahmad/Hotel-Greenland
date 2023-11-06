@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
+import ErrorMessage from "../Error/ErrorMessage";
 
 const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
   const { user } = useContext(AuthContext);
@@ -15,7 +16,13 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
     lastName = nameParts[1] || "";
   }
 
-  const { register, handleSubmit, errors } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  console.log(errors);
 
   return (
     <Container>
@@ -24,17 +31,17 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
         reservation on your account.
       </LoginInfo>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Head>Add Your Informations :</Head>
+        <Head>Add Your Information :</Head>
         <div className="flex gap-5 my-6">
           <div className="w-1/2">
             <Label>Name *</Label>
             <Input
               type="text"
               defaultValue={user?.displayName}
-              {...register("name")}
+              {...register("name", { required: true })}
             />
+            {errors?.name && <ErrorMessage message={"Name is required"} />}
           </div>
-          {errors?.name && <span>This field is required</span>}
           <div className="w-1/2">
             <Label>Surname</Label>
             <Input type="text" {...register("surename")} />
@@ -51,9 +58,10 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
                 pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
               })}
             />
+            {errors?.email && <ErrorMessage message={"Email is required"} />}
           </div>
           <div className="w-1/2">
-            <Label>Telephone *</Label>
+            <Label>Phone Number *</Label>
             <Input
               type="text"
               {...register("phone", {
@@ -61,40 +69,51 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
                 pattern: /^01[3-9]\d{8}$/,
               })}
             />
+            {errors?.phone && (
+              <ErrorMessage message={"Phone number is required"} />
+            )}
           </div>
         </div>
         <div className="flex gap-5 my-6">
           <div className="w-1/2">
-            <Label>Address</Label>
-            <Input type="text" {...register("address")} />
+            <Label>Address *</Label>
+            <Input type="text" {...register("address", { required: true })} />
+            {errors?.address && (
+              <ErrorMessage message={"Address is required"} />
+            )}
           </div>
           <div className="w-1/2">
-            <Label>City</Label>
-            <Input type="text" {...register("city")} />
+            <Label>City *</Label>
+            <Input type="text" {...register("city", { required: true })} />
+            {errors?.city && <ErrorMessage message={"City is required"} />}
           </div>
         </div>
         <div className="flex gap-5 my-6">
           <div className="w-1/2">
-            <Label>Country</Label>
-            <Input type="text" {...register("country")} />
+            <Label>Country *</Label>
+            <Input type="text" {...register("country", { required: true })} />
+            {errors?.country && (
+              <ErrorMessage message={"Country is required"} />
+            )}
           </div>
           <div className="w-1/2">
-            <Label>Zip</Label>
-            <Input type="number" {...register("zip")} />
+            <Label>Zip *</Label>
+            <Input type="number" {...register("zip", { required: true })} />
+            {errors?.zip && <ErrorMessage message={"ZIP is required"} />}
           </div>
         </div>
         <div>
-          <Label className="mb-5">Request</Label>
+          <Label className="mb-5">Request *</Label>
           <TextArea
             className="w-full"
             rows="4"
             cols="50"
-            {...register("request")}
+            {...register("request", { required: true })}
           />
         </div>
         <div className="w-full my-6">
-          <Label>Arrival</Label>
-          <Select {...register("arrival")}>
+          <Label>Arrival *</Label>
+          <Select {...register("arrival", { required: true })}>
             <option value="not select">I don't know</option>
             <option value="12.00 - 1.00 am">12.00 - 1.00 am</option>
             <option value="1.00 - 2.00 am">1.00 - 2.00 am</option>
@@ -120,11 +139,10 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
             <option value="10.00 - 11.00 pm">10.00 - 11.00 pm</option>
             <option value="11.00 - 12.00 pm">11.00 - 12.00 pm</option>
           </Select>
+          {errors?.arrival && (
+            <ErrorMessage message={"Arrival time is required"} />
+          )}
         </div>
-        {/* <div className="w-full my-6">
-          <Label>Coupon</Label>
-          <Input type="text" />
-        </div> */}
         <div className="flex gap-5">
           <div className="my-4 flex items-center">
             <input className="w-5 h-5" type="checkbox" id="tc" required />
@@ -132,7 +150,7 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
               Terms and Condition *
             </label>
           </div>
-          <div className="my-4 flex items-center">
+          {/* <div className="my-4 flex items-center">
             <input
               className="w-5 h-5"
               type="checkbox"
@@ -143,7 +161,7 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
             <label for="paylater" className="ml-2 text-base cursor-pointer">
               Pay Later
             </label>
-          </div>
+          </div> */}
         </div>
         <Button type="submit" value={payLater ? "Pay In Cash" : "Checkout"} />
       </Form>
