@@ -8,8 +8,6 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
   const { user } = useContext(AuthContext);
   const nameParts = user?.displayName?.split(" ");
 
-  console.log(user?.displayName);
-  console.log(nameParts);
   let firstName = "";
   let lastName = "";
   if (user?.displayName) {
