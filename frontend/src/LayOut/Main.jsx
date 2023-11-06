@@ -1,15 +1,20 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../component/Footer";
 import ScrollToTopComponent from "../component/scroll/ScrollToTop";
 import Banner from "../pages/Home/Banner/Banner";
 
 const Main = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const excludeRoute = ["login", "register"];
   return (
     <ScrollToTopComponent>
-      <Banner />
+      {!excludeRoute.includes(path) && <Banner />}
+
       <Outlet />
-      <Footer />
+
+      {!excludeRoute.includes(path) && <Footer />}
     </ScrollToTopComponent>
   );
 };

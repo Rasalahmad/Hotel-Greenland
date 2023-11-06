@@ -185,7 +185,7 @@ const Navbar = () => {
                 </div>
                 <li>
                   <Link
-                    to="orders"
+                    to="booking"
                     className="btn btn-outline text-white w-auto mb-4"
                   >
                     Booking List
