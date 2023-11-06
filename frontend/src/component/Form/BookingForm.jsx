@@ -34,7 +34,11 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
           {errors?.name && <span>This field is required</span>}
           <div className="w-1/2">
             <Label>Surname *</Label>
-            <Input type="text" value={lastName} {...register("surename")} />
+            {lastName ? (
+              <Input type="text" value={lastName} {...register("surename")} />
+            ) : (
+              <Input type="text" {...register("surename")} />
+            )}
           </div>
         </div>
         <div className="flex gap-5 my-6">

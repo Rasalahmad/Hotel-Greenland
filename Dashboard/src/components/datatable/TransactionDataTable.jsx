@@ -5,6 +5,7 @@ import { transColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { makeRequest } from "../../axios";
+import Loader from "../Loader/Loader";
 
 const TransactionDataTable = () => {
   const [data, setData] = useState([]);
@@ -82,8 +83,8 @@ const TransactionDataTable = () => {
 
   return (
     <>
-      {!data ? (
-        "Loading"
+      {!data || loading ? (
+        <Loader type={"List"} />
       ) : (
         <div className="datatable">
           <div className="datatableTitle">Transactions</div>

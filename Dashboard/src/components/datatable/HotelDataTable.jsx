@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { makeRequest } from "../../axios";
+import Loader from "../Loader/Loader";
 
 const HotelDataTable = () => {
   const [data, setData] = useState([]);
@@ -75,7 +76,7 @@ const HotelDataTable = () => {
   return (
     <>
       {!data || loading ? (
-        "Loading"
+        <Loader type={"List"} />
       ) : (
         <div className="datatable">
           <div className="datatableTitle">
