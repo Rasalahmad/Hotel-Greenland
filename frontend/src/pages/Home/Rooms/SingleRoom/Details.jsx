@@ -23,7 +23,7 @@ const Details = () => {
   let content = null;
 
   if (isLoading) {
-    content = <Loader />;
+    content = <Loader type={"Details"} />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else {
