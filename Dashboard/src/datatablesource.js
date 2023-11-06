@@ -37,6 +37,33 @@ export const userColumns = [
     },
   },
 ];
+export const reviewColumn = [
+  {
+    field: "thumbnail",
+    headerName: "ROOM",
+    width: 250,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.image} alt="avatar" />
+          {params.row.name}
+        </div>
+      );
+    },
+  },
+  { field: "msg", headerName: "Message", width: 200 },
+  {
+    field: "star",
+    headerName: "STAR",
+    width: 150,
+  },
+
+  {
+    field: "isApproved",
+    headerName: "APPROVAL",
+    width: 200,
+  },
+];
 
 export const transColumns = [
   // { field: "transId", headerName: "Transaction ID", width: 200 },
