@@ -3,18 +3,14 @@ import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import { useContext } from "react";
 import Skeleton from "react-loading-skeleton";
+import Loader from "../../component/Loader/Loader";
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
-    return (
-      <div className="lg:flex lg:mx-24">
-        <Skeleton count={1} className="w-[30vw] mx-auto" />
-        <Skeleton count={1} className="w-[70vw] mx-auto" />
-      </div>
-    );
+    return <Loader />;
   }
 
   if (user?.email) {

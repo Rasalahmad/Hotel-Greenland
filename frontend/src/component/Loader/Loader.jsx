@@ -24,7 +24,7 @@ const Loader = ({ type }) => {
           />
         </div>
       ) : type === "List" ? (
-        <div className="lg:flex gap-4 mt-4 lg:mt-auto mx-10">
+        <div className="lg:flex gap-4 mt-4 lg:mt-auto lg:mx-10 mx-7">
           <Skeleton
             count={1}
             height={"300px"}
@@ -46,21 +46,17 @@ const Loader = ({ type }) => {
         </div>
       ) : type === "Details" ? (
         <div>
-          <div className="lg:flex gap-4 mt-4 lg:mt-auto mx-24">
+          <div className="lg:flex gap-4 mt-4 lg:mt-auto lg:mx-24">
             <div>
               <Skeleton
                 count={1}
-                height={"40px"}
-                width={"150px"}
-                className="mb-4"
+                className="mb-4 lg:w-[10%] h-[50px] lg:h-[40px]"
               />
               <Skeleton
                 count={1}
-                height={"300px"}
-                width={"550px"}
-                className="mb-4"
+                className="mb-4 lg:w-[550px] lg:h-[300px] h-[200px]"
               />
-              <div className="lg:flex justify-center gap-3">
+              <div className="flex justify-center gap-3">
                 <Skeleton
                   count={1}
                   height={"60px"}
@@ -89,7 +85,7 @@ const Loader = ({ type }) => {
               className="mb-4"
             />
           </div>
-          <div className="lg:flex justify-center gap-12 mt-4">
+          <div className="hidden lg:flex justify-center gap-12 mt-4">
             <Skeleton
               count={1}
               height={"80px"}
@@ -140,7 +136,7 @@ const Loader = ({ type }) => {
       ) : (
         <>
           <div>
-            <div className="lg:flex gap-4 mt-4 lg:mt-auto mx-28">
+            <div className="hidden lg:flex gap-4 mt-4 lg:mt-auto lg:mx-28">
               <Skeleton
                 count={1}
                 height={"500px"}
@@ -178,6 +174,20 @@ const Loader = ({ type }) => {
                   <Skeleton count={1} height={"80px"} width={"280px"} />
                 </div>
               </div>
+            </div>
+            <div className="lg:hidden">
+              <Skeleton
+                count={1}
+                height={"300px"}
+                width={"100%"}
+                className="my-4"
+              />
+              <Skeleton
+                count={4}
+                height={"100px"}
+                width={"100%"}
+                className="my-4"
+              />
             </div>
           </div>
         </>
