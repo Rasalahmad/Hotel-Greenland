@@ -7,19 +7,19 @@ const Loader = ({ type }) => {
           <Skeleton
             count={2}
             height={"300px"}
-            width={"350px"}
+            width={"400px"}
             className="mb-4"
           />
           <Skeleton
             count={2}
             height={"300px"}
-            width={"350px"}
+            width={"400px"}
             className="mb-4"
           />
           <Skeleton
             count={2}
             height={"300px"}
-            width={"350px"}
+            width={"400px"}
             className="mb-4"
           />
         </div>
@@ -28,33 +28,37 @@ const Loader = ({ type }) => {
           <Skeleton
             count={1}
             height={"300px"}
-            width={"350px"}
+            width={"400px"}
             className="mb-4"
           />
           <Skeleton
             count={1}
             height={"300px"}
-            width={"350px"}
+            width={"400px"}
             className="mb-4"
           />
           <Skeleton
             count={1}
             height={"300px"}
-            width={"350px"}
+            width={"400px"}
             className="mb-4"
           />
         </div>
       ) : type === "Details" ? (
         <div>
-          <div className="lg:flex gap-4 mt-4 lg:mt-auto lg:mx-24">
-            <div>
+          <div className=" lg:flex gap-4 mt-4 lg:mt-auto lg:mx-28 mx-2">
+            <div className="hidden lg:block">
               <Skeleton
-                count={1}
-                className="mb-4 lg:w-[10%] h-[50px] lg:h-[40px]"
+                count={2}
+                height={"40px"}
+                width={"40%"}
+                className="mb-4 "
               />
               <Skeleton
                 count={1}
-                className="mb-4 lg:w-[550px] lg:h-[300px] h-[200px]"
+                height={"400px"}
+                width={"600px"}
+                className="mb-4"
               />
               <div className="flex justify-center gap-3">
                 <Skeleton
@@ -77,83 +81,121 @@ const Loader = ({ type }) => {
                 />
               </div>
             </div>
+            <div className=" lg:hidden ">
+              <Skeleton
+                count={2}
+                height={"30px"}
+                width={"70%"}
+                className="mb-4 "
+              />
+              <Skeleton
+                count={1}
+                height={"300px"}
+                width={"100%"}
+                className="mb-4"
+              />
+              <div className="flex justify-center gap-3">
+                <Skeleton
+                  count={1}
+                  height={"50px"}
+                  width={"70px"}
+                  className="mb-4"
+                />
+                <Skeleton
+                  count={1}
+                  height={"50px"}
+                  width={"70px"}
+                  className="mb-4"
+                />
+                <Skeleton
+                  count={1}
+                  height={"50px"}
+                  width={"70px"}
+                  className="mb-4"
+                />
+              </div>
+            </div>
             <Skeleton
               count={1}
-              style={{ marginTop: "62px" }}
-              height={"500px"}
-              width={"400px"}
+              style={{ marginTop: "120px" }}
+              height={"550px"}
+              width={"470px"}
               className="mb-4"
             />
           </div>
-          <div className="hidden lg:flex justify-center gap-12 mt-4">
+          <div className="hidden lg:block gap-1 mt-4 mx-24">
             <Skeleton
-              count={1}
+              count={2}
               height={"80px"}
-              width={"200px"}
+              width={"100%"}
               className="mb-4"
             />
             <Skeleton
-              count={1}
+              count={2}
               height={"80px"}
-              width={"200px"}
-              className="mb-4"
-            />
-            <Skeleton
-              count={1}
-              height={"80px"}
-              width={"200px"}
-              className="mb-4"
-            />
-            <Skeleton
-              count={1}
-              height={"80px"}
-              width={"200px"}
+              width={"100%"}
               className="mb-4"
             />
           </div>
-          <div className="  mt-4 mx-28">
+          <div className=" lg:hidden  flex justify-between gap-1 mt-4 mx-3">
             <Skeleton
-              count={1}
-              height={"100px"}
-              width={"100%"}
-              className="mb-4"
-            />
-
-            <Skeleton
-              count={1}
-              height={"100px"}
-              width={"100%"}
+              count={2}
+              height={"80px"}
+              width={"180px"}
               className="mb-4"
             />
             <Skeleton
-              count={1}
-              height={"100px"}
-              width={"100%"}
+              count={2}
+              height={"80px"}
+              width={"180px"}
               className="mb-4"
             />
           </div>
         </div>
+      ) : type === "booking" ? (
+        <>
+          <div>
+            <Skeleton
+              count={1}
+              height={"80px"}
+              width={"100%"}
+              className="mb-10"
+            />
+            <Skeleton
+              count={2}
+              height={"60px"}
+              width={"100%"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={2}
+              height={"60px"}
+              width={"100%"}
+              className="mb-4"
+            />
+          </div>
+        </>
       ) : (
         <>
           <div>
-            <div className="hidden lg:flex gap-4 mt-4 lg:mt-auto lg:mx-28">
+            <div className="hidden lg:flex gap-10 mt-4 lg:mt-auto lg:mx-24">
               <Skeleton
                 count={1}
                 height={"500px"}
-                width={"300px"}
+                width={"400px"}
                 className="mb-4"
               />
               <div>
                 <Skeleton
                   count={1}
                   height={"60px"}
-                  width={"550px"}
+                  width={"590px"}
                   className="mb-4"
                 />
                 <Skeleton
                   count={1}
-                  height={"50px"}
-                  width={"250px"}
+                  height={"30px"}
+                  width={"290px"}
                   className="mb-4"
                 />
                 <div>
@@ -161,13 +203,13 @@ const Loader = ({ type }) => {
                     <Skeleton
                       count={5}
                       height={"60px"}
-                      width={"280px"}
+                      width={"300px"}
                       className="mb-16"
                     />
                     <Skeleton
                       count={5}
                       height={"60px"}
-                      width={"280px"}
+                      width={"300px"}
                       className="mb-16"
                     />
                   </div>
