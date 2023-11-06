@@ -257,7 +257,7 @@ export const getIndividualBooking = async (req, res) => {
 };
 
 export const getUserBooking = async (req, res) => {
-  const booking = await Booking.findOne({
+  const booking = await Booking.find({
     cus_email: req.params.email,
   });
 
