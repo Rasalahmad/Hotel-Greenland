@@ -6,18 +6,9 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
   const { user } = useContext(AuthContext);
-  const nameParts = user?.displayName?.split(" ");
-
-  console.log(user?.displayName);
-  console.log(nameParts);
-  let firstName = "";
-  let lastName = "";
-  if (user?.displayName) {
-    firstName = nameParts[0]; // "Talimul"
-    lastName = nameParts[1] || "";
-  }
 
   const { register, handleSubmit, errors } = useForm();
+
   return (
     <Container>
       <LoginInfo>
@@ -29,16 +20,16 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
         <div className="flex gap-5 my-6">
           <div className="w-1/2">
             <Label>Name *</Label>
-            <Input type="text" value={firstName} {...register("name")} />
+            <Input
+              type="text"
+              defaultValue={user?.displayName}
+              {...register("name")}
+            />
           </div>
           {errors?.name && <span>This field is required</span>}
           <div className="w-1/2">
-            <Label>Surname *</Label>
-            {lastName ? (
-              <Input type="text" value={lastName} {...register("surename")} />
-            ) : (
-              <Input type="text" {...register("surename")} />
-            )}
+            <Label>Surname</Label>
+            <Input type="text" {...register("surename")} />
           </div>
         </div>
         <div className="flex gap-5 my-6">
@@ -46,8 +37,7 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
             <Label>Email *</Label>
             <Input
               type="email"
-              value={user?.email}
-              disabled
+              defaultValue={user?.email}
               {...register("email", {
                 required: true,
                 pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,

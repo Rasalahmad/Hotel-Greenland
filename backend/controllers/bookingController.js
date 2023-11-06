@@ -221,7 +221,7 @@ export const getBooking = async (req, res) => {
 
 export const getSingleBooking = async (req, res) => {
   const booking = await Booking.findOne({
-    tran_id: ObjectId(req.params.trans_id),
+    tran_id: req.params.trans_id,
   });
   try {
     res.status(200).json({

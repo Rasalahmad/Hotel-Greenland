@@ -96,7 +96,7 @@ const Booking = () => {
       desc: desc,
       isAvailable: isAvailable,
     };
-
+    console.log(finalData);
     axios
       .post("http://localhost:5000/api/booking/payment", finalData)
       .then((res) => {
