@@ -9,6 +9,7 @@ import restaurantRoute from "./routers/restaurantRoute.js";
 import bookingRoute from "./routers/bookingRoute.js";
 import emailRoute from "./routers/emailRoute.js";
 import downloadRoute from "./routers/downloadRoute.js";
+import reviewRoute from "./routers/reviewRoute.js";
 
 const app = express();
 
@@ -100,6 +101,7 @@ app.use("/api/restaurant", restaurantRoute);
 app.use("/api/booking", bookingRoute);
 app.use("/api/sendEmail", emailRoute);
 app.use("/api/download-pdf", downloadRoute);
+app.use("/api/review", reviewRoute);
 
 app.listen(process.env.PORT, () => {
   connect();

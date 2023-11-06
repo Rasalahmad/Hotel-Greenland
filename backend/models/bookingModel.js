@@ -42,6 +42,10 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       default: "Pending",
     },
+    isReviewed: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
