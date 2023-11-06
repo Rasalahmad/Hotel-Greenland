@@ -53,19 +53,9 @@ function App() {
                 path=":bookingId"
                 element={isLoggedIn ? <Booking /> : <Login />}
               />
-              <Route
-                path="committeeForm"
-                element={
-                  isLoggedIn ? (
-                    <CommitteeForm
-                      inputs={committeeInputs}
-                      title="Add New Member"
-                    />
-                  ) : (
-                    <Login />
-                  )
-                }
-              />
+            </Route>
+            <Route path="reviews">
+              <Route index element={isLoggedIn ? <List /> : <Login />} />
             </Route>
           </Route>
         </Routes>
