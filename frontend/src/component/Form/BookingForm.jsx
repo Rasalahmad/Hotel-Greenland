@@ -7,6 +7,14 @@ import ErrorMessage from "../Error/ErrorMessage";
 
 const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
   const { user } = useContext(AuthContext);
+  const nameParts = user?.displayName?.split(" ");
+
+  let firstName = "";
+  let lastName = "";
+  if (user?.displayName) {
+    firstName = nameParts[0]; // "Talimul"
+    lastName = nameParts[1] || "";
+  }
 
   const {
     register,

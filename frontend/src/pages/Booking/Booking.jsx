@@ -13,6 +13,7 @@ import {
 } from "../../features/booking/bookingApi";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider";
+import Loader from "../../component/Loader/Loader";
 
 const Booking = () => {
   const { roomId } = useParams();
@@ -113,7 +114,7 @@ const Booking = () => {
   let content = null;
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loader type={""} />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else {
