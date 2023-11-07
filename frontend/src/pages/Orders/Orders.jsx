@@ -1,15 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useGetUserBookingQuery } from "../../features/booking/bookingApi";
 import { AuthContext } from "../../Context/AuthProvider";
 import Loader from "../../component/Loader/Loader";
 import styled from "styled-components";
-
+import User from "../../assets/icons/user.png";
 const Orders = () => {
   const { user } = useContext(AuthContext);
   const { data, isLoading, isError, error } = useGetUserBookingQuery(
     user?.email
   );
-  console.log(data?.data);
+  const [review, setReview] = useState({});
+
+  const datahandler = (id) => {
+    const singledata = data?.data.find((item) => item?._id === id);
+    setReview(singledata);
+  };
+
   return (
     <div>
       {!data || isLoading ? (
@@ -21,55 +27,144 @@ const Orders = () => {
           <div className="lg:ml-7 mx-3 lg:mx-auto my-10">
             <Title>Booking Room: {data?.data?.length}</Title>
             <div className="overflow-x-auto">
-              <table className="table   ">
-                {/* head */}
-                <thead>
-                  <tr>
-                    <th className="">Booking Number</th>
-                    <th>Transaction ID</th>
-                    <th>Room Name</th>
-                    <th>Arrival time</th>
-                    <th>Booking dates</th>
-                    <th>Payment Statusr</th>
-                    <th>Total amount</th>
-                    <th>Action</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data?.data.map((item, i) => (
-                    <tr key={item?._id} className=" card-bordered">
-                      <th>{i + 1}</th>
-                      <td>
-                        <p>{item?.tran_id}</p>
-                      </td>
-                      <td>
-                        <p>{item?.product_name}</p>
-                      </td>
-                      <td>{item?.arrival}</td>
-                      <td>
-                        <p>{item?.bookingDates[0]}</p>
-                      </td>
-                      <td>
-                        <p>{item?.paymentStatus}</p>
-                      </td>
-                      <td>
-                        <p>{item?.total_amount}</p>
-                      </td>
-
-                      <td>
-                        {item?.paymentStatus === "Paid" ? (
-                          <button className="btn btn-outline">Review</button>
-                        ) : (
-                          <button disabled className="btn btn-outline">
-                            Review
-                          </button>
-                        )}
-                      </td>
+              {data?.data.length > 0 && (
+                <table className="table   ">
+                  {/* head */}
+                  <thead>
+                    <tr>
+                      <th className="">Booking Number</th>
+                      <th>Transaction ID</th>
+                      <th>Room Name</th>
+                      <th>Arrival time</th>
+                      <th>Booking dates</th>
+                      <th>Payment Statusr</th>
+                      <th>Total amount</th>
+                      <th>Action</th>
+                      <th></th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {data?.data.map((item, i) => (
+                      <tr key={item?._id} className=" card-bordered">
+                        <th>{i + 1}</th>
+                        <td>
+                          <p>{item?.tran_id}</p>
+                        </td>
+                        <td>
+                          <p>{item?.product_name}</p>
+                        </td>
+                        <td>{item?.arrival}</td>
+                        <td>
+                          <p>{item?.bookingDates[0]}</p>
+                        </td>
+                        <td>
+                          <p>{item?.paymentStatus}</p>
+                        </td>
+                        <td>
+                          <p>{item?.total_amount}</p>
+                        </td>
+
+                        <td>
+                          {item?.paymentStatus === "Paid" ? (
+                            <label
+                              htmlFor="my_modal_6"
+                              className="btn btn-outline"
+                              onClick={() => datahandler(item?._id)}
+                            >
+                              Review
+                            </label>
+                          ) : (
+                            <button disabled className="btn btn-outline">
+                              Review
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+          {/* The button to open modal */}
+
+          {/* Put this part before </body> tag */}
+          <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+          <div className="modal">
+            <div className="modal-box">
+              <div className="modal-action">
+                <label
+                  htmlFor="my_modal_6"
+                  className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                >
+                  X
+                </label>
+              </div>
+
+              <div className="flex justify-between">
+                <div>
+                  <p>Room Name: {review?.product_name}</p>
+                  <p>Price: {review?.total_amount}</p>
+                  <div className="rating mt-4">
+                    <input
+                      type="radio"
+                      name="rating-4"
+                      className="mask text-lg mask-star-2 bg-yellow-300"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-4"
+                      className="mask text-lg mask-star-2 bg-yellow-300"
+                      checked
+                    />
+                    <input
+                      type="radio"
+                      name="rating-4"
+                      className="mask text-lg mask-star-2 bg-yellow-300"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-4"
+                      className="mask  text-lg mask-star-2 bg-yellow-300"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-4"
+                      className="mask  text-lg mask-star-2 bg-yellow-300"
+                    />
+                  </div>
+                </div>
+                <div>
+                  {user?.photoURl ? (
+                    <>
+                      <img
+                        class="h-16 w-16 rounded-full"
+                        src={user?.photoURl}
+                        alt=""
+                      ></img>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        class="h-16 w-16 rounded-full"
+                        src={User}
+                        alt=""
+                      ></img>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <div class="mt-2.5">
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="4"
+                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  ></textarea>
+                </div>
+              </div>
             </div>
           </div>
         </>
