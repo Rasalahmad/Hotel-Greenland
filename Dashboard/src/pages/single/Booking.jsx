@@ -172,10 +172,7 @@ const Booking = () => {
                             )}`}
                         </span>
                       </div>
-                      <div className="detailItem">
-                        <span className="itemKey">Status :</span>
-                        <span className="itemValue">{status}</span>
-                      </div>
+
                       <button className="button">Change Status</button>
                     </div>
                     <img src="/user.jpg" alt="" className="bookingImg" />
