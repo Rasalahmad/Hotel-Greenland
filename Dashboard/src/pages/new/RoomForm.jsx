@@ -6,11 +6,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { makeRequest } from "../../axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const RoomForm = ({ inputs, title }) => {
   const [file, setFile] = useState(null);
   const [info, setInfo] = useState({});
+  const [roomType, setRoomType] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const fileList = event.target.files;
@@ -60,10 +63,11 @@ const RoomForm = ({ inputs, title }) => {
     e.preventDefault();
     const thumbnail = await upload(file);
     const images = await uploadMultipleFile(selectedFiles);
-    const data = { ...info, thumbnail, images };
+    const data = { ...info, thumbnail, images, roomType };
     const res = await makeRequest.post("/room", data);
     if (res.data) {
       Swal.fire("Success", "Room Added successfully", "success");
+      navigate("/");
     } else {
       Swal.fire("Error", "Something went wrong", "error");
     }
@@ -101,7 +105,17 @@ const RoomForm = ({ inputs, title }) => {
                   style={{ display: "none" }}
                 />
               </div>
-
+              <div className="formInput">
+                <label>Room Type</label>
+                <select
+                  value={roomType}
+                  onChange={(e) => setRoomType(e.target.value)}
+                >
+                  <option value="single room">Single</option>
+                  <option value="double room">Double</option>
+                  <option value="special room">Special</option>
+                </select>
+              </div>
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>

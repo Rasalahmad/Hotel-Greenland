@@ -138,12 +138,14 @@ const EditForm = ({ data, loading, setIsActive }) => {
               </div>
               <div className="formInput">
                 <label>Room Type</label>
-                <input
-                  type="text"
-                  id="roomType"
+                <select
                   value={roomType}
                   onChange={(e) => setRoomType(e.target.value)}
-                />
+                >
+                  <option value="single room">Single</option>
+                  <option value="double room">Double</option>
+                  <option value="special room">Special</option>
+                </select>
               </div>
               <div className="formInput">
                 <label>Week Price</label>
