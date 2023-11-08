@@ -89,7 +89,11 @@ const Single = () => {
                 </>
                 <h1 className="title">Information</h1>
                 <div className="item">
-                  <img src={thumbnail} alt="" className="itemImg" />
+                  <img
+                    src={`${process.env.REACT_APP_BASE_URL}/images/${thumbnail}`}
+                    alt=""
+                    className="itemImg"
+                  />
                   <div className="details">
                     <h2 className="itemTitle">{name}</h2>
                     <div className="detailItem">

@@ -117,7 +117,10 @@ const DoubleRoom = () => {
           <Right>
             {roomData?.data?.map((item) => (
               <Card>
-                <Image src={item?.thumbnail} alt="" />
+                <Image
+                  src={`${process.env.REACT_APP_BASE_URL}/images/${item?.thumbnail}`}
+                  alt=""
+                />
                 <Content>
                   <Title>{item?.name}</Title>
                   <FContainer>

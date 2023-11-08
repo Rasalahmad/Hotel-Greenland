@@ -90,7 +90,10 @@ const Details = () => {
             <Facilities className="flex justify-between flex-wrap gap-7 my-10">
               {around.map((item) => (
                 <div>
-                  <Image src={item?.image} alt="" />
+                  <Image
+                    src={`${process.env.REACT_APP_BASE_URL}/images/${item?.image}`}
+                    alt=""
+                  />
                   <div className="bg-green-300">
                     <p className="-mt-10 ml-7 font-bold text-xl text-white">
                       {item.title}
