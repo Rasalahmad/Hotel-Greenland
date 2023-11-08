@@ -1,6 +1,6 @@
 import { apiSlice } from "../api/apiSlice";
 
-export const reviewgApi = apiSlice.injectEndpoints({
+export const reviewApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createReview: builder.mutation({
       query: (finalData) => ({
@@ -10,10 +10,10 @@ export const reviewgApi = apiSlice.injectEndpoints({
       }),
     }),
 
-    getUserReview: builder.query({
-      query: (bookingId) => `/review/${bookingId}`,
+    getReview: builder.query({
+      query: () => `/review?limit=5&isApproved=${true}`,
     }),
   }),
 });
 
-export const { useCreateReviewMutation, useGetUserReviewQuery } = reviewgApi;
+export const { useCreateReviewMutation, useGetReviewQuery } = reviewApi;

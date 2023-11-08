@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import Rating from "react-rating-stars-component";
 
 // Import Swiper styles
 import "swiper/css";
@@ -40,13 +41,18 @@ export default function TestimonialSlider({ data }) {
         className="mySwiper"
       >
         {data.map((item) => (
-          <SwiperSlide key={item?.id}>
+          <SwiperSlide key={item?._id}>
             <Container>
-              <Image src={item.image} alt="" />
+              <Image src={item?.image} alt="" />
               <Content>
-                <Message>{item.msg}</Message>
-                <Name>{item.name}</Name>
-                <small>{item.title}</small>
+                <Message>{item?.msg}</Message>
+                <Rating
+                  count={5}
+                  size={30}
+                  activeColor="#ffd700"
+                  value={item.star}
+                />
+                <Name>{item?.name}</Name>
               </Content>
             </Container>
           </SwiperSlide>
@@ -66,7 +72,7 @@ const Container = styled.div`
   -webkit-border-radius: 20px;
   overflow: hidden;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   gap: 30px;
   padding: 20px;

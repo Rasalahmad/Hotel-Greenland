@@ -45,7 +45,10 @@ export const addReview = async (req, res) => {
 };
 
 export const getReview = async (req, res) => {
-  const review = await Review.find({});
+  const { isApproved, limit } = req.query;
+  const review = await Review.find(isApproved ? { isApproved: true } : {})
+    .limit(limit)
+    .sort({ createdAt: -1 });
   try {
     res.status(200).json({
       status: true,
@@ -74,7 +77,25 @@ export const updateReview = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: false,
-      message: "Data can't fetch",
+      message: "Data can't update",
+      error,
+    });
+  }
+};
+
+export const deleteReview = async (req, res) => {
+  try {
+    const review = await Review.findByIdAndDelete({
+      _id: ObjectId(req.params.id),
+    });
+    res.status(200).json({
+      status: true,
+      data: review,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't delete",
       error,
     });
   }

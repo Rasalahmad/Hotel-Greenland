@@ -21,7 +21,7 @@ const RestaurantData = () => {
     };
     fetchData();
   }, []);
-  console.log(data);
+
   const columns = [
     { field: "_id", headerName: "ID", width: 160 },
     {
