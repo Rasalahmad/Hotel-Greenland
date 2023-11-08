@@ -9,6 +9,7 @@ import Navbar from "../../../component/Navbar";
 const Banner = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
+  const id = location.pathname.split("/")[2];
 
   return (
     <Container>
@@ -30,6 +31,8 @@ const Banner = () => {
               ? "Greenland Restaurant"
               : path === "contact"
               ? "Let’s chat andquote!"
+              : path === "booking" && id
+              ? "Booking Form"
               : path === "booking"
               ? "Booking List"
               : "Book Your Vacation"}
