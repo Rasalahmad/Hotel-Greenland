@@ -9,7 +9,7 @@ import { AuthContext } from "../Context/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  console.log(user?.email);
 
   const handleLogOut = () => {
     logOut().then().carch();
@@ -165,61 +165,55 @@ const Navbar = () => {
       </div>
       <div className="navbar-end ">
         {user?.email ? (
-          <>
-            <div className="dropdown dropdown-hover dropdown-end relative right-3">
-              <label tabIndex={0} className="">
-                <img
-                  src={user?.photoURL ? user?.photoURL : User}
-                  style={{ width: "40px" }}
-                  alt=""
-                  className=" rounded-full"
-                />
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-gray-500 rounded-box w-56"
-              >
-                <div className="text-center texr-xl font-semibold mb-4 border-b-[1px] pb-2">
-                  <p>{user?.displayName}</p>
-                  <p>{user?.email}</p>
-                </div>
-                <li>
-                  <Link
-                    to="booking"
-                    className="btn btn-outline text-white w-auto mb-4"
-                  >
-                    Booking List
-                  </Link>
-                </li>
-                <li>
-                  <button
-                    onClick={handleLogOut}
-                    className="bg-white text-gray-500 font-bold flex justify-center hover:border-[1px] hover:bg-transparent hover:text-white"
-                  >
-                    LogOut
-                    <img src={logOUT} alt="" className="w-5" />
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </>
+          <div className="dropdown dropdown-hover dropdown-end relative right-3">
+            <label tabIndex={0} className="">
+              <img
+                src={user?.photoURL ? user?.photoURL : User}
+                style={{ width: "40px" }}
+                alt=""
+                referrerpolicy="no-referrer"
+                className=" rounded-full"
+              />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-gray-500 rounded-box w-56"
+            >
+              <div className="text-center texr-xl font-semibold mb-4 border-b-[1px] pb-2">
+                <p>{user?.displayName}</p>
+                <p>{user?.email}</p>
+              </div>
+              <li>
+                <Link
+                  to="booking"
+                  className="btn btn-outline text-white w-auto mb-4"
+                >
+                  Booking List
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="bg-white text-gray-500 font-bold flex justify-center hover:border-[1px] hover:bg-transparent hover:text-white"
+                >
+                  LogOut
+                  <img src={logOUT} alt="" className="w-5" />
+                </button>
+              </li>
+            </ul>
+          </div>
         ) : (
-          <>
-            <div className="flex gap-4">
-              <Link
-                to="register"
-                className="btn btn-outline text-white w-auto mb-4"
-              >
-                Register
-              </Link>
-              <Link
-                to="login"
-                className="btn btn-outline text-white w-auto mb-4"
-              >
-                Log In
-              </Link>
-            </div>
-          </>
+          <div className="flex gap-4">
+            <Link
+              to="register"
+              className="btn btn-outline text-white w-auto mb-4"
+            >
+              Register
+            </Link>
+            <Link to="login" className="btn btn-outline text-white w-auto mb-4">
+              Log In
+            </Link>
+          </div>
         )}
       </div>
     </div>
