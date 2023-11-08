@@ -78,7 +78,7 @@ const LogINForm = () => {
           <p className="text-red-400 text-center mt-5">{loginError}</p>
 
           <div className="flex items-center justify-center w-full ">
-            <button className="mt-9 uppercase text-base font-semibold leading-none rounded-full text-white py-4 px-10 bg-indigo-700  hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none">
+            <button className="md:w-72  mt-9 uppercase text-base font-semibold leading-none rounded-full text-white py-4 px-10 bg-indigo-700  hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none">
               Log In
             </button>
           </div>
@@ -86,7 +86,7 @@ const LogINForm = () => {
             className="flex items-center justify-center w-full "
             onClick={handlerGoogleSingIn}
           >
-            <button className="flex gap-5 mt-9 uppercase text-base font-semibold leading-none text-black border-[1px] hover:border-gray-400 rounded-full py-4 px-10 ">
+            <button className="md:w-72  flex justify-center gap-6  mt-5 uppercase text-base font-semibold leading-none text-black border-[1px] hover:border-gray-400 rounded-full py-4 px-10 ">
               Google <img src={google} alt="" className="w-5" />
             </button>
           </div>
@@ -94,7 +94,7 @@ const LogINForm = () => {
           <p className="text-center text-md leading-3 text-gray-600 mt-4">
             No Account?
             <Link className="hover:text-gray-400" to="/register">
-              Register Now
+              &nbsp;Register Now
             </Link>
           </p>
         </form>
