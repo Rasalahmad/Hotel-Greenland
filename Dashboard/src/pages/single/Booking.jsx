@@ -71,7 +71,7 @@ const Booking = () => {
                   <h1 className="title">Room Details</h1>
                   <div className="item">
                     <img
-                      src={`${process.env.REACT_APP_BASE_URL}/images/${product_img}`}
+                      src={`${process.env.REACT_APP_IMAGE_URL}/images/${product_img}`}
                       alt=""
                       className="bookingImg"
                     />

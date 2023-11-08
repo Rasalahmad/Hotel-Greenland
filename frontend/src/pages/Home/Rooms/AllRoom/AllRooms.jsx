@@ -118,7 +118,7 @@ const AllRooms = () => {
             {roomData?.data?.map((item) => (
               <Card>
                 <Image
-                  src={`${process.env.REACT_APP_BASE_URL}/images/${item?.thumbnail}`}
+                  src={`${process.env.REACT_APP_IMAGE_URL}/images/${item?.thumbnail}`}
                   alt=""
                 />
                 <Content>

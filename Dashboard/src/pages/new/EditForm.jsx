@@ -108,7 +108,7 @@ const EditForm = ({ data, loading, setIsActive }) => {
               src={
                 file
                   ? typeof file === "string"
-                    ? `${process.env.REACT_APP_BASE_URL}/images/${file}`
+                    ? `${process.env.REACT_APP_IMAGE_URL}/images/${file}`
                     : URL.createObjectURL(file)
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
@@ -218,9 +218,9 @@ const EditForm = ({ data, loading, setIsActive }) => {
                           src={
                             file
                               ? file?.original
-                                ? `${process.env.REACT_APP_BASE_URL}/images/${file.original}`
+                                ? `${process.env.REACT_APP_IMAGE_URL}/images/${file.original}`
                                 : URL.createObjectURL(file)
-                              : `${process.env.REACT_APP_BASE_URL}/images/${file.original}`
+                              : `${process.env.REACT_APP_IMAGE_URL}/images/${file.original}`
                           }
                           alt=""
                         />

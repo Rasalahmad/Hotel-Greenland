@@ -20,6 +20,18 @@ const Details = () => {
   const { name, images, guests, price, weekPrice, desc, around } =
     room?.data || {};
 
+  console.log(images);
+
+  const Images = images?.map((item) => {
+    return {
+      original: `${process.env.REACT_APP_IMAGE_URL}/images/${item?.original}`,
+      thumbnail: `${process.env.REACT_APP_IMAGE_URL}/images/${item?.thumbnail}`,
+      _id: item?._id,
+    };
+  });
+
+  console.log(Images);
+
   let content = null;
 
   if (isLoading) {
@@ -33,7 +45,7 @@ const Details = () => {
         <p className="my-5 text-gray-400">HOTEL GREENLAND</p>
         <Main>
           <div className="md:w-3/4">
-            <ImageGallery items={images} />
+            <ImageGallery items={Images} />
           </div>
           <Checkout
             noImage
@@ -90,10 +102,7 @@ const Details = () => {
             <Facilities className="flex justify-between flex-wrap gap-7 my-10">
               {around.map((item) => (
                 <div>
-                  <Image
-                    src={`${process.env.REACT_APP_BASE_URL}/images/${item?.image}`}
-                    alt=""
-                  />
+                  <Image src={item?.image} alt="" />
                   <div className="bg-green-300">
                     <p className="-mt-10 ml-7 font-bold text-xl text-white">
                       {item.title}

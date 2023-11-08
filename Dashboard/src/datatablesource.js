@@ -8,7 +8,7 @@ export const userColumns = [
         <div className="cellWithImg">
           <img
             className="cellImg"
-            src={`${process.env.REACT_APP_BASE_URL}/images/${params.row.thumbnail}`}
+            src={`${process.env.REACT_APP_IMAGE_URL}/images/${params.row.thumbnail}`}
             alt="avatar"
           />
           {params.row.name}
@@ -80,7 +80,7 @@ export const transColumns = [
         <div className="cellWithImg">
           <img
             className="cellImg"
-            src={`${process.env.REACT_APP_BASE_URL}/images/${params.row.product_img}`}
+            src={`${process.env.REACT_APP_IMAGE_URL}/images/${params.row.product_img}`}
             alt="avatar"
           />
           {params.row.product_name}
