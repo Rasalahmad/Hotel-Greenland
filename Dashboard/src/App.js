@@ -2,7 +2,6 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
-import CommitteeForm from "./pages/new/CommitteeForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { committeeInputs, roomInputs } from "./formSource";
 import "./style/dark.scss";
