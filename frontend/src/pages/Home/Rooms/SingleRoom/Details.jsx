@@ -30,8 +30,6 @@ const Details = () => {
     };
   });
 
-  console.log(Images);
-
   let content = null;
 
   if (isLoading) {
