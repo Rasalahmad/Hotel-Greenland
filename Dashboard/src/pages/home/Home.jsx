@@ -5,8 +5,34 @@ import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
+import { useEffect, useState } from "react";
+import { makeRequest } from "../../axios";
+import Swal from "sweetalert2";
 
 const Home = () => {
+  const [loading, setLoading] = useState(false);
+  const [bookingData, setBookingData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await makeRequest.get("/statistic/booking");
+        setBookingData(res.data.data);
+      } catch (err) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Something went wrong",
+        });
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  console.log(bookingData);
+
   return (
     <div className="home">
       <Sidebar />
@@ -14,7 +40,9 @@ const Home = () => {
         <Navbar />
         <div className="widgets">
           <Widget type="user" />
-          <Widget type="order" />
+          {bookingData && !loading && (
+            <Widget type="order" statistic={bookingData} />
+          )}
           <Widget type="earning" />
           <Widget type="balance" />
         </div>
