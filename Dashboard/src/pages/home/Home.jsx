@@ -17,7 +17,7 @@ const Home = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await makeRequest.get("/statistic/booking");
+        const res = await makeRequest.get("/statistic/widget");
         setBookingData(res.data.data);
       } catch (err) {
         Swal.fire({
@@ -31,7 +31,7 @@ const Home = () => {
     fetchData();
   }, []);
 
-  console.log(bookingData);
+  console.log(bookingData.bookingStatistic);
 
   return (
     <div className="home">
@@ -41,10 +41,14 @@ const Home = () => {
         <div className="widgets">
           <Widget type="user" />
           {bookingData && !loading && (
-            <Widget type="order" statistic={bookingData} />
+            <Widget type="order" statistic={bookingData?.bookingStatistic} />
           )}
-          <Widget type="earning" />
-          <Widget type="balance" />
+          {bookingData && !loading && (
+            <Widget type="earning" statistic={bookingData?.earnings} />
+          )}
+          {bookingData && !loading && (
+            <Widget type="balance" statistic={bookingData?.earnings} />
+          )}
         </div>
         <div className="charts">
           <Featured />

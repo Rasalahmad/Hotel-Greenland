@@ -36,9 +36,9 @@ const Widget = ({ type, statistic }) => {
         title: "BOOKINGS",
         isMoney: false,
         total: statistic?.totalBooking,
-        diff: statistic?.percentageDifference,
-        isIncrease: statistic.isIncrease,
-        link: "View all bookings",
+        diff: statistic?.bookingPercentageDifference,
+        isIncrease: statistic?.isBookingIncrease,
+        link: "All booking",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -54,7 +54,10 @@ const Widget = ({ type, statistic }) => {
       data = {
         title: "EARNINGS",
         isMoney: true,
-        link: "View net earnings",
+        link: "Last Moth Earning",
+        total: statistic?.earningsThisMonth,
+        diff: statistic?.earningsPercentageDifference,
+        isIncrease: statistic?.isEarningsIncrease,
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -67,7 +70,8 @@ const Widget = ({ type, statistic }) => {
       data = {
         title: "BALANCE",
         isMoney: true,
-        link: "See details",
+        total: statistic?.allEarnings,
+        link: "Total Earnings",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -90,19 +94,19 @@ const Widget = ({ type, statistic }) => {
         <span className="counter">
           {data.isMoney && "$"} {data?.total}
         </span>
-        <Link to={`/booking`}>
-          <span className="link">{data.link}</span>
-        </Link>
+        <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage ">
-          {data?.isIncrease ? (
-            <KeyboardArrowUpIcon className="positive" />
-          ) : (
-            <KeyboardArrowDownIcon className="negative" />
-          )}
-          {data?.diff} %
-        </div>
+        {data?.diff && (
+          <div className="percentage ">
+            {data?.isIncrease ? (
+              <KeyboardArrowUpIcon className="positive" />
+            ) : (
+              <KeyboardArrowDownIcon className="negative" />
+            )}
+            {Math.floor(data?.diff)} %
+          </div>
+        )}
         {data.icon}
       </div>
     </div>

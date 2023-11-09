@@ -1,8 +1,8 @@
 import express from "express";
-import { getBookingStatistic } from "../controllers/statisticController.js";
+import { getWidgetStatistic } from "../controllers/statisticController.js";
 
 const router = express.Router();
 
-router.get("/booking", getBookingStatistic);
+router.get("/widget", getWidgetStatistic);
 
 export default router;
