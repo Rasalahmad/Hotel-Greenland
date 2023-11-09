@@ -1,13 +1,15 @@
 import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import { Link } from "react-router-dom";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, statistic }) => {
+  console.log(statistic);
   let data;
-
   //temporary
   const amount = 100;
   const diff = 20;
@@ -31,9 +33,12 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "BOOKINGS",
         isMoney: false,
-        link: "View all orders",
+        total: statistic?.totalBooking,
+        diff: statistic?.bookingPercentageDifference,
+        isIncrease: statistic?.isBookingIncrease,
+        link: "All booking",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -49,7 +54,10 @@ const Widget = ({ type }) => {
       data = {
         title: "EARNINGS",
         isMoney: true,
-        link: "View net earnings",
+        link: "Last Moth Earning",
+        total: statistic?.earningsThisMonth,
+        diff: statistic?.earningsPercentageDifference,
+        isIncrease: statistic?.isEarningsIncrease,
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -62,7 +70,8 @@ const Widget = ({ type }) => {
       data = {
         title: "BALANCE",
         isMoney: true,
-        link: "See details",
+        total: statistic?.allEarnings,
+        link: "Total Earnings",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -83,15 +92,21 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {data?.total}
         </span>
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage positive">
-          <KeyboardArrowUpIcon />
-          {diff} %
-        </div>
+        {data?.diff && (
+          <div className="percentage ">
+            {data?.isIncrease ? (
+              <KeyboardArrowUpIcon className="positive" />
+            ) : (
+              <KeyboardArrowDownIcon className="negative" />
+            )}
+            {Math.floor(data?.diff)} %
+          </div>
+        )}
         {data.icon}
       </div>
     </div>

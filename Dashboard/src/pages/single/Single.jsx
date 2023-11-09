@@ -33,6 +33,7 @@ const Single = () => {
   }, [roomId]);
 
   const [stats, setStats] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
