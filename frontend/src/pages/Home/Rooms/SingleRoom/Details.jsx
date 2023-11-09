@@ -20,6 +20,16 @@ const Details = () => {
   const { name, images, guests, price, weekPrice, desc, around } =
     room?.data || {};
 
+  console.log(images);
+
+  const Images = images?.map((item) => {
+    return {
+      original: `${process.env.REACT_APP_IMAGE_URL}/images/${item?.original}`,
+      thumbnail: `${process.env.REACT_APP_IMAGE_URL}/images/${item?.thumbnail}`,
+      _id: item?._id,
+    };
+  });
+
   let content = null;
 
   if (isLoading) {
@@ -33,7 +43,7 @@ const Details = () => {
         <p className="my-5 text-gray-400">HOTEL GREENLAND</p>
         <Main>
           <div className="md:w-3/4">
-            <ImageGallery items={images} />
+            <ImageGallery items={Images} />
           </div>
           <Checkout
             noImage

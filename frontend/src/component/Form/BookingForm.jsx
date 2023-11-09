@@ -31,7 +31,7 @@ const BookingForm = ({ onSubmit, payLater, setPayLater, isFound }) => {
         reservation on your account.
       </LoginInfo>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Head>Add Your Information :</Head>
+        <Head>Please fill the form to get your booking</Head>
         <div className="flex gap-5 my-6">
           <div className="w-1/2">
             <Label>Name *</Label>

@@ -7,51 +7,49 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import Rating from "react-rating-stars-component";
 import User from "../../assets/icons/user.png";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import empty from "../../assets/images/emptybox.png";
+import { useCreateReviewMutation } from "../../features/Review/reviewApi";
+import moment from "moment";
 const Orders = () => {
   const { user } = useContext(AuthContext);
-  console.log(user?.displayName);
-  const { data, isLoading, isError, error } = useGetUserBookingQuery(
-    user?.email
-  );
+
+  const { data, isLoading } = useGetUserBookingQuery(user?.email);
+
+  const [createReview, { data: reviewData, isSuccess }] =
+    useCreateReviewMutation();
+
   const [review, setReview] = useState({});
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const [rating, setRating] = useState(0);
+
   const datahandler = (id) => {
-    const singledata = data?.data.find((item) => item?._id === id);
-    setReview(singledata);
+    const singleItem = data?.data.find((item) => item?._id === id);
+    setReview(singleItem);
   };
+
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
+
   const onSubmit = (data) => {
     const msg = data.message;
     const reviewData = {
       star: rating,
-      image: user?.photoURl || "https://i.ibb.co/tpHnjp4/user.png",
+      image: user?.photoURL || "https://i.ibb.co/tpHnjp4/user.png",
       msg,
       name: user?.displayName,
       bookingId: review?._id,
-      isApproved: false,
     };
 
-    // Make the POST request by calling createReview with the reviewData
-    axios
-      .post("http://localhost:5000/api/review", reviewData)
-      .then((res) => {
-        if (res.data) {
-          toast.success("Review created successfully:");
-          navigate("/");
-        }
-      })
-      .catch((error) => {
-        console.error("Error making POST request:", error);
-        // Handle the error here
-      });
+    createReview(reviewData);
+
+    if (isSuccess) {
+      toast.success("Review added successfully:");
+      navigate("/");
+    }
   };
   return (
     <div>
@@ -100,7 +98,15 @@ const Orders = () => {
                         </td>
                         <td>{item?.arrival}</td>
                         <td>
-                          <p>{item?.bookingDates[0]}</p>
+                          <p>
+                            {moment(item?.bookingDates[0]).format("DD-MM-YYYY")}{" "}
+                            {item?.bookingDates?.length - 1 > 0 &&
+                              `to ${moment(
+                                item?.bookingDates[
+                                  item?.bookingDates?.length - 1 * 1
+                                ]
+                              ).format("DD-MM-YYYY")}`}
+                          </p>
                         </td>
                         <td>
                           <p>{item?.paymentStatus}</p>
@@ -110,7 +116,8 @@ const Orders = () => {
                         </td>
 
                         <td>
-                          {item?.paymentStatus === "Paid" ? (
+                          {item?.paymentStatus === "Paid" &&
+                          item?.isReviewed === false ? (
                             <label
                               htmlFor="my_modal_6"
                               className="btn btn-outline"
@@ -120,7 +127,7 @@ const Orders = () => {
                             </label>
                           ) : (
                             <button disabled className="btn btn-outline">
-                              Review
+                              Reviewed
                             </button>
                           )}
                         </td>
@@ -158,21 +165,18 @@ const Orders = () => {
                   </p>
                 </div>
                 <div>
-                  {user?.photoURl ? (
+                  {user?.photoURL ? (
                     <>
                       <img
                         class="h-16 w-16 rounded-full"
-                        src={user?.photoURl}
+                        src={user?.photoURL}
                         alt=""
-                      ></img>
+                        referrerpolicy="no-referrer"
+                      />
                     </>
                   ) : (
                     <>
-                      <img
-                        class="h-16 w-16 rounded-full"
-                        src={User}
-                        alt=""
-                      ></img>
+                      <img class="h-16 w-16 rounded-full" src={User} alt="" />
                     </>
                   )}
                 </div>

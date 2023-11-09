@@ -30,6 +30,18 @@ const EditForm = ({ data, loading, setIsActive }) => {
     setSelectedFiles(updatedFiles);
   };
 
+  const dbImages = selectedFiles.filter((item) => {
+    return (
+      item.original && {
+        original: item.original,
+        thumbnail: item.thumbnail,
+        _id: item._id,
+      }
+    );
+  });
+
+  console.log(dbImages);
+
   // upload single file
   const upload = async (file) => {
     try {
@@ -47,14 +59,14 @@ const EditForm = ({ data, loading, setIsActive }) => {
   // upload single file
   const uploadMultipleFile = async (files) => {
     try {
-      if (!files[0]?.original) {
-        const formData = new FormData();
-        for (let i = 0; i < files.length; i++) {
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        if (!files[i]?.original) {
           formData.append("images", files[i]);
         }
-        const res = await makeRequest.post("/upload/multiple", formData);
-        return res.data;
       }
+      const res = await makeRequest.post("/upload/multiple", formData);
+      return res.data;
     } catch (err) {
       console.error(err);
     }
@@ -73,9 +85,8 @@ const EditForm = ({ data, loading, setIsActive }) => {
       price: price,
       isAvailable: isAvailable,
       thumbnail: thumbnail ? thumbnail : data?.thumbnail,
-      images: images ? images : data?.images,
+      images: images ? [...dbImages, ...images] : data.images,
     };
-
     const res = await makeRequest.put(`/room/${data?._id}`, _data);
     if (res.data) {
       Swal.fire("Success", "Room Update successfully", "success");
@@ -97,7 +108,7 @@ const EditForm = ({ data, loading, setIsActive }) => {
               src={
                 file
                   ? typeof file === "string"
-                    ? file
+                    ? `${process.env.REACT_APP_IMAGE_URL}/images/${file}`
                     : URL.createObjectURL(file)
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
@@ -138,12 +149,14 @@ const EditForm = ({ data, loading, setIsActive }) => {
               </div>
               <div className="formInput">
                 <label>Room Type</label>
-                <input
-                  type="text"
-                  id="roomType"
+                <select
                   value={roomType}
                   onChange={(e) => setRoomType(e.target.value)}
-                />
+                >
+                  <option value="single room">Single</option>
+                  <option value="double room">Double</option>
+                  <option value="special room">Special</option>
+                </select>
               </div>
               <div className="formInput">
                 <label>Week Price</label>
@@ -204,10 +217,10 @@ const EditForm = ({ data, loading, setIsActive }) => {
                         <img
                           src={
                             file
-                              ? file.original
-                                ? file?.original
+                              ? file?.original
+                                ? `${process.env.REACT_APP_IMAGE_URL}/images/${file.original}`
                                 : URL.createObjectURL(file)
-                              : file?.original
+                              : `${process.env.REACT_APP_IMAGE_URL}/images/${file.original}`
                           }
                           alt=""
                         />

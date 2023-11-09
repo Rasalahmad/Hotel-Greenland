@@ -1,42 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import TestimonialSlider from "../../../component/Carousel/Testimonial/TestimonialSlider";
+import { useGetReviewQuery } from "../../../features/Review/reviewApi";
 
 const Testimonial = () => {
-  const data = [
-    {
-      id: 1,
-      name: "John Doe",
-      msg: "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence.",
-      image:
-        "https://industrial.uii.ac.id/wp-content/uploads/2019/09/385-3856300_no-avatar-png-e1600750858753.jpg",
-      title: "Solo Traveler",
-    },
-    {
-      id: 1,
-      name: "Ralph Clark",
-      msg: "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence.",
-      image:
-        "https://industrial.uii.ac.id/wp-content/uploads/2019/09/385-3856300_no-avatar-png-e1600750858753.jpg",
-      title: "Solo Traveler",
-    },
-    {
-      id: 1,
-      name: "John Doe",
-      msg: "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence.",
-      image:
-        "https://industrial.uii.ac.id/wp-content/uploads/2019/09/385-3856300_no-avatar-png-e1600750858753.jpg",
-      title: "Solo Traveler",
-    },
-    {
-      id: 1,
-      name: "William Jones",
-      msg: "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence.",
-      image:
-        "https://industrial.uii.ac.id/wp-content/uploads/2019/09/385-3856300_no-avatar-png-e1600750858753.jpg",
-      title: "Solo Traveler",
-    },
-  ];
+  const { data: review, isLoading } = useGetReviewQuery();
 
   return (
     <>
@@ -46,7 +14,7 @@ const Testimonial = () => {
           A wonderful serenity has taken possession of my entire soul, like
           these sweet mornings of spring which I enjoy with my whole heart.
         </Description>
-        <TestimonialSlider data={data} />
+        {isLoading ? "Loading..." : <TestimonialSlider data={review?.data} />}
       </Content>
     </>
   );

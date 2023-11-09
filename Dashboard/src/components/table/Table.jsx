@@ -29,7 +29,11 @@ const List = ({ rows }) => {
               <TableCell className="tableCell">{row?.tran_id}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.product_img} alt="" className="image" />
+                  <img
+                    src={`${process.env.REACT_APP_IMAGE_URL}/images/${row.product_img}`}
+                    alt=""
+                    className="image"
+                  />
                   {row.product_name}
                 </div>
               </TableCell>
