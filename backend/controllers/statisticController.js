@@ -129,3 +129,72 @@ export const getWidgetStatistic = async (req, res) => {
     });
   }
 };
+
+export const getBookingTransaction = async (req, res) => {
+  try {
+    const startDate = new Date();
+    startDate.setFullYear(startDate.getFullYear() - 1); // Calculate the date 1 year ago
+
+    const pipeline = [
+      {
+        $match: {
+          createdAt: { $gte: startDate },
+        },
+      },
+      {
+        $group: {
+          _id: { $month: "$createdAt" },
+          income: { $sum: "$price" },
+        },
+      },
+    ];
+
+    const bookingData = await Booking.aggregate(pipeline);
+
+    // Map month numbers to month names
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get the current month and year
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    const last12Months = [];
+    for (let i = 11; i >= 0; i--) {
+      const month = (currentMonth - i + 12) % 12;
+      last12Months.push(month);
+    }
+
+    // Create an array with 0 total income for the last 12 months
+    const resultData = last12Months.map((monthIndex) => {
+      const monthData = bookingData.find((data) => data._id === monthIndex + 1);
+      return {
+        name: monthNames[monthIndex],
+        Total: monthData ? monthData.income : 0,
+      };
+    });
+
+    res.status(200).json({
+      status: true,
+      data: resultData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Data can't be fetched",
+      error: error.message,
+    });
+  }
+};

@@ -204,7 +204,9 @@ export const paymentCancelRoute = async (req, res) => {
 };
 
 export const getBooking = async (req, res) => {
-  const booking = await Booking.find({});
+  const { limit } = req.query;
+  console.log(limit);
+  const booking = await Booking.find({}).limit(limit).sort({ createdAt: -1 });
   try {
     res.status(200).json({
       status: true,
