@@ -3,7 +3,12 @@ import "../Restaurant/Restaurant.css";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import headerImg from "../../../../assets/Restaurant/heading-dark.png";
+import imageSpan from "../../../../assets/Restaurant/imageSpan.png";
+import chair from "../../../../assets/Restaurant/chair.png";
+import cattel from "../../../../assets/Restaurant/cattel.png";
+import outStory from "../../../../assets/Restaurant/our-story.jpg";
+import today_special from "../../../../assets/Restaurant/today-special.jpg";
 const Introduction = () => {
   const restaurant = [
     {
@@ -11,21 +16,21 @@ const Introduction = () => {
       title: "Special Menu",
       Description:
         "Special menu set for every special day with special discounts.",
-      img: "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3263791/restaurant-menu-icon-sm.png",
+      img: imageSpan,
       link: "/restaurant/specialMenu",
     },
     {
       id: 2,
       title: "Elegant interior",
       Description: "With a great ambiance, you can test your dishes.",
-      img: "https://cdn-icons-png.flaticon.com/512/72/72662.png",
+      img: chair,
       link: "/restaurant/ourStory",
     },
     {
       id: 3,
       title: "Fresh & Hot Food",
       Description: "Freshness in every bite. Choose healthy and fresh foods. ",
-      img: "https://static.thenounproject.com/png/3342582-200.png",
+      img: cattel,
       link: "/restaurant/Menu",
     },
   ];
@@ -84,11 +89,7 @@ const Introduction = () => {
             </Link>
           </Description>
           <ImageContainer>
-            <img
-              className="image"
-              src="http://wahabali.com/work/pearl-demo/images/our-story.jpg"
-              alt=""
-            />
+            <img className="image" src={outStory} alt="" />
           </ImageContainer>
         </Left>
 
@@ -96,11 +97,7 @@ const Introduction = () => {
 
         <Left>
           <ImageContainer>
-            <img
-              className="image"
-              src="http://wahabali.com/work/pearl-demo/images/today-special.jpg"
-              alt=""
-            />
+            <img className="image" src={today_special} alt="" />
           </ImageContainer>
           <Description className="lg:p-5 mt-8">
             <Title>Today’s</Title>
@@ -154,15 +151,17 @@ const Left = styled.div`
 `;
 
 const Header = styled.div`
-  background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png)
-    no-repeat center 80px;
+  background: url(${headerImg});
+  background-repeat: no-repeat;
+  background-position: center 80px;
   letter-spacing: 4px;
   padding: 0 0 70px 0;
   margin: 40px 0 0 0;
   font-size: 50px;
   @media (max-width: 640px) {
-    background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png)
-      no-repeat center 80px;
+    background: url(${headerImg});
+    background-repeat: no-repeat;
+    background-position: center 80px;
     font-size: 35px;
     letter-spacing: 0;
     margin-bottom: 50px;

@@ -4,6 +4,7 @@ import { useGetRestaurantQuery } from "../../../../features/restaurant/restauran
 
 import LeftSide from "./LeftSide/LeftSide";
 import RightSide from "./RightSide/RightSide";
+import Loader from "../../../Loader/Loader";
 const SpecialMenu = () => {
   const {
     data: restaurantData,
@@ -14,11 +15,11 @@ const SpecialMenu = () => {
   console.log(restaurantData);
   let content = null;
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loader type={"List"} />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else if (!isLoading && !isError && restaurantData?.data?.length === 0) {
-    content = <p>No Room Available</p>;
+    content = <p>No Item Available</p>;
   } else {
     content = (
       <div>

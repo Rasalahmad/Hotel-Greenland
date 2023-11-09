@@ -2,7 +2,9 @@ import React from "react";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./Slider.css";
-
+import pearl1 from "../../../assets/Restaurant/pearl-tour1.jpg";
+import pearl2 from "../../../assets/Restaurant/our-story.jpg";
+import pearl3 from "../../../assets/Restaurant/pearl-tour3.jpg";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,16 +15,16 @@ const OurStorySlider = () => {
   const data = [
     {
       id: 1,
-      image: "http://wahabali.com/work/pearl-demo/images/pearl-tour1.jpg",
+      image: pearl1,
     },
     {
       id: 1,
-      image: "http://wahabali.com/work/pearl-demo/images/pearl-tour2.jpg",
+      image: pearl2,
       title: "Solo Traveler",
     },
     {
       id: 1,
-      image: "http://wahabali.com/work/pearl-demo/images/pearl-tour3.jpg",
+      image: pearl3,
     },
   ];
   return (

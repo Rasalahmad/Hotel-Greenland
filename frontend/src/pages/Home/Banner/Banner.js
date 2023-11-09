@@ -35,6 +35,8 @@ const Banner = () => {
               ? "Booking Form"
               : path === "booking"
               ? "Booking List"
+              : path === "blog"
+              ? "News & Blog"
               : "Book Your Vacation"}
           </Title>
           <SubTitle>

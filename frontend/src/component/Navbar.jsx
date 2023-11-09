@@ -9,7 +9,6 @@ import { AuthContext } from "../Context/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user?.email);
 
   const handleLogOut = () => {
     logOut().then().carch();
@@ -88,7 +87,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/" className="active:bg-transparent">
+              <Link to="/blog" className="active:bg-transparent">
                 BLOG
               </Link>
             </li>
@@ -152,7 +151,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="active:bg-transparent">
+            <Link to="/blog" className="active:bg-transparent">
               BLOG
             </Link>
           </li>

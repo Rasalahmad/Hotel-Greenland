@@ -46,12 +46,15 @@ export default function TestimonialSlider({ data }) {
               <Image src={item?.image} alt="" />
               <Content>
                 <Message>{item?.msg}</Message>
-                <Rating
-                  count={5}
-                  size={30}
-                  activeColor="#ffd700"
-                  value={item.star}
-                />
+                <Center>
+                  <Rating
+                    count={5}
+                    size={30}
+                    activeColor="#ffd700"
+                    value={item.star}
+                    edit={false}
+                  />
+                </Center>
                 <Name>{item?.name}</Name>
               </Content>
             </Container>
@@ -64,6 +67,7 @@ export default function TestimonialSlider({ data }) {
 
 const Container = styled.div`
   width: 500px;
+  height: 200px;
   box-shadow: 0 10px 45px rgb(10 10 10 / 7%);
   -moz-box-shadow: 0 10px 45px rgba(10, 10, 10, 0.07);
   -webkit-box-shadow: 0 10px 45px rgb(10 10 10 / 7%);
@@ -80,8 +84,9 @@ const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
-    padding: 10px;
+    padding: 30px 10px 10px 0px;
     font-size: 16px;
+    height: 80%;
   }
 `;
 
@@ -94,6 +99,14 @@ const Name = styled.h3`
 `;
 const Message = styled.p`
   color: gray;
+`;
+const Center = styled.p`
+  display: flex;
+
+  @media (max-width: 640px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Image = styled.img`

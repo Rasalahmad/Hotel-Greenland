@@ -1,36 +1,23 @@
 import React from "react";
-import { IoIosArrowForward } from "react-icons/io";
+import { useGetNewsQuery } from "../../features/news/newsApi";
 import styled from "styled-components";
-import resturant from "../../../assets/images/rest1.jpg";
-import bar from "../../../assets/images/bar.jpg";
-import spa from "../../../assets/images/spa.jpg";
 import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
-const FamusFacilities = () => {
-  const famusFacilities = [
-    {
-      id: 1,
-      title: "The Hotel Greenland Restaurant",
-      desc: "Whether you want to impress your business clients with an elegant course menu, enjoy a variety of buffet meals or spend quality time with your loved ones, Hotel Greenland Restaurant can provide you with the right venue for your event.",
-      img: resturant,
-      link: "/restaurant",
-    },
-  ];
-
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
+const Blog = () => {
+  const { data, isLoading, isError, error } = useGetNewsQuery();
   return (
     <Container>
       <Main className="text-center mt-28">
-        <Title>Visit Our Famous Facilities</Title>
+        <Title>Latest Updates</Title>
         <Description1>
-          A wonderful serenity has taken possession of my entire soul, like
-          these sweet mornings of spring which I enjoy with my whole heart.
+          Stay in the know with our News & Blog. Get the latest updates and
+          insightful articles in one place.
         </Description1>
       </Main>
-      {famusFacilities.map((item, i) => (
+      {data?.data?.map((item, i) => (
         <Left key={item.id}>
-          {i % 2 === 0 && !isMobile ? (
+          {i % 2 === 0 ? (
             <>
               <Description className="lg:p-5">
                 <h2 className="text-xl lg:text-4xl font-bold">{item?.title}</h2>
@@ -39,19 +26,19 @@ const FamusFacilities = () => {
                 </p>
                 <Link to={item?.link} className="hover:underline">
                   <Button className="flex items-center text-xl mt-10 cursor-pointer font-bold">
-                    LEARN MORE
+                    SEE MORE
                     <IoIosArrowForward size={16} className="ml-2" />
                   </Button>
                 </Link>
               </Description>
               <ImageContainer>
-                <img className="image" src={item?.img} alt="" />
+                <img className="image" src={item?.image} alt="" />
               </ImageContainer>
             </>
           ) : (
             <>
               <ImageContainer isMobile={i % 2 === 0}>
-                <img className="image" src={item?.img} alt="" />
+                <img className="image" src={item?.image} alt="" />
               </ImageContainer>
               <Description className="lg:p-5">
                 <h2 className="text-xl lg:text-4xl font-bold">{item?.title}</h2>
@@ -60,7 +47,7 @@ const FamusFacilities = () => {
                 </p>
                 <Link to={item?.link} className="hover:underline">
                   <Button className="flex items-center text-xl mt-10 cursor-pointer font-bold">
-                    LEARN MORE
+                    SEE MORE
                     <IoIosArrowForward size={16} className="ml-2" />
                   </Button>
                 </Link>
@@ -73,7 +60,7 @@ const FamusFacilities = () => {
   );
 };
 
-export default FamusFacilities;
+export default Blog;
 
 const Container = styled.div``;
 const Main = styled.div`

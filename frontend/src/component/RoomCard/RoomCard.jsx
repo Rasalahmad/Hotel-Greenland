@@ -10,14 +10,14 @@ const RoomCard = () => {
         <div className="shadow-xl shadow-indigo-200 lg:my-20 bg-white rounded-lg">
           <div className="p-6 text-center">
             <h3 className="text-2xl font-bold pt-10 pb-6">Single Room</h3>
-            <p className="mb-4">
+            {/* <p className="mb-4">
               <span className="bg-black text-white p-2">
                 <span className="text-xl font-bold">
                   From <span className="text-3xl">৳ 1200</span>
                 </span>
                 / night
               </span>
-            </p>
+            </p> */}
             <Ul>
               <ListItem>Single Bed</ListItem>
               <ListItem>Bathroom</ListItem>
@@ -43,14 +43,14 @@ const RoomCard = () => {
             <h3 className="text-2xl font-bold pt-10 pb-6">
               Family Special Room
             </h3>
-            <p className="mb-4">
+            {/* <p className="mb-4">
               <span className="bg-black text-white p-2">
                 <span className="text-xl font-bold">
                   From <span className="text-3xl">৳ 1800</span>
                 </span>
                 / night
               </span>
-            </p>
+            </p> */}
             <Ul>
               <ListItem>Double Bed</ListItem>
               <ListItem>Bathroom</ListItem>
@@ -76,14 +76,14 @@ const RoomCard = () => {
         <div className="shadow-xl shadow-indigo-200 lg:my-20  bg-white rounded-lg">
           <div className="p-6 text-center">
             <h3 className="text-2xl font-bold pt-10 pb-6">Double Room</h3>
-            <p className="mb-4">
+            {/* <p className="mb-4">
               <span className="bg-black text-white p-2">
                 <span className="text-xl font-bold">
                   From <span className="text-3xl">৳ 1600</span>
                 </span>
                 / night
               </span>
-            </p>
+            </p> */}
             <Ul>
               <ListItem>Double Bed</ListItem>
               <ListItem>Bathroom</ListItem>
