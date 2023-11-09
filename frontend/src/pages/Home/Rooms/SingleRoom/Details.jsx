@@ -20,8 +20,6 @@ const Details = () => {
   const { name, images, guests, price, weekPrice, desc, around } =
     room?.data || {};
 
-  console.log(images);
-
   const Images = images?.map((item) => {
     return {
       original: `${process.env.REACT_APP_IMAGE_URL}/images/${item?.original}`,
@@ -156,6 +154,6 @@ const Image = styled.img`
   height: 400px;
   object-fit: cover;
   @media (max-width: 768px) {
-    width: 100%;
+    width: 390px;
   }
 `;

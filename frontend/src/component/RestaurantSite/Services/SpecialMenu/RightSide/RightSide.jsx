@@ -31,7 +31,7 @@ const RightSide = ({ data }) => {
                   </div>
                   <div>
                     <p className="text-sm md:text-xl  lg:text-xl lg:ml-[-220px]">
-                      ${item1?.price}
+                      ৳{item1?.price}
                     </p>
                   </div>
                 </div>

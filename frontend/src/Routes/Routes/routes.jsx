@@ -18,6 +18,7 @@ import Orders from "../../pages/Orders/Orders";
 import Login from "../../pages/Auth/Login";
 import Register from "../../pages/Auth/Register";
 import PrivateRoute from "../Private/PrivateRoute";
+import Blog from "../../pages/Blog/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/booking/:roomId",

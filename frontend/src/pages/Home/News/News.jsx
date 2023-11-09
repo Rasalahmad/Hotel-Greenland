@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import NewsSlider from "../../../component/Carousel/News/NewsSlider";
 import { useGetNewsQuery } from "../../../features/news/newsApi";
+import Loader from "../../../component/Loader/Loader";
 
 const News = () => {
   const { data, isLoading, isError, error } = useGetNewsQuery();
-
+  console.log(data);
   let content = null;
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loader type={"List"} />;
   } else if (!isLoading && isError) {
     content = <p>{error}</p>;
   } else if (!isLoading && !isError && data?.data?.length === 0) {

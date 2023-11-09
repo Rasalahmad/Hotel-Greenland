@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaShoppingBasket } from "react-icons/fa";
+import headerImg from "../../../../../assets/Restaurant/heading-dark.png";
 const LeftSide = ({ data }) => {
   const leftData = data.filter((val, i) => i === 0 || i === 1 || i === 2);
   const dish_title = "Blue Cheese Crackers with Grapes";
@@ -30,7 +31,7 @@ const LeftSide = ({ data }) => {
                   </div>
                   <div>
                     <p className="text-sm md:text-xl  lg:text-xl lg:ml-[-220px]">
-                      ${item1?.price}
+                      ৳{item1?.price}
                     </p>
                   </div>
                 </div>
@@ -58,15 +59,17 @@ const Title = styled.div`
   margin-top: 60px;
 `;
 const Header1 = styled.div`
-  background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png)
-    no-repeat center 80px;
+  background: url(${headerImg});
+  background-repeat: no-repeat;
+  background-position: center 80px;
   letter-spacing: 4px;
   padding: 0 0 70px 0;
   font-size: 50px;
   text-transform: uppercase;
   @media (max-width: 640px) {
-    background: url(http://wahabali.com/work/pearl-demo/images/heading-dark.png)
-      no-repeat center 80px;
+    background: url(${headerImg});
+    background-repeat: no-repeat;
+    background-position: center 80px;
     font-size: 35px;
     letter-spacing: 0;
     margin-bottom: 50px;

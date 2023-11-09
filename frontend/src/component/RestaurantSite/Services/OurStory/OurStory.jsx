@@ -3,7 +3,7 @@ import styled from "styled-components";
 import OurStorySlider from "../../../Carousel/OurStorySlider/OurStorySlider";
 import Info from "../../Restaurant/Info/Info";
 import MasterChef from "./MasterChef/MasterChef";
-
+import atmosphere from "../../../../assets/Restaurant/atmosphere.jpg";
 const OurStory = () => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -14,11 +14,7 @@ const OurStory = () => {
           {isMobile ? (
             <>
               <ImageContainer>
-                <img
-                  className="image"
-                  src="http://wahabali.com/work/pearl-demo/images/atmosphere.jpg"
-                  alt=""
-                />
+                <img className="image" src={atmosphere} alt="" />
               </ImageContainer>
               <Description className="lg:p-5">
                 <Title>Traditional</Title>
@@ -54,11 +50,7 @@ const OurStory = () => {
                 </div>
               </Description>
               <ImageContainer>
-                <img
-                  className="image"
-                  src="http://wahabali.com/work/pearl-demo/images/atmosphere.jpg"
-                  alt=""
-                />
+                <img className="image" src={atmosphere} alt="" />
               </ImageContainer>
             </>
           )}

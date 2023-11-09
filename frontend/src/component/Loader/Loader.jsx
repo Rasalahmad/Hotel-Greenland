@@ -3,47 +3,91 @@ const Loader = ({ type }) => {
   return (
     <>
       {type === "allList" ? (
-        <div className=" lg:flex gap-4 mt-4 lg:mt-auto mx-7">
-          <Skeleton
-            count={2}
-            height={"300px"}
-            width={"400px"}
-            className="mb-4"
-          />
-          <Skeleton
-            count={2}
-            height={"300px"}
-            width={"400px"}
-            className="mb-4"
-          />
-          <Skeleton
-            count={2}
-            height={"300px"}
-            width={"400px"}
-            className="mb-4"
-          />
-        </div>
+        <>
+          <div className="hidden lg:flex gap-4 mt-4 lg:mt-auto mx-7">
+            <Skeleton
+              count={2}
+              height={"300px"}
+              width={"400px"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={2}
+              height={"300px"}
+              width={"400px"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={2}
+              height={"300px"}
+              width={"400px"}
+              className="mb-4"
+            />
+          </div>
+          <div className=" lg:hidden gap-4 mt-4 lg:mt-auto mx-7">
+            <Skeleton
+              count={2}
+              height={"300px"}
+              width={"100%"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={2}
+              height={"300px"}
+              width={"100%"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={2}
+              height={"300px"}
+              width={"100%"}
+              className="mb-4"
+            />
+          </div>
+        </>
       ) : type === "List" ? (
-        <div className="lg:flex gap-4 mt-4 lg:mt-auto lg:mx-10 mx-7">
-          <Skeleton
-            count={1}
-            height={"300px"}
-            width={"400px"}
-            className="mb-4"
-          />
-          <Skeleton
-            count={1}
-            height={"300px"}
-            width={"400px"}
-            className="mb-4"
-          />
-          <Skeleton
-            count={1}
-            height={"300px"}
-            width={"400px"}
-            className="mb-4"
-          />
-        </div>
+        <>
+          <div className="hidden lg:flex gap-4 mt-4 lg:mt-auto lg:mx-10 mx-7">
+            <Skeleton
+              count={1}
+              height={"300px"}
+              width={"400px"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={1}
+              height={"300px"}
+              width={"400px"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={1}
+              height={"300px"}
+              width={"400px"}
+              className="mb-4"
+            />
+          </div>
+          <div className="lg:hidden gap-4 mt-4 lg:mt-auto lg:mx-10 mx-7">
+            <Skeleton
+              count={1}
+              height={"300px"}
+              width={"100%"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={1}
+              height={"300px"}
+              width={"100%"}
+              className="mb-4"
+            />
+            <Skeleton
+              count={1}
+              height={"300px"}
+              width={"100%"}
+              className="mb-4"
+            />
+          </div>
+        </>
       ) : type === "Details" ? (
         <div>
           <div className=" lg:flex gap-4 mt-4 lg:mt-auto lg:mx-28 mx-2">
