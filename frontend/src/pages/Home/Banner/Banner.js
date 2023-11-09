@@ -59,6 +59,7 @@ const Container = styled.div`
   overflow: hidden;
   @media (max-width: 768px) {
     margin: 0px;
+    border-radius: 0px;
   }
 `;
 
