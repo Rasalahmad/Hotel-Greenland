@@ -25,7 +25,7 @@ const Loader = ({ type }) => {
         <>
           <div className="roomDetails">
             <Skeleton count={1} height={"270px"} width={"400px"} />
-            <Skeleton count={1} height={"270px"} width={"600px"} />
+            <Skeleton count={1} height={"270px"} width={"720px"} />
           </div>
           <Skeleton count={1} height={"220px"} width={"100%"} />
         </>

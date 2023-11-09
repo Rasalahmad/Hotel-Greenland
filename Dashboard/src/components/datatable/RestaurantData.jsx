@@ -23,17 +23,17 @@ const RestaurantData = () => {
   }, []);
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 160 },
+    { field: "_id", headerName: "ID", width: 240 },
     {
       field: "title",
       headerName: "Menu Title",
-      width: 150,
+      width: 240,
       editable: true,
     },
     {
       field: "tiny_title",
       headerName: "Tiny_Title",
-      width: 150,
+      width: 240,
       editable: true,
     },
   ];

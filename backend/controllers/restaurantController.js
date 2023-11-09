@@ -100,8 +100,12 @@ export const updateRestaurant = async (req, res, next) => {
   console.log(req.body);
   try {
     const updated = await Restaurnt.findByIdAndUpdate(
-      { _id: ObjectId(req.params.id) },
-      { $set: req.body },
+      id,
+      {
+        $push: {
+          dishes: { img, price, dish_tag, title },
+        },
+      },
       { new: true }
     );
     console.log(updated);

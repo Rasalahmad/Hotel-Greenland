@@ -9,6 +9,7 @@ import Rating from "react-rating-stars-component";
 import User from "../../assets/icons/user.png";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import empty from "../../assets/images/emptybox.png";
 import { useCreateReviewMutation } from "../../features/Review/reviewApi";
 import moment from "moment";
 const Orders = () => {
@@ -59,7 +60,15 @@ const Orders = () => {
       ) : (
         <>
           <div className="lg:ml-7 mx-3 lg:mx-auto my-10">
-            <Title>Booking Room: {data?.data?.length}</Title>
+            {data?.data.length > 0 && (
+              <Title>Booking Room: {data?.data?.length}</Title>
+            )}
+            {data?.data.length === 0 && (
+              <div className="flex justify-center flex-col items-center gap-2">
+                <img src={empty} alt="" className="w-24" />
+                <Title>You have not booked any rooms yet</Title>
+              </div>
+            )}
             <div className="overflow-x-auto">
               {data?.data.length > 0 && (
                 <table className="table   ">
