@@ -35,8 +35,6 @@ const SingleRoom = () => {
     },
   ];
 
-  const [range, setRange] = useState(500);
-
   let content = null;
 
   if (isLoading) {
@@ -50,18 +48,6 @@ const SingleRoom = () => {
       <Container>
         <Main>
           <Left>
-            <h2 className="text-2xl my-5">Price Per Night</h2>
-            <input
-              className="w-52"
-              type="range"
-              onChange={(e) => setRange(e.target.value)}
-              name="volume"
-              min="500"
-              max="2000"
-            />
-            <label htmlFor="volume" className="m-6">
-              {range}
-            </label>
             <div>
               <div>
                 <h2 className="text-2xl my-5">Service</h2>

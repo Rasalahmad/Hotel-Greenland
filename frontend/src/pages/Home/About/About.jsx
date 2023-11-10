@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Swim from "../../../assets/images/swim.jpg";
+import Swim from "../../../assets/images/about.jpg";
 import about from "../../../assets/images/about.png";
 import { BsFillCaretRightFill } from "react-icons/bs";
 
@@ -10,13 +10,13 @@ const About = () => {
       <Container>
         <Main>
           <TopSection>
-            <span className="text-5xl font-medium mr-3 tracking-wide">5</span>
+            <span className="text-5xl font-medium mr-3 tracking-wide">4</span>
             <span className="text-2xl mr-20 tracking-widest">stars</span>
             <span className="text-5xl font-medium mr-3 tracking-wide">25</span>
             <span className="text-2xl tracking-widest">rooms</span>
           </TopSection>
           <Desription>
-            Our hotel is located in the heart of the Bandarban. A five stars
+            Our hotel is located in the heart of the Bandarban. A Four stars
             lifestyle surrounded by the forest.
           </Desription>
           <a href="#" className="hover:underline">
