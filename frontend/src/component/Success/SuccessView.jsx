@@ -100,7 +100,7 @@ const SuccessView = () => {
               </div>
 
               <div className="py-2 text-center">
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-2 lg:gap-0">
                   <Link
                     to="/"
                     className="px-12 bg-green-400 hover:bg-green-500 rounded-lg text-white font-semibold py-3"
@@ -109,7 +109,7 @@ const SuccessView = () => {
                   </Link>
                   <button
                     onClick={handleDownload}
-                    className="px-12 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold py-3"
+                    className=" px-12 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold py-3"
                   >
                     Download Pdf
                   </button>
