@@ -46,8 +46,8 @@ const SuccessView = () => {
   };
 
   return (
-    <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12">
-      <div class=" w-full my-auto lg:mb-0 mb-10 ">
+    <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12 ">
+      <div class=" w-full my-auto lg:mb-0 mb-10 lg:w-[600px]  shadow-xl rounded-xl">
         <div class="bg-white p-6">
           <svg
             viewBox="0 0 24 24"
@@ -100,7 +100,7 @@ const SuccessView = () => {
               </div>
 
               <div className="py-2 text-center">
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-2 lg:gap-0">
                   <Link
                     to="/"
                     className="px-12 bg-green-400 hover:bg-green-500 rounded-lg text-white font-semibold py-3"
@@ -109,12 +109,12 @@ const SuccessView = () => {
                   </Link>
                   <button
                     onClick={handleDownload}
-                    className="px-12 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold py-3"
+                    className=" px-12 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold py-3"
                   >
                     Download Pdf
                   </button>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-gray-600 mt-2">
                   Thank you for completing your secure online payment.
                 </p>
                 <p> Have a great day! </p>
