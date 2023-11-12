@@ -91,7 +91,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/booking",
-        element: <Orders />,
+        element: (
+          <PrivateRoute>
+            <Orders />
+          </PrivateRoute>
+        ),
       },
     ],
   },

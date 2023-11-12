@@ -40,7 +40,7 @@ export default function TestimonialSlider({ data }) {
         }}
         className="mySwiper"
       >
-        {data.map((item) => (
+        {data?.map((item) => (
           <SwiperSlide key={item?._id}>
             <Container>
               <Image src={item?.image} alt="" />
