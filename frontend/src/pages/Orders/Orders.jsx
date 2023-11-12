@@ -119,14 +119,17 @@ const Orders = () => {
                           {item?.paymentStatus === "Paid" &&
                           item?.isReviewed === false ? (
                             <label
-                              htmlFor="my_modal_6"
-                              className="btn btn-outline"
+                              htmlFor="my_modal_5"
+                              className="btn btn-outline lg:w-24"
                               onClick={() => datahandler(item?._id)}
                             >
                               Review
                             </label>
                           ) : (
-                            <button disabled className="btn btn-outline">
+                            <button
+                              disabled
+                              className="btn btn-outline lg:w-24"
+                            >
                               Reviewed
                             </button>
                           )}
@@ -141,12 +144,12 @@ const Orders = () => {
           {/* The button to open modal */}
 
           {/* Put this part before </body> tag */}
-          <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+          <input type="checkbox" id="my_modal_5" className="modal-toggle" />
           <div className="modal">
             <div className="modal-box">
               <div className="modal-action">
                 <label
-                  htmlFor="my_modal_6"
+                  htmlFor="my_modal_5"
                   className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                 >
                   X

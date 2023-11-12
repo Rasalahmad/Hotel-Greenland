@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TestimonialSlider from "../../../component/Carousel/Testimonial/TestimonialSlider";
 import { useGetReviewQuery } from "../../../features/Review/reviewApi";
+import Loader from "../../../component/Loader/Loader";
 
 const Testimonial = () => {
   const { data: review, isLoading } = useGetReviewQuery();
@@ -14,7 +15,11 @@ const Testimonial = () => {
           A wonderful serenity has taken possession of my entire soul, like
           these sweet mornings of spring which I enjoy with my whole heart.
         </Description>
-        {isLoading ? "Loading..." : <TestimonialSlider data={review?.data} />}
+        {isLoading ? (
+          <Loader type={"List"} />
+        ) : (
+          <TestimonialSlider data={review?.data} />
+        )}
       </Content>
     </>
   );
