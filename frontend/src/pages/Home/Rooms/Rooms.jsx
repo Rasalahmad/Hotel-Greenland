@@ -6,7 +6,7 @@ export const Rooms = () => {
   return (
     <div>
       <Content>
-        <Title>Our Rooms.</Title>
+        <Title className="stroke-2">Our Rooms.</Title>
         <Description>
           A wonderful serenity has taken possession of my entire soul, like
           these sweet mornings of spring which I enjoy with my whole heart. I am

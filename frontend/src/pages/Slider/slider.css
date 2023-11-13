@@ -7,7 +7,6 @@
   font-size: 18px;
 
   height: 100%;
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,6 +75,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.19);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
