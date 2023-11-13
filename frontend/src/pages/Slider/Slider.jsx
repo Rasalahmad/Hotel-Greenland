@@ -55,8 +55,8 @@ const Slider = () => {
                 <img src={item?.image} alt="Avatar" className="image" />
                 <div className="overlay-bottom">
                   <div className="text">
-                    <h2>{item?.copyright?.slice(0, 25) || "copyright"}</h2>
-                    <span>{item?.title?.slice(0, 25)}</span>
+                    <h2>{item?.title?.slice(0, 25)}</h2>
+                    <span>{item?.copyright?.slice(0, 25) || "copyright"}</span>
                   </div>
                 </div>
               </div>
