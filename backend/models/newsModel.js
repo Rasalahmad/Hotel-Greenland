@@ -6,12 +6,12 @@ const newsSchema = mongoose.Schema(
       type: String,
       required: [true, "Title is required"],
     },
-    date: Date,
     image: {
       type: String,
       required: [true, "Image is required"],
     },
-    link: String,
+    link: { type: String },
+    desc: { type: String },
   },
   {
     timestamps: true,

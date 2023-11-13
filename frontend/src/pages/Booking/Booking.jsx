@@ -81,10 +81,6 @@ const Booking = () => {
   const notify = () => toast.error("This room is not available for now");
 
   const onSubmit = (data) => {
-    if (isFound) {
-      notify();
-      return;
-    }
     const finalData = {
       ...data,
       price: Number(numberOfDays?.night) * Number(price),
@@ -102,6 +98,7 @@ const Booking = () => {
       .post("http://localhost:5000/api/booking/payment", finalData)
       .then((res) => {
         if (res.data) {
+          console.log(res.data);
           window.location.replace(res.data.data);
         }
       })

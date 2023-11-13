@@ -104,7 +104,8 @@ export const paymentRoute = async (req, res) => {
   const sslcommer = new SslCommerzPayment(
     process.env.STORE_ID,
     process.env.STORE_PASS,
-    false
+    true,
+    "https://securepay.sslcommerz.com/gwprocess/v4/api.php"
   );
 
   sslcommer

@@ -83,18 +83,6 @@ app.post("/api/upload/multiple", upload.array("images", 5), (req, res) => {
   return res.status(200).json(images);
 });
 
-app.post("/success", async (req, res) => {
-  res.status(200).redirect(`${process.env.StoreRoute}/success`);
-});
-
-app.post("/fail", async (req, res) => {
-  res.status(200).redirect(`${process.env.StoreRoute}/fail`);
-});
-
-app.post("/cancel", async (req, res) => {
-  res.status(200).redirect(`${process.env.StoreRoute}/cancel`);
-});
-
 // routing setup
 app.use("/api/room", roomsRoute);
 app.use("/api/news", newsRoute);
