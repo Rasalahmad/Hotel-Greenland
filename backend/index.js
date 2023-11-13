@@ -11,6 +11,7 @@ import emailRoute from "./routers/emailRoute.js";
 import downloadRoute from "./routers/downloadRoute.js";
 import reviewRoute from "./routers/reviewRoute.js";
 import statisticRoute from "./routers/statisticRoute.js";
+import sliderRoute from "./routers/sliderRoute.js";
 
 const app = express();
 
@@ -92,6 +93,7 @@ app.use("/api/sendEmail", emailRoute);
 app.use("/api/download-pdf", downloadRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/statistic", statisticRoute);
+app.use("/api/slider", sliderRoute);
 
 app.listen(process.env.PORT, () => {
   connect();
