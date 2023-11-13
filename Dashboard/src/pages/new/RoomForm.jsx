@@ -85,7 +85,7 @@ const RoomForm = ({ inputs, title }) => {
           <div className="left">
             <img
               src={
-                `${process.env.REACT_APP_IMAGE_URL}/images/${file}`
+                file
                   ? URL.createObjectURL(file)
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
