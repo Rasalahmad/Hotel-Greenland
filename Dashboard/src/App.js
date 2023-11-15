@@ -56,6 +56,9 @@ function App() {
             <Route path="reviews">
               <Route index element={isLoggedIn ? <List /> : <Login />} />
             </Route>
+            <Route path="newsAndBlog">
+              <Route index element={isLoggedIn ? <List /> : <Login />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
