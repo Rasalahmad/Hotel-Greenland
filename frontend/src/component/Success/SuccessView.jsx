@@ -4,7 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useGetSingleBookingQuery } from "../../features/booking/bookingApi";
-
+import Lottie from "react-lottie-player";
+import lottieJson from "./Animation - 1700050737029.json";
 const SuccessView = () => {
   const location = useLocation();
 
@@ -49,15 +50,14 @@ const SuccessView = () => {
     <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12 ">
       <div class=" w-full my-auto lg:mb-0 mb-10 lg:w-[600px]  shadow-xl rounded-xl">
         <div class="bg-white p-6">
-          <svg
-            viewBox="0 0 24 24"
-            class="text-green-600 w-16 h-16 mx-auto my-6"
-          >
-            <path
-              fill="currentColor"
-              d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
-            ></path>
-          </svg>
+          <div className="flex justify-center">
+            <Lottie
+              loop
+              animationData={lottieJson}
+              play
+              className="w-[90px] lg:w-[150px] my-3 text-center"
+            />
+          </div>
           {isLoading ? (
             "Loading..."
           ) : (
