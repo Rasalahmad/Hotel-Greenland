@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const userColumns = [
   {
     field: "thumbnail",
@@ -36,6 +38,37 @@ export const userColumns = [
       return (
         <div className={`cellWithStatus ${params.row.isAvailable}`}>
           {params.row.isAvailable}
+        </div>
+      );
+    },
+  },
+];
+export const newsColumn = [
+  {
+    field: "image",
+    headerName: "Image",
+    width: 250,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.image} alt="avatar" />
+          {params.row.name}
+        </div>
+      );
+    },
+  },
+  { field: "title", headerName: "title", width: 400 },
+
+  {
+    field: "link",
+    headerName: "Link",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <Link to={params.row.link} alt="avatar">
+            Link
+          </Link>
         </div>
       );
     },

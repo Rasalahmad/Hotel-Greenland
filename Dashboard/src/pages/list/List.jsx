@@ -6,6 +6,7 @@ import TransactionDataTable from "../../components/datatable/TransactionDataTabl
 import HotelDataTable from "../../components/datatable/HotelDataTable";
 import RestaurantData from "../../components/datatable/RestaurantData";
 import ReviewDataTable from "../../components/datatable/ReviewDataTable";
+import NewsBlogDataTable from "../../components/datatable/NewsBlogDataTable";
 
 const List = () => {
   const location = useLocation();
@@ -23,6 +24,8 @@ const List = () => {
           <TransactionDataTable />
         ) : location?.pathname === "/reviews" ? (
           <ReviewDataTable />
+        ) : location?.pathname === "/newsAndBlog" ? (
+          <NewsBlogDataTable />
         ) : (
           <></>
         )}
