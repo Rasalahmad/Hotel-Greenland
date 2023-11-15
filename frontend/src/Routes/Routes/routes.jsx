@@ -19,13 +19,12 @@ import Login from "../../pages/Auth/Login";
 import Register from "../../pages/Auth/Register";
 import PrivateRoute from "../Private/PrivateRoute";
 import Blog from "../../pages/Blog/Blog";
-import NotFound from "../../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <NotFound />,
+
     children: [
       {
         path: "/",
