@@ -15,7 +15,7 @@ const NewsBlogDataTable = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(false);
+      setLoading(true);
 
       try {
         const res = await makeRequest.get("/news");
@@ -82,7 +82,7 @@ const NewsBlogDataTable = () => {
           <div className="datatable">
             <div className="datatableTitle">
               News and Blogs List
-              <Link to={`/hotels/roomForm`} className="link">
+              <Link to={`/newsAndBlog/newsForm`} className="link">
                 Add News
               </Link>
             </div>
