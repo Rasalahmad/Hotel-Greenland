@@ -1,3 +1,23 @@
+export const NewsAndBlogInputs = [
+  {
+    id: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "title",
+  },
+  {
+    id: "link",
+    label: "Link",
+    type: "text",
+    placeholder: "https://yourlink/",
+  },
+  {
+    id: "desc",
+    label: "description",
+    type: "text",
+    placeholder: "description",
+  },
+];
 export const roomInputs = [
   {
     id: "name",

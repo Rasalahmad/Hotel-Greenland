@@ -111,22 +111,24 @@ const ReviewDataTable = () => {
   ];
   return (
     <div className="datatable">
-      <div className="datatableTitle">Review List</div>
       {loading ? (
         <>
           <Loader type={"List"} />
         </>
       ) : (
-        <DataGrid
-          className="datagrid"
-          rows={data}
-          columns={reviewColumn.concat(actionColumn)}
-          pageSize={9}
-          rowsPerPageOptions={[9]}
-          checkboxSelection
-          getRowId={(rows) => rows._id}
-          disableSelectionOnClick
-        />
+        <>
+          <div className="datatableTitle">Review List</div>
+          <DataGrid
+            className="datagrid"
+            rows={data}
+            columns={reviewColumn.concat(actionColumn)}
+            pageSize={9}
+            rowsPerPageOptions={[9]}
+            checkboxSelection
+            getRowId={(rows) => rows._id}
+            disableSelectionOnClick
+          />
+        </>
       )}
       <div className={`modal ${isActive ? "active" : ""}`}>
         <div style={{ width: "600px" }} className="modal-content">
