@@ -9,7 +9,7 @@ const RoomCard = () => {
         {/*Single Room Card  */}
         <div className="shadow-xl shadow-indigo-200 lg:my-20 bg-white rounded-lg">
           <div className="p-6 text-center">
-            <h3 className="text-2xl font-bold pt-10 pb-6">Single Room</h3>
+            <h3 className="text-2xl font-bold pt-10 pb-6">Couple Room</h3>
             {/* <p className="mb-4">
               <span className="bg-black text-white p-2">
                 <span className="text-xl font-bold">

@@ -1,41 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
-import { RxSpaceEvenlyVertically } from "react-icons/rx";
-import { BiBed, BiLaptop, BiDrink } from "react-icons/bi";
-import { SlCalender } from "react-icons/sl";
-import { MdBathroom } from "react-icons/md";
-import { FaSwimmingPool } from "react-icons/fa";
+import { BiBed, BiDrink, BiLaptop } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import CheckBox from "../../../../component/Checkbox/CheckBox";
 import { useGetAllRoomQuery } from "../../../../features/rooms/roomApi";
 import Loader from "../../../../component/Loader/Loader";
+import { MdBathroom } from "react-icons/md";
+import { FaSwimmingPool } from "react-icons/fa";
 
 const AllRooms = () => {
   const { data: roomData, isLoading, isError, error } = useGetAllRoomQuery();
-
-  const facilities = [
-    {
-      id: 1,
-      icon: <BsPersonCircle size={25} />,
-      title: "2 Guests",
-    },
-    {
-      id: 2,
-      icon: <BiBed size={25} />,
-      title: "1200 / Per Night",
-    },
-    {
-      id: 3,
-      icon: <SlCalender size={25} />,
-      title: "7500 / 7 Night",
-    },
-    {
-      id: 4,
-      icon: <RxSpaceEvenlyVertically size={25} />,
-      title: "30 Ft",
-    },
-  ];
 
   const service = [
     {
@@ -51,7 +25,7 @@ const AllRooms = () => {
     {
       id: 1,
       icon: <FaSwimmingPool size={24} />,
-      title: "Swiming Pool",
+      title: "Swimming Pool",
     },
     {
       id: 1,
@@ -59,8 +33,6 @@ const AllRooms = () => {
       title: "Television",
     },
   ];
-
-  const [range, setRange] = useState(500);
 
   let content = null;
 
@@ -74,37 +46,9 @@ const AllRooms = () => {
     content = (
       <Container>
         <Main>
-          <Left>
-            <div>
-              <div>
-                <h2 className="text-2xl my-5">Service</h2>
-              </div>
-              <div>
-                <CheckBox id={"wd"} value={"Welcome Drink"} />
-                <CheckBox id={"tv"} value={"Television"} />
-                <CheckBox id={"sm"} value={"No Smoking"} />
-                <CheckBox id={"pb"} value={"Private Bathroom"} />
-                <CheckBox id={"br"} value={"Bike Rental"} />
-                <CheckBox id={"kb"} value={"Kids Beds"} />
-              </div>
-              <div>
-                <div>
-                  <h2 className="text-2xl my-5">Extra Service</h2>
-                </div>
-                <div>
-                  <CheckBox id={"clearing-fee"} value={"Cleaning Fee"} />
-                  <CheckBox id={"laundry"} value={"Laundry"} />
-                  <CheckBox id={"satellite-tv"} value={"Satellite TV"} />
-                  <CheckBox id={"car-rental"} value={"Car Rental"} />
-                  <CheckBox id={"breakfast"} value={"Breakfast"} />
-                  <CheckBox id={"lunch"} value={"Lunch"} />
-                </div>
-              </div>
-            </div>
-          </Left>
           <Right>
             {roomData?.data?.map((item) => (
-              <Card>
+              <Card key={item._id}>
                 <Image
                   src={`${process.env.REACT_APP_IMAGE_URL}/images/${item?.thumbnail}`}
                   alt=""

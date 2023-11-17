@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { BiBed, BiLaptop, BiDrink } from "react-icons/bi";
 import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import CheckBox from "../../../../component/Checkbox/CheckBox";
 import { useGetSingleRoomQuery } from "../../../../features/rooms/roomApi";
 import Loader from "../../../../component/Loader/Loader";
 
@@ -47,37 +46,9 @@ const SingleRoom = () => {
     content = (
       <Container>
         <Main>
-          <Left>
-            <div>
-              <div>
-                <h2 className="text-2xl my-5">Service</h2>
-              </div>
-              <div>
-                <CheckBox id={"wd"} value={"Welcome Drink"} />
-                <CheckBox id={"tv"} value={"Television"} />
-                <CheckBox id={"sm"} value={"No Smoking"} />
-                <CheckBox id={"pb"} value={"Private Bathroom"} />
-                <CheckBox id={"br"} value={"Bike Rental"} />
-                <CheckBox id={"kb"} value={"Kids Beds"} />
-              </div>
-              <div>
-                <div>
-                  <h2 className="text-2xl my-5">Extra Service</h2>
-                </div>
-                <div>
-                  <CheckBox id={"clearing-fee"} value={"Cleaning Fee"} />
-                  <CheckBox id={"laundry"} value={"Laundry"} />
-                  <CheckBox id={"satellite-tv"} value={"Satellite TV"} />
-                  <CheckBox id={"car-rental"} value={"Car Rental"} />
-                  <CheckBox id={"breakfast"} value={"Breakfast"} />
-                  <CheckBox id={"lunch"} value={"Lunch"} />
-                </div>
-              </div>
-            </div>
-          </Left>
           <Right>
             {roomData?.data?.map((item) => (
-              <Card>
+              <Card key={item._id}>
                 <Image
                   src={`${process.env.REACT_APP_IMAGE_URL}/images/${item?.thumbnail}`}
                   alt=""
@@ -133,9 +104,6 @@ const Main = styled.div`
   }
 `;
 
-const Left = styled.div`
-  flex: 1;
-`;
 const Right = styled.div`
   flex: 3;
   display: flex;

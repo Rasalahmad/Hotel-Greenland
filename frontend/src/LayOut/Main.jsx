@@ -19,16 +19,24 @@ const Main = () => {
     setIsOpen(!isOpen);
   };
 
+  const phoneNumber = "01810058005";
+  const message = "Is there anyone for support?";
+
+  const handleWhatsAppRedirect = () => {
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
+
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
   return (
     <ScrollToTopComponent>
       {!excludeRoute.includes(path) && <Banner />}
       {/* The button to open modal */}
       <div style={{ display: path === "booking" ? "none" : "" }}>
-        <div
-          className=" flex flex-col gap-2
-fixed top-[50%] right-0 transform -translate-y-1/3
-"
-        >
+        <div className=" flex flex-col gap-2 fixed top-[50%] right-0 transform -translate-y-1/3">
           <div className="">
             <Transition
               show={isOpen}
@@ -39,31 +47,37 @@ fixed top-[50%] right-0 transform -translate-y-1/3
               leaveFrom="transform translate-y-0"
               leaveTo="transform translate-y-full"
             >
-              <div className=" h-52  w-20 mt-[-195px] mb-[-14px] ">
+              <div className="h-52  w-20 mt-[-195px] mb-[-14px] ">
                 {/* Content of the revealed section */}
-                <label
-                  htmlFor="my_modal_6"
-                  className=" shadow-lg p-2  block rounded-l-lg bg-slate-100"
+                <div
+                  onClick={handleWhatsAppRedirect}
+                  className=" shadow-lg p-2  block rounded-l-lg bg-slate-100 cursor-pointer"
                 >
                   <img src={whatsapp} alt="" className="w-12  ml-2" />
-                </label>
+                </div>
                 <label
                   htmlFor="my_modal_6"
-                  className="my-1  shadow-lg  p-2 block rounded-l-lg bg-slate-100"
+                  className="my-1 shadow-lg  p-2 block rounded-l-lg bg-slate-100 cursor-pointer"
                 >
                   <img src={facebook} alt="" className="w-[45px] ml-2" />
                 </label>
-                <label
-                  htmlFor="my_modal_6"
-                  className="  shadow-lg p-2 block rounded-l-lg bg-slate-100"
-                >
-                  <img src={call} alt="" className="w-10 ml-2" />
-                </label>
+                {isMobile ? (
+                  <a href={`tel:${phoneNumber}`}>
+                    <img src={call} alt="" className="w-10 ml-2" />
+                  </a>
+                ) : (
+                  <label
+                    htmlFor="my_modal_6"
+                    className="shadow-lg p-2 block rounded-l-lg bg-slate-100 cursor-pointer"
+                  >
+                    <img src={call} alt="" className="w-10 ml-2" />
+                  </label>
+                )}
               </div>
             </Transition>
 
             <button
-              className="bg-gray-300 py-2 shadow-lg pl-3 rounded-l-lg  w-20 flex "
+              className="bg-gray-300 py-2 shadow-lg pl-3 rounded-l-lg  w-20 flex"
               onClick={toggleSection}
             >
               <img src={call} alt="" className=" w-12" />
@@ -81,8 +95,8 @@ fixed top-[50%] right-0 transform -translate-y-1/3
             >
               ✕
             </label>
-            <h3 className="font-bold text-lg">Hello!</h3>
-            <p className="py-4">This modal works with a hidden checkbox!</p>
+            <h3 className="font-bold text-lg">Contact With Us</h3>
+            <p className="py-4">Phone Number: 01810058005</p>
             <div className="modal-action"></div>
           </div>
         </div>
