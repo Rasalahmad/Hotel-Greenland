@@ -16,7 +16,7 @@ const HotelDataTable = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await makeRequest.get("/room/getAllRooms");
+        const res = await makeRequest.get("/room/all_dashboard");
         setData(res.data.data);
       } catch (err) {
         setError(err);

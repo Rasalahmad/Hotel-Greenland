@@ -8,34 +8,19 @@ import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CheckBox from "../../../../component/Checkbox/CheckBox";
-import { useGetDoubleRoomQuery } from "../../../../features/rooms/roomApi";
+import {
+  useGetDoubleRoomQuery,
+  useGetRoomsQuery,
+} from "../../../../features/rooms/roomApi";
 import Loader from "../../../../component/Loader/Loader";
 
 const DoubleRoom = () => {
-  const { data: roomData, isLoading, isError, error } = useGetDoubleRoomQuery();
-
-  const facilities = [
-    {
-      id: 1,
-      icon: <BsPersonCircle size={25} />,
-      title: "2 Guests",
-    },
-    {
-      id: 2,
-      icon: <BiBed size={25} />,
-      title: "1200 / Per Night",
-    },
-    {
-      id: 3,
-      icon: <SlCalender size={25} />,
-      title: "7500 / 7 Night",
-    },
-    {
-      id: 4,
-      icon: <RxSpaceEvenlyVertically size={25} />,
-      title: "30 Ft",
-    },
-  ];
+  const {
+    data: roomData,
+    isLoading,
+    isError,
+    error,
+  } = useGetRoomsQuery("double_room");
 
   const service = [
     {
@@ -72,34 +57,6 @@ const DoubleRoom = () => {
     content = (
       <Container>
         <Main>
-          <Left>
-            <div>
-              <div>
-                <h2 className="text-2xl my-5">Service</h2>
-              </div>
-              <div>
-                <CheckBox id={"wd"} value={"Welcome Drink"} />
-                <CheckBox id={"tv"} value={"Television"} />
-                <CheckBox id={"sm"} value={"No Smoking"} />
-                <CheckBox id={"pb"} value={"Private Bathroom"} />
-                <CheckBox id={"br"} value={"Bike Rental"} />
-                <CheckBox id={"kb"} value={"Kids Beds"} />
-              </div>
-              <div>
-                <div>
-                  <h2 className="text-2xl my-5">Extra Service</h2>
-                </div>
-                <div>
-                  <CheckBox id={"clearing-fee"} value={"Cleaning Fee"} />
-                  <CheckBox id={"laundry"} value={"Laundry"} />
-                  <CheckBox id={"satellite-tv"} value={"Satellite TV"} />
-                  <CheckBox id={"car-rental"} value={"Car Rental"} />
-                  <CheckBox id={"breakfast"} value={"Breakfast"} />
-                  <CheckBox id={"lunch"} value={"Lunch"} />
-                </div>
-              </div>
-            </div>
-          </Left>
           <Right>
             {roomData?.data?.map((item) => (
               <Card>

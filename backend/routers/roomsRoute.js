@@ -2,13 +2,9 @@ import express from "express";
 import {
   addRoom,
   deleteRoom,
-  getAllRooms,
-  getAllRoomsInDashBoard,
-  getDoubleRooms,
   getRoom,
   getRoomTransaction,
-  getSingleRooms,
-  getSpecialRooms,
+  getRooms,
   updateAvailability,
   updateRoom,
   updateRoomAvailability,
@@ -21,11 +17,7 @@ router.put("/:id", updateRoom);
 router.put("/availability/:id", updateRoomAvailability);
 router.put("/makeUnavailable/:id", updateAvailability);
 router.delete("/:id", deleteRoom);
-router.get("/singleRooms", getSingleRooms);
-router.get("/doubleRooms", getDoubleRooms);
-router.get("/specialRooms", getSpecialRooms);
-router.get("/getAllRoom", getAllRooms);
-router.get("/getAllRooms", getAllRoomsInDashBoard);
+router.get("/:roomType", getRooms);
 router.get("/getRoom/:id", getRoom);
 router.get("/transaction/:id", getRoomTransaction);
 

@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { BiBed, BiDrink, BiLaptop } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useGetAllRoomQuery } from "../../../../features/rooms/roomApi";
+import { useGetRoomsQuery } from "../../../../features/rooms/roomApi";
 import Loader from "../../../../component/Loader/Loader";
 import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 
 const AllRooms = () => {
-  const { data: roomData, isLoading, isError, error } = useGetAllRoomQuery();
+  const { data: roomData, isLoading, isError, error } = useGetRoomsQuery("all");
 
   const service = [
     {

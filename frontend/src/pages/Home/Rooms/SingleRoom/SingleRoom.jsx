@@ -5,11 +5,16 @@ import { BiBed, BiLaptop, BiDrink } from "react-icons/bi";
 import { MdBathroom } from "react-icons/md";
 import { FaSwimmingPool } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useGetSingleRoomQuery } from "../../../../features/rooms/roomApi";
+import { useGetRoomsQuery } from "../../../../features/rooms/roomApi";
 import Loader from "../../../../component/Loader/Loader";
 
 const SingleRoom = () => {
-  const { data: roomData, isLoading, isError, error } = useGetSingleRoomQuery();
+  const {
+    data: roomData,
+    isLoading,
+    isError,
+    error,
+  } = useGetRoomsQuery("single_room");
 
   const service = [
     {
