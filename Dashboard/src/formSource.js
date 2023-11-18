@@ -18,6 +18,20 @@ export const NewsAndBlogInputs = [
     placeholder: "description",
   },
 ];
+export const GalleryInputs = [
+  {
+    id: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "title",
+  },
+  {
+    id: "copyright",
+    label: "copyright",
+    type: "text",
+    placeholder: "copyright",
+  },
+];
 export const roomInputs = [
   {
     id: "name",
