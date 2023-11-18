@@ -19,6 +19,7 @@ import Login from "../../pages/Auth/Login";
 import Register from "../../pages/Auth/Register";
 import PrivateRoute from "../Private/PrivateRoute";
 import Blog from "../../pages/Blog/Blog";
+import AboutUs from "../../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
         element: <FamilyRoom />,
       },
       {
+        path: "/allRoom",
+        element: <AllRooms />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -55,12 +60,12 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/allRoom",
-        element: <AllRooms />,
-      },
-      {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
       {
         path: "/blog",

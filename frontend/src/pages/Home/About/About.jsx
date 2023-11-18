@@ -20,10 +20,7 @@ const About = () => {
             lifestyle surrounded by the forest.
           </Desription>
           <a href="#" className="hover:underline">
-            <Button className="flex items-center text-xl mt-10 cursor-pointer">
-              MORE ABOUT US
-              <BsFillCaretRightFill className="ml-2" />
-            </Button>
+            <Button className="flex items-center text-xl mt-10 cursor-pointer"></Button>
           </a>
         </Main>
         <ImageContainer>
