@@ -11,15 +11,8 @@ import "./slider.css";
 
 // import required modules
 import { Pagination, Autoplay } from "swiper";
-import styled from "styled-components";
 
 export default function NewsSlider({ data }) {
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
   return (
     <>
       <Swiper
@@ -52,13 +45,17 @@ export default function NewsSlider({ data }) {
         {data.map((item) => (
           <SwiperSlide key={item?._id}>
             <div className="container">
-              <img src={item.image} alt="Avatar" className="image" />
+              <img
+                src={`${process.env.REACT_APP_IMAGE_URL}/images/${item.image}`}
+                alt="Avatar"
+                className="image"
+              />
               <div className="overlay-bottom">
                 <div className="text">
                   <h2>{item?.title.slice(0, 25)}...</h2>
                   <span>
                     {item?.date
-                      .match(/[a-zA-Z]+|[0-9]+/g)
+                      ?.match(/[a-zA-Z]+|[0-9]+/g)
                       .slice(0, 3)
                       .join("-")}
                   </span>

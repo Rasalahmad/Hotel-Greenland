@@ -6,7 +6,6 @@ import Loader from "../../../component/Loader/Loader";
 
 const News = () => {
   const { data, isLoading, isError, error } = useGetNewsQuery();
-  console.log(data);
   let content = null;
   if (isLoading) {
     content = <Loader type={"List"} />;
