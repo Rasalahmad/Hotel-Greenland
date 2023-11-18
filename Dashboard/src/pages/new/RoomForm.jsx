@@ -59,6 +59,8 @@ const RoomForm = ({ inputs, title }) => {
     }
   };
 
+  console.log(roomType);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const thumbnail = await upload(file);

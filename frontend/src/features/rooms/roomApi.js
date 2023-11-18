@@ -2,8 +2,10 @@ import { apiSlice } from "../api/apiSlice";
 
 export const roomApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getSingleRoom: builder.query({
-      query: () => "room/singleRooms",
+    getRooms: builder.query({
+      query: (params) => ({
+        url: `room/${params}`,
+      }),
     }),
     getDoubleRoom: builder.query({
       query: () => "room/doubleRooms",
@@ -28,4 +30,5 @@ export const {
   useGetDoubleRoomQuery,
   useGetRoomQuery,
   useGetSpecialRoomQuery,
+  useGetRoomsQuery,
 } = roomApi;

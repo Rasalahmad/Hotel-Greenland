@@ -8,7 +8,7 @@ export const addRoom = async (req, res) => {
     const result = await room.save();
     res.status(200).json({
       status: true,
-      message: "Romm added successfully",
+      message: "Room added successfully",
       data: result,
     });
   } catch (error) {
@@ -29,79 +29,16 @@ export const addRoom = async (req, res) => {
   }
 };
 
-export const getSingleRooms = async (req, res) => {
+export const getRooms = async (req, res) => {
+  const roomType = req?.params?.roomType.split("_").join(" ");
+  console.log(roomType);
   const rooms = await Room.find({
-    roomType: "single room",
-    isAvailable: "Available",
+    ...(roomType !== "all" ||
+      (roomType !== "all dashboard" && {
+        roomType: roomType ? roomType : null,
+      })),
+    ...(roomType === "all dashboard" ? {} : { isAvailable: "Available" }),
   });
-  try {
-    res.status(200).json({
-      status: true,
-      data: rooms,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: false,
-      message: "Data can't fetch",
-      error,
-    });
-  }
-};
-export const getDoubleRooms = async (req, res) => {
-  const rooms = await Room.find({
-    roomType: "double room",
-    isAvailable: "Available",
-  });
-  try {
-    res.status(200).json({
-      status: true,
-      data: rooms,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: false,
-      message: "Data can't fetch",
-      error,
-    });
-  }
-};
-export const getSpecialRooms = async (req, res) => {
-  const rooms = await Room.find({
-    roomType: "special room",
-    isAvailable: "Available",
-  });
-  try {
-    res.status(200).json({
-      status: true,
-      data: rooms,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: false,
-      message: "Data can't fetch",
-      error,
-    });
-  }
-};
-
-export const getAllRooms = async (req, res) => {
-  const rooms = await Room.find({ isAvailable: "Available" });
-  try {
-    res.status(200).json({
-      status: true,
-      data: rooms,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: false,
-      message: "Data can't fetch",
-      error,
-    });
-  }
-};
-
-export const getAllRoomsInDashBoard = async (req, res) => {
-  const rooms = await Room.find();
   try {
     res.status(200).json({
       status: true,

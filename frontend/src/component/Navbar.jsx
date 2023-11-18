@@ -58,7 +58,7 @@ const Navbar = () => {
               <ul className="p-2 bg-gray-500">
                 <li>
                   <Link to="/singleRooms" className="active:bg-transparent">
-                    Single Rooms
+                    Couple Rooms
                   </Link>
                 </li>
                 <li>
@@ -125,7 +125,7 @@ const Navbar = () => {
             <ul className="p-2 bg-gray-500">
               <li>
                 <Link to="/singleRooms" className="active:bg-transparent">
-                  Single Rooms
+                  Couple Rooms
                 </Link>
               </li>
               <li>

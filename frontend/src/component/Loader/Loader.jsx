@@ -4,7 +4,7 @@ const Loader = ({ type }) => {
     <>
       {type === "allList" ? (
         <>
-          <div className="hidden lg:flex gap-4 mt-4 lg:mt-auto mx-7">
+          <div className="hidden lg:flex justify-center gap-4 mt-4 lg:mt-auto mx-7">
             <Skeleton
               count={2}
               height={"300px"}
@@ -47,7 +47,7 @@ const Loader = ({ type }) => {
         </>
       ) : type === "List" ? (
         <>
-          <div className="hidden lg:flex gap-4 mt-4 lg:mt-auto lg:mx-10 mx-7">
+          <div className="hidden lg:flex justify-center gap-4 mt-4 lg:mt-auto lg:mx-10 mx-7">
             <Skeleton
               count={1}
               height={"300px"}
@@ -90,7 +90,7 @@ const Loader = ({ type }) => {
         </>
       ) : type === "Details" ? (
         <div>
-          <div className=" lg:flex gap-4 mt-4 lg:mt-auto lg:mx-28 mx-2">
+          <div className=" lg:flex justify-center gap-4 mt-4 lg:mt-auto lg:mx-28 mx-2">
             <div className="hidden lg:block">
               <Skeleton
                 count={2}
@@ -222,7 +222,7 @@ const Loader = ({ type }) => {
       ) : (
         <>
           <div>
-            <div className="hidden lg:flex gap-10 mt-4 lg:mt-auto lg:mx-24">
+            <div className="hidden lg:flex justify-center gap-10 mt-4 lg:mt-auto lg:mx-24">
               <Skeleton
                 count={1}
                 height={"500px"}
