@@ -43,6 +43,23 @@ export const userColumns = [
     },
   },
 ];
+export const galleryColumn = [
+  {
+    field: "image",
+    headerName: "Image",
+    width: 250,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.image} alt="avatar" />
+          {params.row.name}
+        </div>
+      );
+    },
+  },
+  { field: "title", headerName: "title", width: 300 },
+  { field: "Copyright", headerName: "Copyright", width: 300 },
+];
 export const newsColumn = [
   {
     field: "image",

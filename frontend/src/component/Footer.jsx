@@ -4,9 +4,8 @@ import facebook from "../assets/icons/facebook.png";
 import instra from "../assets/icons/instra.png";
 import twittor from "../assets/icons/twittor.png";
 import linkedIn from "../assets/icons/in.png";
-import award from "../assets/images/award.png";
 import payment from "../assets/images/payment.png";
-import { BsPhone, BsTelephoneForward } from "react-icons/bs";
+import { BsPhone, BsListTask } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -85,10 +84,15 @@ const Footer = () => {
             </p>
           </div>
           <div className="mt-6">
-            <p className="flex gap-3 items-center">
-              <BsTelephoneForward size={25} />
-              <span className="text-gray-400">123456789</span>
-            </p>
+            <a
+              href="Hotel G-Land.pdf"
+              className="flex gap-3 items-center  cursor-pointer"
+            >
+              <BsListTask size={25} />
+              <span className="text-gray-400 hover:text-white">
+                Trade licenses
+              </span>
+            </a>
           </div>
         </Section>
         <Section className="mt-9 lg:mt-0">
@@ -96,15 +100,17 @@ const Footer = () => {
           <p className="mt-12">
             <span className="text-gray-400">Greenland Av.</span>
           </p>
-          <p className="mt-6">
-            <span className="text-gray-400">56Q9+MC9, Bandarban</span>
+          <p className="mt-3">
+            <span className="text-gray-400">Post Office,</span>
           </p>
-          <p className="mt-6">
+          <p className="mt-3">
+            <span className="text-gray-400">Chimbuk Road,</span>
+          </p>
+          <p className="mt-3">
             <span className="text-gray-400">Bandarban Sadar, Bandarban</span>
           </p>
         </Section>
-        <Section style={{ width: "380px" }} className="mt-9 lg:mt-0 w-auto">
-          <img src={award} alt="" />
+        <Section className="lg:ml-[-80px] mt-9 lg:mt-0 lg:w-[450px] flex justify-center items-center">
           <img
             style={{ width: "800px" }}
             src={payment}

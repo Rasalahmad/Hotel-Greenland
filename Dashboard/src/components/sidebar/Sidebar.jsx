@@ -11,7 +11,7 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
@@ -74,6 +74,12 @@ const Sidebar = () => {
             <li>
               <NewspaperIcon className="icon" />
               <span>News and Blog</span>
+            </li>
+          </Link>
+          <Link to="/gallery" style={{ textDecoration: "none" }}>
+            <li>
+              <InsertPhotoIcon className="icon" />
+              <span>Gallery</span>
             </li>
           </Link>
           {/* <p className="title">USEFUL</p> */}

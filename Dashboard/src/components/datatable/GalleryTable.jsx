@@ -1,14 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeRequest } from "../../axios";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Loader from "../Loader/Loader";
+import { galleryColumn } from "../../datatablesource";
+import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
-import { newsColumn } from "../../datatablesource";
-
-const NewsBlogDataTable = () => {
+const GalleryTable = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +15,7 @@ const NewsBlogDataTable = () => {
       setLoading(true);
 
       try {
-        const res = await makeRequest.get("/news");
+        const res = await makeRequest.get("/slider");
         setData(res.data.data);
       } catch (err) {
         setError(err);
@@ -39,7 +36,7 @@ const NewsBlogDataTable = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          makeRequest.delete(`/news/${id}`);
+          makeRequest.delete(`/slider/${id}`);
           setData(data.filter((item) => item._id !== id));
           Swal.fire("Deleted!", "Room has been Deleted.", "success");
         } catch (err) {
@@ -48,6 +45,7 @@ const NewsBlogDataTable = () => {
       }
     });
   };
+  console.log(data);
   const actionColumn = [
     {
       field: "action",
@@ -69,32 +67,34 @@ const NewsBlogDataTable = () => {
   ];
   return (
     <div>
-      <>
-        {!data || loading ? (
-          <Loader type={"List"} />
-        ) : (
-          <div className="datatable">
-            <div className="datatableTitle">
-              News and Blogs List
-              <Link to={`/newsAndBlog/newsForm`} className="link">
-                Add News
-              </Link>
+      <div>
+        <>
+          {!data || loading ? (
+            <Loader type={"List"} />
+          ) : (
+            <div className="datatable">
+              <div className="datatableTitle">
+                Gallery
+                <Link to={`/gallery/galleryForm`} className="link">
+                  Add Image
+                </Link>
+              </div>
+              <DataGrid
+                className="datagrid"
+                rows={data}
+                columns={galleryColumn.concat(actionColumn)}
+                pageSize={9}
+                rowsPerPageOptions={[9]}
+                checkboxSelection
+                getRowId={(rows) => rows._id}
+              />
+              {error && <p>{error}</p>}
             </div>
-            <DataGrid
-              className="datagrid"
-              rows={data}
-              columns={newsColumn.concat(actionColumn)}
-              pageSize={9}
-              rowsPerPageOptions={[9]}
-              checkboxSelection
-              getRowId={(rows) => rows._id}
-            />
-            {error && <p>{error}</p>}
-          </div>
-        )}
-      </>
+          )}
+        </>
+      </div>
     </div>
   );
 };
 
-export default NewsBlogDataTable;
+export default GalleryTable;

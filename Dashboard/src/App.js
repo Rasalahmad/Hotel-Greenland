@@ -3,7 +3,7 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { NewsAndBlogInputs, roomInputs } from "./formSource";
+import { GalleryInputs, NewsAndBlogInputs, roomInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -12,6 +12,7 @@ import { LoginContext } from "./context/loginContext";
 import Booking from "./pages/single/Booking";
 import Restaurant from "./pages/single/Restaurant.jsx";
 import NewsAndBlogForm from "./pages/new/NewsAndBlogForm.jsx";
+import GalleryForm from "./pages/new/GalleryForm.jsx";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const { isLoggedIn } = useContext(LoginContext);
@@ -68,6 +69,20 @@ function App() {
                       inputs={NewsAndBlogInputs}
                       title="Add News and Blog"
                     />
+                  ) : (
+                    <Login />
+                  )
+                }
+              />
+            </Route>
+            <Route path="gallery">
+              <Route index element={isLoggedIn ? <List /> : <Login />} />
+
+              <Route
+                path="/gallery/galleryForm"
+                element={
+                  isLoggedIn ? (
+                    <GalleryForm inputs={GalleryInputs} title="Add Image " />
                   ) : (
                     <Login />
                   )
