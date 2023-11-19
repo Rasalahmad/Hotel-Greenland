@@ -86,6 +86,6 @@ const AboutImageContainer = styled.div`
   margin: auto;
 `;
 const AboutImage = styled.img`
-  max-width: 100%;
-  margin-top: -200px;
+  width: 100%;
+  margin-top: -150px;
 `;
