@@ -83,29 +83,9 @@ const Details = () => {
                 <p>Private Bathroom</p>
               </Item>
               <Item service>
-                <FaSwimmingPool size={30} />
-                <p>Swiming Pool</p>
-              </Item>
-              <Item service>
                 <BiDrink size={30} />
                 <p>Welcome Drinks</p>
               </Item>
-            </Facilities>
-          </Service>
-
-          <Service>
-            <h3 className="my-10 text-3xl font-bold">Around The Hotel</h3>
-            <Facilities className="flex justify-between flex-wrap gap-7 my-10">
-              {around.map((item) => (
-                <div>
-                  <Image src={item?.image} alt="" />
-                  <div className="bg-green-300">
-                    <p className="-mt-10 ml-7 font-bold text-xl text-white">
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-              ))}
             </Facilities>
           </Service>
           <div>
