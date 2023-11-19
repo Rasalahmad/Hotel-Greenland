@@ -1,4 +1,5 @@
 import News from "../models/newsModel.js";
+import { ObjectId } from "mongodb";
 
 export const addNews = async (req, res) => {
   const news = new News(req.body);
@@ -33,6 +34,24 @@ export const getNews = async (req, res) => {
     res.status(200).json({
       status: true,
       data: news,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
+export const deleteNews = async (req, res) => {
+  await News.findByIdAndDelete({
+    _id: ObjectId(req.params.id),
+  });
+  try {
+    res.status(200).json({
+      status: true,
+      message: "Deleted successfully",
     });
   } catch (error) {
     res.status(400).json({

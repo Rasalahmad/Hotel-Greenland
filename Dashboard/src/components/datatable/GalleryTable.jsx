@@ -5,6 +5,7 @@ import Loader from "../Loader/Loader";
 import { galleryColumn } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
+
 const GalleryTable = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
@@ -45,7 +46,6 @@ const GalleryTable = () => {
       }
     });
   };
-  console.log(data);
   const actionColumn = [
     {
       field: "action",

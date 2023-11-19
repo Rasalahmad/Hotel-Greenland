@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+
 const GalleryForm = ({ inputs, title }) => {
   const [file, setFile] = useState(null);
   const [info, setInfo] = useState({});
@@ -35,8 +36,7 @@ const GalleryForm = ({ inputs, title }) => {
     e.preventDefault();
     const image = await upload(file);
     const data = { ...info, image };
-    console.log(data);
-    const res = await makeRequest.post("/news", data);
+    const res = await makeRequest.post("/slider", data);
     if (res.data) {
       Swal.fire("Success", "Image Added successfully", "success");
       navigate("/gallery");
@@ -44,6 +44,7 @@ const GalleryForm = ({ inputs, title }) => {
       Swal.fire("Error", "Something went wrong", "error");
     }
   };
+
   return (
     <div>
       <div>

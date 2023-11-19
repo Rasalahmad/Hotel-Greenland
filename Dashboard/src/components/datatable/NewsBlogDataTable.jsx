@@ -16,10 +16,9 @@ const NewsBlogDataTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-
       try {
         const res = await makeRequest.get("/news");
-        setData(res.data.data);
+        setData(res?.data?.data);
       } catch (err) {
         setError(err);
       }
@@ -27,6 +26,7 @@ const NewsBlogDataTable = () => {
     };
     fetchData();
   }, []);
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -48,6 +48,7 @@ const NewsBlogDataTable = () => {
       }
     });
   };
+
   const actionColumn = [
     {
       field: "action",
@@ -70,7 +71,7 @@ const NewsBlogDataTable = () => {
   return (
     <div>
       <>
-        {!data || loading ? (
+        {loading ? (
           <Loader type={"List"} />
         ) : (
           <div className="datatable">
@@ -87,7 +88,7 @@ const NewsBlogDataTable = () => {
               pageSize={9}
               rowsPerPageOptions={[9]}
               checkboxSelection
-              getRowId={(rows) => rows._id}
+              getRowId={(rows) => rows?._id}
             />
             {error && <p>{error}</p>}
           </div>

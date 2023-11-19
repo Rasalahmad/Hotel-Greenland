@@ -27,12 +27,31 @@ export const addSlider = async (req, res) => {
     });
   }
 };
+
 export const getSlider = async (req, res) => {
   try {
     const result = await Slider.find();
     res.status(200).json({
       status: true,
       message: "Slider fetched successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Something went wrong",
+    });
+  }
+};
+
+export const deleteSlider = async (req, res) => {
+  try {
+    const result = await Slider.findByIdAndDelete({
+      _id: ObjectId(req.params.id),
+    });
+    res.status(200).json({
+      status: true,
+      message: "Slider deleted successfully",
       data: result,
     });
   } catch (error) {

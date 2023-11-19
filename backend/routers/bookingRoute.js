@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addBooking,
+  deleteBooking,
   getBooking,
   getIndividualBooking,
   getSingleBooking,
@@ -24,5 +25,6 @@ router.get("/", getBooking);
 router.get("/individual/:id", getIndividualBooking);
 router.get("/:email", getUserBooking);
 router.get("/transaction/:trans_id", getSingleBooking);
+router.delete("/:id", deleteBooking);
 
 export default router;

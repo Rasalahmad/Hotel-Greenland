@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export const userColumns = [
   {
     field: "thumbnail",
@@ -68,8 +66,12 @@ export const newsColumn = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.image} alt="avatar" />
-          {params.row.name}
+          <img
+            className="cellImg"
+            src={`${process.env.REACT_APP_IMAGE_URL}/images/${params?.row?.image}`}
+            alt="avatar"
+          />
+          {params?.row?.name}
         </div>
       );
     },
@@ -80,12 +82,11 @@ export const newsColumn = [
     field: "link",
     headerName: "Link",
     width: 100,
+
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <Link to={params.row.link} alt="avatar">
-            Link
-          </Link>
+          <a href={params?.row?.link}>Link</a>
         </div>
       );
     },

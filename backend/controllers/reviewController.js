@@ -85,12 +85,13 @@ export const updateReview = async (req, res) => {
 
 export const deleteReview = async (req, res) => {
   try {
-    const review = await Review.findByIdAndDelete({
+    await Review.findByIdAndDelete({
       _id: ObjectId(req.params.id),
     });
+
     res.status(200).json({
       status: true,
-      data: review,
+      message: "Review deleted successfully",
     });
   } catch (error) {
     res.status(400).json({

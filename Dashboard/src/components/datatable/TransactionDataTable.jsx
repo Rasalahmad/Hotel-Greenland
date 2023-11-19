@@ -27,8 +27,6 @@ const TransactionDataTable = () => {
     fetchData();
   }, []);
 
-  console.log(data);
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -41,7 +39,7 @@ const TransactionDataTable = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          makeRequest.delete(`/committee/${id}`);
+          makeRequest.delete(`/booking/${id}`);
           setData(data.filter((item) => item._id !== id));
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         } catch (err) {

@@ -277,3 +277,21 @@ export const getUserBooking = async (req, res) => {
     });
   }
 };
+
+export const deleteBooking = async (req, res) => {
+  await Booking.findByIdAndDelete({
+    _id: ObjectId(req.params.id),
+  });
+  try {
+    res.status(200).json({
+      status: true,
+      message: "Booking Deleted successfully",
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
