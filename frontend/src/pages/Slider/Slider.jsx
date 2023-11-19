@@ -52,7 +52,11 @@ const Slider = () => {
           {data?.data?.map((item) => (
             <SwiperSlide key={item?._id}>
               <div className="container">
-                <img src={item?.image} alt="Avatar" className="image" />
+                <img
+                  src={`${process.env.REACT_APP_IMAGE_URL}/images/${item?.image}`}
+                  alt="Avatar"
+                  className="image"
+                />
                 <div className="overlay-bottom">
                   <div className="text">
                     <h2>{item?.title?.slice(0, 25)}</h2>

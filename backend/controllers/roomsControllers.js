@@ -30,13 +30,12 @@ export const addRoom = async (req, res) => {
 };
 
 export const getRooms = async (req, res) => {
-  const roomType = req?.params?.roomType.split("_").join(" ");
-  console.log(roomType);
+  const roomType = req?.params?.roomType?.split("_").join(" ");
   const rooms = await Room.find({
-    ...(roomType !== "all" ||
-      (roomType !== "all dashboard" && {
+    ...(roomType !== "all" &&
+      roomType !== "all dashboard" && {
         roomType: roomType ? roomType : null,
-      })),
+      }),
     ...(roomType === "all dashboard" ? {} : { isAvailable: "Available" }),
   });
   try {

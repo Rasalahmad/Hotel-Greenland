@@ -49,7 +49,11 @@ export const galleryColumn = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.image} alt="avatar" />
+          <img
+            className="cellImg"
+            src={`${process.env.REACT_APP_IMAGE_URL}/images/${params.row.image}`}
+            alt="avatar"
+          />
           {params.row.name}
         </div>
       );
