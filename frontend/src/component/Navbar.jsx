@@ -204,10 +204,10 @@ const Navbar = () => {
         ) : (
           <div className="flex gap-4">
             <Link
-              to="register"
+              to="http://www.fbta.gov.bd/"
               className="btn btn-outline text-white w-auto mb-4"
             >
-              Register
+              Foreigners Registration
             </Link>
             <Link to="login" className="btn btn-outline text-white w-auto mb-4">
               Log In
