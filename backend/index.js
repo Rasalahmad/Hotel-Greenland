@@ -12,6 +12,9 @@ import downloadRoute from "./routers/downloadRoute.js";
 import reviewRoute from "./routers/reviewRoute.js";
 import statisticRoute from "./routers/statisticRoute.js";
 import sliderRoute from "./routers/sliderRoute.js";
+import cron from "node-cron";
+import Booking from "./models/bookingModel.js";
+import Room from "./models/roomsModel.js";
 
 const app = express();
 
@@ -94,6 +97,50 @@ app.use("/api/download-pdf", downloadRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/statistic", statisticRoute);
 app.use("/api/slider", sliderRoute);
+
+cron.schedule("0 11 * * *", async () => {
+  const today = new Date();
+  const formattedToday = `${today.getFullYear()}-${String(
+    today.getMonth() + 1
+  ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+  try {
+    const bookings = await Booking.find(); // Fetch all bookings
+
+    for (const booking of bookings) {
+      const { bookingDates, product_name } = booking;
+
+      const lastBookingDate = bookingDates[bookingDates.length - 1];
+      const firstBookingDate = bookingDates[0];
+      if (bookingDates.includes(formattedToday)) {
+        // Today is within the booking dates, mark the room as "Unavailable"
+        const resp = await Room.find({
+          name: product_name,
+        });
+        const res = await Room.updateOne(
+          { name: product_name },
+          { $set: { isAvailable: "Unavailable" } }
+        );
+        console.log(
+          `Room ${product_name} marked as "Unavailable" for ${today}.`
+        );
+      } else if (new Date(today) > new Date(lastBookingDate)) {
+        // If today's date is after the last booking date, mark the room as "Available"
+        await Room.updateOne(
+          { name: product_name },
+          { $set: { isAvailable: "Available" } }
+        );
+        console.log(`Room ${product_name} marked as "Available".`);
+      } else if (new Date(today) < new Date(firstBookingDate)) {
+        console.log(
+          `Room ${product_name} booking dates are in the future. No update.`
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Error updating room availability:", error);
+  }
+});
 
 app.listen(process.env.PORT, () => {
   connect();

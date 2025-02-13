@@ -16,7 +16,7 @@ const SuccessView = () => {
     isError,
     error,
   } = useGetSingleBookingQuery(trans_id);
-
+  console.log(booking);
   const lastIndex = booking?.data?.bookingDates?.length - 1;
 
   const handleDownload = (e) => {
