@@ -13,11 +13,11 @@ import {
 const router = express.Router();
 
 router.post("/", addRoom);
+router.get("/", getRooms);
 router.put("/:id", updateRoom);
 router.put("/availability/:id", updateRoomAvailability);
 router.put("/makeUnavailable/:id", updateAvailability);
 router.delete("/:id", deleteRoom);
-router.get("/:roomType", getRooms);
 router.get("/getRoom/:id", getRoom);
 router.get("/transaction/:id", getRoomTransaction);
 

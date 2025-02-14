@@ -20,7 +20,7 @@ const DoubleRoom = () => {
     isLoading,
     isError,
     error,
-  } = useGetRoomsQuery("double_room");
+  } = useGetRoomsQuery({ roomType: "double_room" });
 
   const service = [
     {

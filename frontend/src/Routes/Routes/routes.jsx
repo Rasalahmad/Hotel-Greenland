@@ -20,6 +20,7 @@ import Register from "../../pages/Auth/Register";
 import PrivateRoute from "../Private/PrivateRoute";
 import Blog from "../../pages/Blog/Blog";
 import AboutUs from "../../pages/AboutUs/AboutUs";
+import SearchResults from "../../pages/Home/Rooms/SearchResults/SearchResults";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "/allRoom",
         element: <AllRooms />,
+      },
+      {
+        path: "/search-results",
+        element: <SearchResults />,
       },
       {
         path: "/login",

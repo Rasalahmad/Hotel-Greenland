@@ -30,15 +30,29 @@ export const addRoom = async (req, res) => {
 };
 
 export const getRooms = async (req, res) => {
-  const roomType = req?.params?.roomType?.split("_").join(" ");
-  const rooms = await Room.find({
-    ...(roomType !== "all" &&
-      roomType !== "all dashboard" && {
-        roomType: roomType ? roomType : null,
-      }),
-    ...(roomType === "all dashboard" ? {} : { isAvailable: "Available" }),
-  });
+  const { roomType, checkIn, checkOut, room, guests } = req.query;
+  const formattedRoomType = roomType?.split("_").join(" ");
+
   try {
+    const filters = {
+      ...(formattedRoomType &&
+        formattedRoomType !== "all" && { roomType: formattedRoomType }),
+      isAvailable: "Available",
+    };
+
+    if (checkIn && checkOut) {
+      filters.unavailableDates = {
+        $not: {
+          $elemMatch: {
+            $gte: new Date(checkIn),
+            $lte: new Date(checkOut),
+          },
+        },
+      };
+    }
+
+    console.log(filters, "filter");
+    const rooms = await Room.find(filters);
     res.status(200).json({
       status: true,
       data: rooms,

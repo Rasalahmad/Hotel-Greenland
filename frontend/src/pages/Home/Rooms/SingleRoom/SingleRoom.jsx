@@ -14,7 +14,7 @@ const SingleRoom = () => {
     isLoading,
     isError,
     error,
-  } = useGetRoomsQuery("single_room");
+  } = useGetRoomsQuery({ roomType: "single_room" });
 
   const service = [
     {
