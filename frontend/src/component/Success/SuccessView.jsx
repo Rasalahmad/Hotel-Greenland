@@ -23,7 +23,7 @@ const SuccessView = () => {
     e.preventDefault();
     axios
       .post(
-        "https://api.hotelgreenlandbd.com/api/download-pdf",
+        "http://localhost:5000/api/download-pdf",
         {
           paymentStatus: booking?.data?.paymentStatus,
           price: booking?.data?.price,

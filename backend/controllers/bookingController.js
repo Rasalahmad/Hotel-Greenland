@@ -142,27 +142,32 @@ export const paymentSuccessRoute = async (req, res) => {
       tran_id: req.params.transaction_Id,
     }).session(session);
 
-    await Room.findOneAndUpdate(
+    if (!booking) {
+      throw new Error("Booking not found");
+    }
+
+    // Update room with booking details
+    const updatedRoom = await Room.findOneAndUpdate(
       { name: booking.product_name },
       {
         $addToSet: {
           bookings: booking._id,
+          unavailableDates: { $each: booking.bookingDates },
         },
         $set: { isAvailable: "Unavailable" },
       },
-      { session }
+      { session, new: true }
     );
 
+    if (!updatedRoom) {
+      throw new Error("Room not found");
+    }
+
     await Booking.findOneAndUpdate(
-      {
-        tran_id: req.params.transaction_Id,
-      },
-      {
-        $set: {
-          paymentStatus: "Paid",
-        },
-      }
-    ).session(session);
+      { tran_id: req.params.transaction_Id },
+      { $set: { paymentStatus: "Paid" } },
+      { session }
+    );
 
     await session.commitTransaction();
 
@@ -171,7 +176,7 @@ export const paymentSuccessRoute = async (req, res) => {
     );
   } catch (error) {
     await session.abortTransaction();
-    res.status(500).json({ success: false, error: error });
+    res.status(500).json({ success: false, error: error.message });
   } finally {
     session.endSession();
   }
@@ -179,28 +184,59 @@ export const paymentSuccessRoute = async (req, res) => {
 
 export const paymentFailRoute = async (req, res) => {
   try {
-    await Booking.deleteOne(req.params.transaction_Id);
-    res.redirect(`${process.env.DOMAINURL}/payment/fail/${transaction_Id}`);
+    const booking = await Booking.findOne({
+      tran_id: req.params.transaction_Id,
+    });
+
+    if (!booking) {
+      throw new Error("Booking not found");
+    }
+
+    // Mark the room as Unavailable and add unavailable dates
+    await Room.findOneAndUpdate(
+      { name: booking.product_name },
+      {
+        $addToSet: {
+          unavailableDates: { $each: booking.bookingDates },
+        },
+        $set: { isAvailable: "Unavailable" },
+      }
+    );
+
+    res.redirect(
+      `${process.env.DOMAINURL}/payment/fail/${req.params.transaction_Id}`
+    );
   } catch (error) {
-    res.status(500).json({ success: false, error: error });
+    res.status(500).json({ success: false, error: error.message });
   }
 };
 
 export const paymentCancelRoute = async (req, res) => {
   try {
-    const result = await Booking.findOneAndUpdate(
+    const booking = await Booking.findOne({
+      tran_id: req.params.transaction_Id,
+    });
+
+    if (!booking) {
+      throw new Error("Booking not found");
+    }
+
+    // Mark the room as Unavailable and add unavailable dates
+    await Room.findOneAndUpdate(
+      { name: booking.product_name },
       {
-        tran_id: req.params.transaction_Id,
-      },
-      {
-        $set: {
-          paymentStatus: "Pending",
+        $addToSet: {
+          unavailableDates: { $each: booking.bookingDates },
         },
+        $set: { isAvailable: "Unavailable" },
       }
     );
-    res.redirect(`${process.env.DOMAINURL}/payment/cancel/${transaction_Id}`);
+
+    res.redirect(
+      `${process.env.DOMAINURL}/payment/cancel/${req.params.transaction_Id}`
+    );
   } catch (error) {
-    res.status(500).json({ success: false, error: error });
+    res.status(500).json({ success: false, error: error.message });
   }
 };
 
@@ -260,8 +296,8 @@ export const getIndividualBooking = async (req, res) => {
 };
 
 export const getUserBooking = async (req, res) => {
-  const booking = await Booking.find({
-    cus_email: req.params.email,
+  const booking = await Booking.find({ cus_email: req.params.email }).sort({
+    createdAt: -1,
   });
 
   try {

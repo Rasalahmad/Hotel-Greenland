@@ -5,6 +5,7 @@ import {
   getRoom,
   getRoomTransaction,
   getRooms,
+  getRoomsForDashboard,
   updateAvailability,
   updateRoom,
   updateRoomAvailability,
@@ -14,6 +15,7 @@ const router = express.Router();
 
 router.post("/", addRoom);
 router.get("/", getRooms);
+router.get("/all_dashboard", getRoomsForDashboard);
 router.put("/:id", updateRoom);
 router.put("/availability/:id", updateRoomAvailability);
 router.put("/makeUnavailable/:id", updateAvailability);

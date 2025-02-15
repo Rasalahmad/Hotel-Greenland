@@ -51,8 +51,23 @@ export const getRooms = async (req, res) => {
       };
     }
 
-    console.log(filters, "filter");
     const rooms = await Room.find(filters);
+    res.status(200).json({
+      status: true,
+      data: rooms,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
+export const getRoomsForDashboard = async (req, res) => {
+  try {
+    const rooms = await Room.find();
     res.status(200).json({
       status: true,
       data: rooms,

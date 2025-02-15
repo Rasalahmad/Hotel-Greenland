@@ -21,6 +21,8 @@ import PrivateRoute from "../Private/PrivateRoute";
 import Blog from "../../pages/Blog/Blog";
 import AboutUs from "../../pages/AboutUs/AboutUs";
 import SearchResults from "../../pages/Home/Rooms/SearchResults/SearchResults";
+import CancelView from "../../component/Success/CancelView";
+import FailPayment from "../../component/Success/FailView";
 
 export const router = createBrowserRouter([
   {
@@ -113,5 +115,13 @@ export const router = createBrowserRouter([
   {
     path: "/payment/success/:transaction_Id",
     element: <SuccessView />,
+  },
+  {
+    path: "/payment/cancel/:transaction_Id",
+    element: <CancelView />,
+  },
+  {
+    path: "/payment/fail/:transaction_Id",
+    element: <FailPayment />,
   },
 ]);
