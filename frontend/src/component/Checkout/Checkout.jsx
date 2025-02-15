@@ -75,7 +75,7 @@ const Checkout = ({
             <label className="-mb-2 text-gray-400 font-bold ">CHECK-OUT</label>
             <DatePicker
               className="input w-full flex focus:outline-none z-10 bg-transparent text-white text-center"
-              placeholderText={"Check-in"}
+              placeholderText={"Check-out"}
               selected={endDate}
               onChange={(date) => setEndDate(date)}
               endDate={endDate < startDate ? startDate : endDate}
