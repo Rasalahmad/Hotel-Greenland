@@ -8,7 +8,6 @@ import Booking from "../../pages/Booking/Booking";
 import Home from "../../pages/Home/Home/Home";
 import AllRooms from "../../pages/Home/Rooms/AllRoom/AllRooms";
 import DoubleRoom from "../../pages/Home/Rooms/DoubleRoom/DoubleRoom";
-import Details from "../../pages/Home/Rooms/SingleRoom/Details";
 import SingleRoom from "../../pages/Home/Rooms/SingleRoom/SingleRoom";
 import FamilyRoom from "../../pages/Home/Rooms/Special/FamilyRoom";
 import Contact from "../../pages/Contact/Contact";
@@ -22,6 +21,7 @@ import AboutUs from "../../pages/AboutUs/AboutUs";
 import SearchResults from "../../pages/Home/Rooms/SearchResults/SearchResults";
 import CancelView from "../../component/Success/CancelView";
 import FailView from "../../component/Success/FailView";
+import Details from "../../pages/Home/Rooms/components/Details";
 
 export const router = createBrowserRouter([
   {

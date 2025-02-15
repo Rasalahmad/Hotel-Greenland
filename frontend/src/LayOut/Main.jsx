@@ -14,7 +14,7 @@ const Main = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const phoneNumber = "01810058005";
+  const phoneNumber = "+8801810058005";
   const message = "Is there anyone for support?";
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
