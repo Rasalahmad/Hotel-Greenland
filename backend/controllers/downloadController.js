@@ -30,7 +30,7 @@ export const downloadPdf = async (req, res) => {
     doc.pipe(res);
 
     // Add decorative header background
-    doc.rect(0, 0, doc.page.width, 150).fill("#2c3e50");
+    doc.rect(0, 0, doc.page.width, 150).fill("#4ade80");
 
     // ** Add Logo (if exists) **
     const logoPath = path.resolve("public/logo.png");
@@ -79,7 +79,7 @@ export const downloadPdf = async (req, res) => {
     const cellPadding = 8;
 
     // Table Headers with gradient-like effect
-    doc.rect(tableLeft, tableTop, 500, rowHeight).fill("#2c3e50");
+    doc.rect(tableLeft, tableTop, 500, rowHeight).fill("#4ade80");
 
     doc
       .font("Helvetica-Bold")
@@ -135,14 +135,14 @@ export const downloadPdf = async (req, res) => {
     const x = (doc.page.width - buttonWidth) / 2;
     const y = doc.y;
 
-    doc.rect(x, y, buttonWidth, buttonHeight).fill("#3498db");
+    doc.rect(x, y, buttonWidth, buttonHeight).fill("#4ade80");
 
     // Calculate vertical center for text within the button height
     const textY = y + (buttonHeight - 14) / 2;
 
     doc
       .fontSize(14)
-      .fillColor("#000000")
+      .fillColor("#ffffff")
       .text("Track Your Booking", x, textY, {
         link: trackBookingUrl,
         align: "center",
