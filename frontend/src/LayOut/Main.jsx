@@ -1,13 +1,12 @@
-/* eslint-disable no-undef */
 import React, { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../component/Footer";
 import ScrollToTopComponent from "../component/scroll/ScrollToTop";
 import Banner from "../pages/Home/Banner/Banner";
-import { Transition } from "@headlessui/react";
 import facebook from "../assets/sideIcon/facebook.png";
 import whatsapp from "../assets/sideIcon/whatsapp.png";
 import call from "../assets/sideIcon/call.png";
+
 const Main = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
@@ -15,12 +14,9 @@ const Main = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleSection = () => {
-    setIsOpen(!isOpen);
-  };
-
   const phoneNumber = "01810058005";
   const message = "Is there anyone for support?";
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
   const handleWhatsAppRedirect = () => {
     window.open(
@@ -29,78 +25,83 @@ const Main = () => {
     );
   };
 
-  const isMobile = window.matchMedia("(max-width: 767px)").matches;
-
   return (
     <ScrollToTopComponent>
       {!excludeRoute.includes(path) && <Banner />}
-      {/* The button to open modal */}
+
+      {/* Contact Sidebar */}
       <div style={{ display: path === "booking" ? "none" : "" }}>
-        <div className=" flex flex-col gap-2 fixed top-[50%] right-0 transform -translate-y-1/3">
-          <div className="">
-            <Transition
-              show={isOpen}
-              enter="transition-transform duration-300 ease-out"
-              enterFrom="transform translate-y-full"
-              enterTo="transform translate-y-0"
-              leave="transition-transform duration-300 ease-in"
-              leaveFrom="transform translate-y-0"
-              leaveTo="transform translate-y-full"
-            >
-              <div className="h-52  w-20 mt-[-195px] mb-[-14px] ">
-                {/* Content of the revealed section */}
-                <div
-                  onClick={handleWhatsAppRedirect}
-                  className=" shadow-lg p-2  block rounded-l-lg bg-slate-100 cursor-pointer"
-                >
-                  <img src={whatsapp} alt="" className="w-12  ml-2" />
-                </div>
-                <label
-                  htmlFor="my_modal_6"
-                  className="my-1 shadow-lg  p-2 block rounded-l-lg bg-slate-100 cursor-pointer"
-                >
-                  <img src={facebook} alt="" className="w-[45px] ml-2" />
-                </label>
-                {isMobile ? (
-                  <a href={`tel:${phoneNumber}`}>
-                    <img src={call} alt="" className="w-10 ml-2" />
-                  </a>
-                ) : (
-                  <label
-                    htmlFor="my_modal_6"
-                    className="shadow-lg p-2 block rounded-l-lg bg-slate-100 cursor-pointer"
-                  >
-                    <img src={call} alt="" className="w-10 ml-2" />
-                  </label>
-                )}
-              </div>
-            </Transition>
+        <div className="fixed bottom-10 right-10 flex flex-col-reverse items-end gap-2 z-50">
+          {/* Call Button */}
+          <button
+            className="bg-green-400 rounded-full flex justify-center items-center w-12 h-12 shadow-lg hover:bg-green-500 transition-all duration-300 ease-in-out"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <img src={call} alt="Call" className="w-6" />
+          </button>
 
-            <button
-              className="bg-gray-300 py-2 shadow-lg pl-3 rounded-l-lg  w-20 flex"
-              onClick={toggleSection}
+          {/* Expanded Items */}
+          <div
+            className={`flex flex-col gap-2 transition-all duration-300 ease-in-out ${
+              isOpen
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4 pointer-events-none"
+            }`}
+          >
+            <div
+              onClick={handleWhatsAppRedirect}
+              className="cursor-pointer bg-white shadow-lg p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 ease-in-out"
             >
-              <img src={call} alt="" className=" w-12" />
-            </button>
-          </div>
-        </div>
-
-        {/* Put this part before </body> tag */}
-        <input type="checkbox" id="my_modal_6" className="modal-toggle " />
-        <div className="modal">
-          <div className="modal-box">
+              <img src={whatsapp} alt="WhatsApp" className="w-8" />
+            </div>
             <label
               htmlFor="my_modal_6"
-              className="btn  btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              className="cursor-pointer bg-white shadow-lg p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 ease-in-out"
             >
-              ✕
+              <img src={facebook} alt="Facebook" className="w-8" />
             </label>
-            <h3 className="font-bold text-lg">Contact With Us</h3>
-            <p className="py-4">Phone Number: 01810058005</p>
-            <div className="modal-action"></div>
+            {isMobile ? (
+              <a
+                href={`tel:${phoneNumber}`}
+                className="bg-white shadow-lg p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 ease-in-out"
+              >
+                <img src={call} alt="Call" className="w-8" />
+              </a>
+            ) : (
+              <label
+                htmlFor="my_modal_6"
+                className="cursor-pointer bg-white shadow-lg p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 ease-in-out"
+              >
+                <img src={call} alt="Call" className="w-8" />
+              </label>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Modal for Contact Info */}
+      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative bg-white rounded-lg shadow-xl">
+          <label
+            htmlFor="my_modal_6"
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 hover:bg-gray-200 transition-all duration-300 ease-in-out"
+          >
+            ✕
+          </label>
+          <h3 className="font-bold text-lg text-gray-800">Contact With Us</h3>
+          <p className="py-4 text-gray-600">Phone Number: {phoneNumber}</p>
+          <div className="flex justify-end">
+            <label
+              htmlFor="my_modal_6"
+              className="btn bg-green-400 text-white hover:bg-green-500 transition-all duration-300 ease-in-out"
+            >
+              Close
+            </label>
+          </div>
+        </div>
+      </div>
+
       <Outlet />
       {!excludeRoute.includes(path) && <Footer />}
     </ScrollToTopComponent>
