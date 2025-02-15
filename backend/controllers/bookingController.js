@@ -197,6 +197,7 @@ export const paymentFailRoute = async (req, res) => {
       { name: booking.product_name },
       {
         $addToSet: {
+          bookings: booking._id,
           unavailableDates: { $each: booking.bookingDates },
         },
         $set: { isAvailable: "Unavailable" },
@@ -226,6 +227,7 @@ export const paymentCancelRoute = async (req, res) => {
       { name: booking.product_name },
       {
         $addToSet: {
+          bookings: booking._id,
           unavailableDates: { $each: booking.bookingDates },
         },
         $set: { isAvailable: "Unavailable" },
@@ -327,6 +329,38 @@ export const deleteBooking = async (req, res) => {
     res.status(400).json({
       status: false,
       message: "Data can't fetch",
+      error,
+    });
+  }
+};
+
+export const updatePaymentStatus = async (req, res) => {
+  try {
+    const { bookingId } = req.params;
+    const { paymentStatus } = req.body;
+
+    const updatedBooking = await Booking.findByIdAndUpdate(
+      { _id: ObjectId(bookingId) },
+      { paymentStatus },
+      { new: true }
+    );
+
+    if (!updatedBooking) {
+      return res.status(404).json({
+        status: false,
+        message: "Booking not found",
+      });
+    }
+
+    res.status(200).json({
+      status: true,
+      message: "Payment status updated successfully",
+      data: updatedBooking,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Failed to update payment status",
       error,
     });
   }

@@ -83,9 +83,12 @@ export const getRoomsForDashboard = async (req, res) => {
 
 export const getRoom = async (req, res) => {
   try {
-    const room = await Room.findOne({ _id: ObjectId(req.params.id) }).populate(
-      "bookings"
-    );
+    const room = await Room.findOne({
+      _id: new ObjectId(req.params.id),
+    }).populate({
+      path: "bookings",
+      options: { sort: { createdAt: -1 } },
+    });
 
     if (!room) {
       return res.status(404).json({

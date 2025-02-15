@@ -29,9 +29,22 @@ const Booking = () => {
     fetchData();
   }, [bookingId]);
 
-  console.log(data);
+  // Handle button click to update payment status
+  const handleChangeStatus = async () => {
+    try {
+      const newStatus = paymentStatus === "Paid" ? "Pending" : "Paid";
+      await makeRequest.put(`/booking/payment-status/${bookingId}`, {
+        paymentStatus: newStatus,
+      });
 
-  const [isActive, setIsActive] = useState(false);
+      setData((prevData) => ({
+        ...prevData,
+        paymentStatus: newStatus,
+      }));
+    } catch (err) {
+      setError("Failed to update payment status.");
+    }
+  };
 
   const {
     name,
@@ -100,9 +113,7 @@ const Booking = () => {
                           className="itemValue"
                           style={{
                             background:
-                              paymentStatus === "Paid"
-                                ? "lightgreen"
-                                : "lightgray",
+                              paymentStatus === "Paid" ? "lightgreen" : "red",
                             padding: "5px",
                             borderRadius: "5px",
                           }}
@@ -111,6 +122,9 @@ const Booking = () => {
                           ৳ {paymentStatus}
                         </span>
                       </div>
+                      <button className="button" onClick={handleChangeStatus}>
+                        Update Payment
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -176,8 +190,6 @@ const Booking = () => {
                             )}`}
                         </span>
                       </div>
-
-                      <button className="button">Change Status</button>
                     </div>
                     <img src="/user.jpg" alt="" className="bookingImg" />
                   </div>

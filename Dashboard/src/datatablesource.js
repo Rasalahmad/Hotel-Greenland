@@ -162,6 +162,21 @@ export const transColumns = [
   {
     field: "paymentStatus",
     headerName: "Payment Status",
-    width: 100,
+    width: 120,
+    renderCell: (params) => (
+      <span
+        style={{
+          backgroundColor: params.value === "Paid" ? "green" : "red",
+          color: "white",
+          padding: "5px",
+          borderRadius: "5px",
+          display: "inline-block",
+          textAlign: "center",
+          width: "100%",
+        }}
+      >
+        {params.value}
+      </span>
+    ),
   },
 ];
