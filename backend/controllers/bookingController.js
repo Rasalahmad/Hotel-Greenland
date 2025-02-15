@@ -298,9 +298,12 @@ export const getIndividualBooking = async (req, res) => {
 };
 
 export const getUserBooking = async (req, res) => {
-  const booking = await Booking.find({ cus_email: req.params.email }).sort({
-    createdAt: -1,
-  });
+  const { limit } = req.query;
+  const booking = await Booking.find({ cus_email: req.params.email })
+    .limit(limit)
+    .sort({
+      createdAt: -1,
+    });
 
   try {
     res.status(200).json({

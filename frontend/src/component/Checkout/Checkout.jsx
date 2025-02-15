@@ -44,7 +44,11 @@ const Checkout = ({
 
   return (
     <Container>
-      <div>{!noImage && <Image src={image} />}</div>
+      <div>
+        {!noImage && (
+          <Image src={`${process.env.REACT_APP_IMAGE_URL}/images/${image}`} />
+        )}
+      </div>
       <div>
         {title || name ? (
           <Heading>

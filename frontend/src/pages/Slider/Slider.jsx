@@ -60,7 +60,6 @@ const Slider = () => {
                 <div className="overlay-bottom">
                   <div className="text">
                     <h2>{item?.title?.slice(0, 25)}</h2>
-                    <span>{item?.copyright?.slice(0, 25) || "copyright"}</span>
                   </div>
                 </div>
               </div>

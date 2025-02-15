@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import RoomCard from "../../../component/RoomCard/RoomCard";
 import "./Room.css";
+
 export const Rooms = () => {
   return (
-    <div>
+    <Container>
       <Content>
-        <Title className="stroke-2">Our Rooms.</Title>
+        <Title className="stroke-2">Our Rooms</Title>
         <Description>
           A wonderful serenity has taken possession of my entire soul, like
           these sweet mornings of spring which I enjoy with my whole heart. I am
@@ -14,33 +15,43 @@ export const Rooms = () => {
           for the bliss of soul.
         </Description>
       </Content>
-      <Slider className="bg-image">
+      <Slider>
         <RoomCard />
       </Slider>
-    </div>
+    </Container>
   );
 };
 
-const Title = styled.div`
-  font-size: 60px;
-  font-family: "Great Vibes";
+const Container = styled.div`
+  background-color: #f8f9fa;
+  padding: 50px 0;
 `;
 
-const Description = styled.div`
-  font-size: 23px;
-  line-height: 40px;
-  padding: 35px;
-  color: gray;
+const Title = styled.h1`
+  font-size: 48px;
+  font-family: "Great Vibes";
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+`;
+
+const Description = styled.p`
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
 `;
 
 const Content = styled.div`
-  max-width: 760px;
   text-align: center;
-  margin: auto;
-  padding-top: 100px;
+  margin-bottom: 50px;
 `;
 
 const Slider = styled.div`
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
 `;
+
+export default Rooms;

@@ -15,7 +15,10 @@ import moment from "moment";
 const Orders = () => {
   const { user } = useContext(AuthContext);
 
-  const { data, isLoading } = useGetUserBookingQuery(user?.email);
+  const { data, isLoading } = useGetUserBookingQuery({
+    email: user?.email,
+    limit: "10",
+  });
 
   const [createReview, { data: reviewData, isSuccess }] =
     useCreateReviewMutation();

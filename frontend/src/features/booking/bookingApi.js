@@ -20,7 +20,7 @@ export const bookingApi = apiSlice.injectEndpoints({
       query: (id) => `/booking/transaction/${id}`,
     }),
     getUserBooking: builder.query({
-      query: (email) => `/booking/${email}`,
+      query: ({ email, limit }) => `/booking/${email}?limit=${limit}`,
     }),
   }),
 });
