@@ -120,7 +120,7 @@ const Right = styled.div`
 
 const Card = styled.div`
   width: 400px;
-  box-shadow: 0px 9px 30px rgba(255, 149, 5, 0.3);
+  box-shadow: 0px 9px 30px rgba(193, 193, 193, 0.3);
   border-radius: 10px;
   overflow: hidden;
   @media (max-width: 768px) {
