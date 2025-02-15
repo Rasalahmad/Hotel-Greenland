@@ -65,7 +65,7 @@ const SingleRoom = () => {
                       <BsPersonCircle size={25} />
                       <p>{item?.guests} persons</p>
                       <BiBed size={25} />
-                      <p>{item?.price} / per night</p>
+                      <p>{item?.price} Tk / per night</p>
                     </Facilities>
                   </FContainer>
                   <Description>{item.desc.slice(0, 100)}</Description>
