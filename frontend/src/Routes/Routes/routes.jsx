@@ -13,7 +13,6 @@ import SingleRoom from "../../pages/Home/Rooms/SingleRoom/SingleRoom";
 import FamilyRoom from "../../pages/Home/Rooms/Special/FamilyRoom";
 import Contact from "../../pages/Contact/Contact";
 import SuccessView from "../../component/Success/SuccessView";
-import Success from "../../pages/payment/Success";
 import Orders from "../../pages/Orders/Orders";
 import Login from "../../pages/Auth/Login";
 import Register from "../../pages/Auth/Register";
@@ -22,7 +21,7 @@ import Blog from "../../pages/Blog/Blog";
 import AboutUs from "../../pages/AboutUs/AboutUs";
 import SearchResults from "../../pages/Home/Rooms/SearchResults/SearchResults";
 import CancelView from "../../component/Success/CancelView";
-import FailPayment from "../../component/Success/FailView";
+import FailView from "../../component/Success/FailView";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +121,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/payment/fail/:transaction_Id",
-    element: <FailPayment />,
+    element: <FailView />,
   },
 ]);

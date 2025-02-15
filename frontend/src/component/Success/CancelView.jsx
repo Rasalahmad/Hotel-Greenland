@@ -2,7 +2,17 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useGetSingleBookingQuery } from "../../features/booking/bookingApi";
 import Lottie from "react-lottie-player";
-import lottieJson from "./cancel-animation.json"; // Use an appropriate Lottie animation for cancellation
+import lottieJson from "./cancel-animation.json";
+import {
+  FaHome,
+  FaRedo,
+  FaCreditCard,
+  FaBed,
+  FaExclamationTriangle,
+  FaHeadset,
+  FaEnvelope,
+  FaPhoneAlt,
+} from "react-icons/fa";
 
 const CancelView = () => {
   const location = useLocation();
@@ -14,65 +24,128 @@ const CancelView = () => {
     isError,
   } = useGetSingleBookingQuery(trans_id);
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-lg text-gray-600">Loading...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="lg:flex justify-center items-center gap-8 lg:mx-52  mx-3  my-12">
-      <div className="w-full my-auto lg:mb-0 mb-10 lg:w-[600px] shadow-xl rounded-xl">
-        <div className="bg-white p-6">
-          <div className="flex justify-center">
-            <Lottie
-              loop
-              animationData={lottieJson}
-              play
-              className="w-[90px] lg:w-[150px] my-3 text-center"
-            />
-          </div>
-          {isLoading ? (
-            "Loading..."
-          ) : (
-            <div className="text-center">
-              <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
-                Payment Canceled!
-              </h3>
-              <p className="text-gray-600 mt-2">
-                Your payment process was canceled.
-              </p>
-              <p className="text-gray-600">
-                If this was a mistake, you can try again.
-              </p>
-
-              <div className="text-left text-lg font-semibold mt-10">
-                <p className="flex justify-between">
-                  Transaction ID <span>{booking?.data?.tran_id}</span>
-                </p>
-                <p className="flex justify-between">
-                  Payment Status <span>{booking?.data?.paymentStatus}</span>
-                </p>
-                <p className="flex justify-between">
-                  Room <span>{booking?.data?.product_name}</span>
-                </p>
-              </div>
-
-              <div className="py-2 text-center">
-                <div className="flex justify-between gap-2 lg:gap-0">
-                  <Link
-                    to="/"
-                    className="px-12 bg-green-400 hover:bg-green-500 rounded-lg text-white font-semibold py-3"
-                  >
-                    GO BACK
-                  </Link>
-                  <Link
-                    to="/retry-payment"
-                    className="px-12 bg-red-600 hover:bg-red-500 rounded-lg text-white font-semibold py-3"
-                  >
-                    Retry Payment
-                  </Link>
-                </div>
-                <p className="text-gray-600 mt-2">
-                  Need help? Contact support.
-                </p>
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          {/* Error Header */}
+          <div className="bg-gradient-to-r from-red-500 to-red-600 px-8 py-12">
+            <div className="flex justify-center">
+              <div className="bg-white rounded-full p-3">
+                <FaExclamationTriangle className="w-12 h-12 text-red-500" />
               </div>
             </div>
-          )}
+            <h1 className="mt-6 text-center text-3xl font-bold text-white">
+              Payment Canceled
+            </h1>
+            <p className="mt-2 text-center text-lg text-red-100">
+              Your payment process was not completed
+            </p>
+          </div>
+
+          {/* Booking Details */}
+          <div className="px-8 py-6">
+            <div className="space-y-6">
+              {/* Transaction Details */}
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                  Transaction Details
+                </h2>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <FaCreditCard className="w-5 h-5 text-gray-400" />
+                      <span className="text-gray-600">Transaction ID</span>
+                    </div>
+                    <span className="font-medium text-gray-800">
+                      {booking?.data?.tran_id}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <FaBed className="w-5 h-5 text-gray-400" />
+                      <span className="text-gray-600">Room Type</span>
+                    </div>
+                    <span className="font-medium text-gray-800">
+                      {booking?.data?.product_name}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <FaCreditCard className="w-5 h-5 text-gray-400" />
+                      <span className="text-gray-600">Payment Status</span>
+                    </div>
+                    <span className="font-medium text-red-500">
+                      {booking?.data?.paymentStatus}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+                >
+                  <FaHome className="w-5 h-5 mr-2" />
+                  Back to Home
+                </Link>
+                <Link
+                  to="/retry-payment"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white bg-red-600 hover:bg-red-700 transition-colors duration-200"
+                >
+                  <FaRedo className="w-5 h-5 mr-2" />
+                  Retry Payment
+                </Link>
+              </div>
+
+              {/* Support Section */}
+              <div className="mt-8 bg-blue-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                  <FaHeadset className="w-5 h-5 mr-2 text-blue-500" />
+                  Need Assistance?
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <a
+                    href="mailto:support@hotelgreenland.com"
+                    className="flex items-center justify-center space-x-2 p-3 rounded-lg bg-white text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                  >
+                    <FaEnvelope className="w-4 h-4" />
+                    <span>Email Support</span>
+                  </a>
+                  <a
+                    href="tel:+880123456789"
+                    className="flex items-center justify-center space-x-2 p-3 rounded-lg bg-white text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                  >
+                    <FaPhoneAlt className="w-4 h-4" />
+                    <span>Call Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Footer Message */}
+          <div className="mt-12 bg-gray-100 p-10">
+            <div className="text-center">
+              <p className="text-gray-600 text-lg font-medium">
+                If you experienced any issues during the payment process, our
+                support team is here to help.
+              </p>
+              <p className="mt-2 text-gray-600 text-base">
+                You can try the payment again or contact our support team for
+                assistance.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

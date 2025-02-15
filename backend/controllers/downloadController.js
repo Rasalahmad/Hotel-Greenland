@@ -61,7 +61,7 @@ export const downloadPdf = async (req, res) => {
     doc
       .fontSize(16)
       .fillColor("#7f8c8d")
-      .text("Thank you for choosing luxury!", { align: "center" })
+      .text("Thank you for choosing Greenland!", { align: "center" })
       .moveDown(2);
 
     // ** Booking Details Section **

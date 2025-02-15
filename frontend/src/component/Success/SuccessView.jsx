@@ -187,7 +187,7 @@ const SuccessView = () => {
             </div>
           </div>
           {/* Footer Message */}
-          <div className="mt-12 bg-gray-100 p-10 rounded-t-lg">
+          <div className="mt-12 bg-gray-100 p-10">
             <div className="text-center">
               <p className="text-gray-600 text-lg font-medium">
                 Thank you for choosing our services. <br /> Your booking
