@@ -91,19 +91,18 @@ const Booking = () => {
       desc: desc,
       isAvailable: isAvailable,
     };
-    console.log(finalData);
-    // axios
-    //   .post("http://localhost:5000/api/booking/payment", finalData)
-    //   .then((res) => {
-    //     if (res.data) {
-    //       console.log(res.data);
-    //       window.location.replace(res.data.data);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error making POST request:", error);
-    //     // Handle the error here
-    //   });
+    axios
+      .post("http://localhost:5000/api/booking/payment", finalData)
+      .then((res) => {
+        if (res.data) {
+          console.log(res.data);
+          window.location.replace(res.data.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error making POST request:", error);
+        // Handle the error here
+      });
   };
 
   let content = null;
